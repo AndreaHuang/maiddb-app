@@ -1,0 +1,24 @@
+{
+    
+    "id":"Account",
+    "password":"Password",
+    "validation.id.is.required":"Account is required",
+    "validation.password.is.required":"Password is required",
+  
+
+    "api.error.login":"Fail to Login",
+
+    "validation.name.is.required":"Name is required",
+    "validation.nationality.is.required":"Nationality is required",
+    "validation.birthday.is.required":"Birthday is required",
+
+    "button.login":"Login",
+    "button.submit":"Submit",
+    "button.next":"Next",
+    "button.back":"Back",
+
+    "name":"Name",
+    "nationality":"Nationality",
+    "birthday":"Birthday"
+
+}

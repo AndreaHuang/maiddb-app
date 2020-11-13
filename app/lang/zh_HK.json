@@ -1,0 +1,8 @@
+{
+    "id":"Account",
+    "password":"Password",
+    "validation.id.is.required":"Account is required",
+    "validation.password.is.required":"Password is required",
+    "button.login":"Login",
+    "api.error.login":"Fail to Login"
+}
