@@ -11,14 +11,18 @@
     "validation.name.is.required":"Name is required",
     "validation.nationality.is.required":"Nationality is required",
     "validation.birthday.is.required":"Birthday is required",
+    "validation.email.is.required":"Email is required",
+    "validation.whatsapp.is.required":"Whatsapp is required",
 
     "button.login":"Login",
     "button.submit":"Submit",
-    "button.next":"Next",
-    "button.back":"Back",
+    "button.next":"NEXT",
+    "button.back":"BACK",
 
     "name":"Name",
     "nationality":"Nationality",
-    "birthday":"Birthday"
+    "birthday":"Birthday",
+    "email":"Email",
+    "whatsapp":"Whatsapp"
 
 }

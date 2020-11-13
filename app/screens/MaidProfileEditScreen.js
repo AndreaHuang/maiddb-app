@@ -7,7 +7,7 @@ import { View, StyleSheet, FlatList } from "react-native";
 import MultiStepForm from "../components/forms/MultiStepForm";
 import Screen from "../components/Screen";
 import i18n from "../config/i18n";
-import { AppFormField } from '../components/forms';
+import { AppFormField, AppSubmitButton } from '../components/forms';
 
 
 
@@ -17,17 +17,19 @@ const MaidProfileEditScreen = () => {
   const initialValues={
     name:"",
     nationality:"",
-    birthday:""
+    birthday:"",
+    email:"",
+    whatsapp:""
 
  };
 
    const items=[{
      names:["name","nationality"],
      validationSchema:  Yup.object({
-    name: Yup.string().required(t("validation.name.is.required")).label(t("name")),
-    nationality: Yup.string()
-      .required(t("validation.nationality.is.required"))
-      .label(t("nationality")) }),
+                        name: Yup.string().required(t("validation.name.is.required")).label(t("name")),
+                        nationality: Yup.string()
+                          .required(t("validation.nationality.is.required"))
+                          .label(t("nationality")) }),
      components:()=>
        <>
         <AppFormField name="name" label={t("name")}/>
@@ -36,15 +38,31 @@ const MaidProfileEditScreen = () => {
    },
   {
      names:["birthday"],
-     validationScheme: Yup.object({
-    birthday: Yup.string().required(t('validation.birthday.is.required')).label(t('birthday')),
-  }),
+     validationSchema: Yup.object({
+                        birthday: Yup.string().required(t('validation.birthday.is.required')).label(t('birthday')),
+                      }),
      components:()=>
-        <AppFormField name="birthday" label={t("birthday")}/>
+        <>
+          <AppFormField name="birthday" label={t("birthday")}/>
+        </>
+   },
+   {
+     names:["email","whatsapp"],
+     validationSchema: Yup.object({
+                      email: Yup.string().required(t('validation.email.is.required')).label(t('email')),
+                      whatsapp: Yup.string().required(t('validation.whatsapp.is.required')).label(t('whatsapp')),
+                    }),
+     components:()=>
+        <>
+          <AppFormField name="email" label={t("email")}/>
+          <AppFormField name="whatsapp" label={t("whatsapp")}/>
+          <AppSubmitButton title={t("button.submit")}/>
+        </>
    }];
-   const handleSubmit = (values, { resetForm }) => {
-    login.request(values);
-    resetForm();
+   const handleSubmit = (values) => {
+    // login.request(values);
+    console.log("handleSubmit");
+    console.log(values);
   };
 
   return (<Screen>

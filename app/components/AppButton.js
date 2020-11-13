@@ -8,7 +8,7 @@ function AppButton({ color = "primary", onPress, title }) {
       style={[styles.button, { backgroundColor: colors[color] }]}
       onPress={onPress}
     >
-      <Text style={defaultStyles.text}>{title}</Text>
+      <Text style={defaultStyles.text,styles.text}>{title}</Text>
     </TouchableOpacity>
   );
 }
@@ -22,5 +22,10 @@ const styles = StyleSheet.create({
     padding: 15,
     marginVertical: 10,
   },
+  text :{
+    color: colors.white,
+    fontSize: 20,
+    fontWeight:"400"
+  }
 });
 export default AppButton;
