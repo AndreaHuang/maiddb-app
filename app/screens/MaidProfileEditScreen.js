@@ -11,7 +11,7 @@ import { AppFormField, AppSubmitButton } from '../components/forms';
 
 
 
-const MaidProfileEditScreen = () => {
+const MaidProfileEditScreen = ({navigation}) => {
   //i18n
   const { t } = useTranslation();
   const initialValues={
@@ -63,6 +63,8 @@ const MaidProfileEditScreen = () => {
     // login.request(values);
     console.log("handleSubmit");
     console.log(values);
+    navigation.navigate("MaidProfile")
+
   };
 
   return (<Screen>

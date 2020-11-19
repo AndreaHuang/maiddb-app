@@ -1,7 +1,9 @@
 import client from "./apiClient";
-const endpointLogin = "/login";
-const login = (id, password) => {
-  const response = client.post(endpointLogin, { id, password });
+const endpointLogin = "/api/auth";
+const login = ({email,password}) => {
+
+  console.log("request",email);
+  const response = client.post(endpointLogin, { email, password });
   return response;
 };
 

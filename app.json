@@ -2,6 +2,7 @@
   "expo": {
     "name": "Maid DB",
     "slug": "maiddb-app",
+    "platforms":["ios","android","web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/icon.png",
@@ -17,9 +18,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.maiddb",
+      "buildNumber": "1.0.0",
+      "supportsTablet": true,
+      "config":{
+        "googleSignIn":{
+          "reservedClientId":"com.googleusercontent.apps.621363690446-1q9qjmmkqfei9eqnt510mpmha09u5pdb"
+        }
+      },
+      "googleServicesFile":"./app/auth/GoogleService-Info.plist"
     },
     "android": {
+      "package": "com.maiddb",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

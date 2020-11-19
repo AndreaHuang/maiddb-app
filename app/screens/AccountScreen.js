@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import ListItem from "../components/lists/ListItem";
 import ListItemSeperator from "../components/lists/ListItemSeperator";
 import Screen from "../components/Screen";
 import colors from "../config/color";
 import Icon from "../components/Icon";
+import AppButton from "../components/AppButton";
+import firebaseAuth from "../auth/FirebaseAuth";
+import AuthContext from "../auth/AuthContext";
 
 const defaultIcon = require("../assets/icon.png");
-const customerInfo = {
-  name: "Andrea Huang",
-  email: "hyfandrea@gmail.com",
-};
-function AccountScreen() {
+
+function AccountScreen({navigation, route}) {
+  const {user,setUser} =useContext(AuthContext);
+  const handleLogout=()=>{
+     firebaseAuth.signout();
+     setUser(null);
+  }
+
   const menuItems = [
     {
       title: "My Favorite",
@@ -27,11 +33,11 @@ function AccountScreen() {
   return (
     <Screen>
       <ListItem
-        title={customerInfo.name}
-        subTitle={customerInfo.email}
+        title={user.name}
+        subTitle={user.email}
         image={
-          customerInfo.iconUrl
-            ? { source: { url: customerInfo.iconUrl } }
+          user.photoURL
+            ? { source: { url: user.photoURL } }
             : defaultIcon
         }
       />
@@ -55,7 +61,7 @@ function AccountScreen() {
         )}
       />
       <ListItemSeperator style={{ height: 20 }} />
-
+{/* 
       <ListItem
         title="Logout"
         IconComponent={
@@ -66,7 +72,8 @@ function AccountScreen() {
             backgroundColor="orange"
           />
         }
-      />
+      /> */}
+      <AppButton onPress={handleLogout} title="Logout" icon="logout"/>
     </Screen>
   );
 }

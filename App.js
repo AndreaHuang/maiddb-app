@@ -1,16 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import React,{useEffect, useState} from 'react';
+import AuthContext from "./app/auth/AuthContext"
 import { NavigationContainer } from "@react-navigation/native";
 
-import TabNavigator from "./app/screens/TabNavigator";
+import AppNavigator from "./app/navigation/AppNavigator";
+import AuthNavigator from "./app/navigation/AuthNavigator";
+import { LogBox } from 'react-native';
+import firebaseAuth from "./app/auth/FirebaseAuth";
+import firebase from 'firebase';
+import {AppLoading} from "expo";
 
+
+LogBox.ignoreLogs=['Warning'];
 
 export default function App() {
+  const[user,setUser]=useState(null);
+  const[isReady,setIsReady]=useState(false);
+
+  const initialize=async ()=>{
+    firebaseAuth.initialize();
+    const unsubscribe = firebase.auth().onAuthStateChanged((firebaseUser)=>{
+        unsubscribe();
+        console.log("onAuthStateChanged in initialize ", firebaseUser);
+        if(firebaseUser){
+          const appUser = firebaseAuth.buildAppUser(firebaseUser);
+          console.log("buildFrom buildAppUser",appUser);
+          setUser(appUser);
+        
+        } else {
+          setUser(null);
+        }
+        })
+  }
+
+  if(!isReady){
+    return <AppLoading startAsync={initialize} onFinish={()=>setIsReady(true)}/>
+  }
+  
+
   return (
-   <NavigationContainer>
-      <TabNavigator></TabNavigator>
-   </NavigationContainer>
+    <AuthContext.Provider value={{user,setUser}}>
+      <NavigationContainer>
+        {user ? <AppNavigator/> : <AuthNavigator/>}
+      </NavigationContainer>
+   </AuthContext.Provider>
   );
 }
 
