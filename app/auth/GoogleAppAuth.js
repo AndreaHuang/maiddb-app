@@ -1,6 +1,6 @@
 /* This is for expo-client */
 import * as Google from 'expo-google-app-auth';
-import googleAuthConfig from "./GoogleAppAuthConfig";
+import googleAuthConfig from "../config/googleAppAuthConfig";
 import firebaseAuth from "./FirebaseAuth";
 
 

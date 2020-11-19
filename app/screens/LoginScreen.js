@@ -12,7 +12,6 @@ import { useTranslation } from "react-i18next";
 
 import firebase from 'firebase';
 import * as Google from 'expo-google-app-auth';
-import googleAuthConfig from "../auth/GoogleAppAuthConfig";
 
 import {
   AppForm,
@@ -36,7 +35,6 @@ import i18n from "../config/i18n";
 import AuthContext from "../auth/AuthContext";
 import jwtDecode from "jwt-decode";
 
-import firebaseAuth from "../auth/FirebaseAuth";
 import GoogleAppAuth from "../auth/GoogleAppAuth";
 
 function LoginScreen({navigation}) {

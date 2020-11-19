@@ -1,16 +1,11 @@
-import firebase from 'firebase';
-import firebaseConfig from './FirebaseConfig';
+// import firebase from 'firebase';
+// import firebaseConfig from '../services/firebaseConfig';
+import {auth,db} from '../services/firebase';
+import {saveOrUpdateFirebaseUser} from "../database/FirebaseDB"
 
-/*Initialize the app*/
-const initialize=()=>{
-     if(firebase.apps.length === 0){
-        console.log("initialize App")
-        firebase.initializeApp(firebaseConfig);
-    }
-}
 
 const signout=()=>{
-  firebase.auth().signOut().then(()=> {
+  auth().signOut().then(()=> {
     // Sign-out successful.
     console.debug("logout successfully.")
   }).catch(error => {
@@ -40,7 +35,7 @@ const isUserEqual=(googleUser, firebaseUser)=>{
   if (firebaseUser) {
     var providerData = firebaseUser.providerData;
     for (var i = 0; i < providerData.length; i++) {
-      if (providerData[i].providerId === firebase.auth.GoogleAuthProvider.PROVIDER_ID &&
+      if (providerData[i].providerId === auth.GoogleAuthProvider.PROVIDER_ID &&
           providerData[i].uid === googleUser.id) {
         return true;
       }
@@ -53,21 +48,22 @@ const onSignIn = ({user: googleUser,idToken,accessToken})=> {
  
   console.log('onSignIn called');
   // We need to register an Observer on Firebase Auth to make sure auth is initialized.
-  const unsubscribe = firebase.auth().onAuthStateChanged((firebaseUser) => {
+  const unsubscribe = auth().onAuthStateChanged((firebaseUser) => {
     unsubscribe();
     console.log("firebaseUser",firebaseUser);
     // Check if we are already signed-in Firebase with the correct user.
     if (!isUserEqual(googleUser, firebaseUser)) {
       // Build Firebase credential with the Google ID token.
-      var credential = firebase.auth.GoogleAuthProvider.credential(
+      var credential = auth.GoogleAuthProvider.credential(
           idToken,
           accessToken
       );
 
       // Sign in with credential from the Google user.
-      firebase.auth().signInWithCredential(credential)
-      .then(()=>{
+      auth().signInWithCredential(credential)
+      .then((firebaseLoginResult)=>{
         console.log("after signInWithCredential, use signin firebase");
+        saveOrUpdateFirebaseUser(firebaseLoginResult);
          /*This is callback after login firebase */
          return;
       })
@@ -88,7 +84,6 @@ const onSignIn = ({user: googleUser,idToken,accessToken})=> {
   });
 }
 export default {
-  initialize,
   signout,
   onSignIn,
   buildAppUser

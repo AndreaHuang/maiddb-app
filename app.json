@@ -26,7 +26,7 @@
           "reservedClientId":"com.googleusercontent.apps.621363690446-1q9qjmmkqfei9eqnt510mpmha09u5pdb"
         }
       },
-      "googleServicesFile":"./app/auth/GoogleService-Info.plist"
+      "googleServicesFile":"./app/config/GoogleService-Info.plist"
     },
     "android": {
       "package": "com.maiddb",

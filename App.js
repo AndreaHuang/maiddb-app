@@ -7,7 +7,8 @@ import AppNavigator from "./app/navigation/AppNavigator";
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import { LogBox } from 'react-native';
 import firebaseAuth from "./app/auth/FirebaseAuth";
-import firebase from 'firebase';
+
+import {auth} from "./app/services/firebase";
 import {AppLoading} from "expo";
 
 
@@ -18,8 +19,7 @@ export default function App() {
   const[isReady,setIsReady]=useState(false);
 
   const initialize=async ()=>{
-    firebaseAuth.initialize();
-    const unsubscribe = firebase.auth().onAuthStateChanged((firebaseUser)=>{
+    const unsubscribe = auth().onAuthStateChanged((firebaseUser)=>{
         unsubscribe();
         console.log("onAuthStateChanged in initialize ", firebaseUser);
         if(firebaseUser){
