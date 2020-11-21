@@ -14,15 +14,6 @@ const signout=()=>{
 }
 /* Utility */
 const buildAppUser=(firebaseUser)=>{
-    // displayName: string | null;
-    // email: string | null;
-    // phoneNumber: string | null;
-    // photoURL: string | null;
-    // providerId: string;
-    // /**
-    //  * The user's unique ID.
-    //  */
-    // uid: string;
     return {
       email:firebaseUser.email,
       name:firebaseUser.displayName,
@@ -76,6 +67,11 @@ const onSignIn = ({user: googleUser,idToken,accessToken})=> {
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
         // ...
+        return ({
+          error:true,
+          errorCode:error.code,
+          errorMessage:error.message
+        })
       });
     } else {
       console.log('User already signed-in Firebase.');

@@ -7,5 +7,6 @@ export default {
   dark: "#343a40",
   light: "#fafafa",
   danger:"#df2030",
-  warning:"#ffccd0"
+  warning:"#ffccd0",
+  success:"green"
 };

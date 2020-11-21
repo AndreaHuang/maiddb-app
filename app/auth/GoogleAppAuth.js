@@ -3,16 +3,19 @@ import * as Google from 'expo-google-app-auth';
 import googleAuthConfig from "../config/googleAppAuthConfig";
 import firebaseAuth from "./FirebaseAuth";
 
+const buildAppUser =(googleUser)=>{
+    return  googleUser;
+}
 
-const login = async (callback)=>{
+const login = async ()=>{
     console.log("Google login called");
     try{
-        const {type,accessToken,idToken,refreshToken,user} = 
+        const {type,accessToken,idToken,user} = 
         await Google.logInAsync(googleAuthConfig);
         if(type === 'success'){
             firebaseAuth.onSignIn({user,idToken,accessToken}); 
             return {
-                user:user,
+                user:buildAppUser(user),
                 accessToken: accessToken
             }
         } else {
@@ -22,14 +25,6 @@ const login = async (callback)=>{
          console.error(ex);
          return {error:true}
      }
-}
-const buildAppUser=(googleUser)=>{
-    return {
-        email:"",
-        name:"",
-        photoUrl:"",
-        providerId:"",
-    }
 }
 export default {
     login

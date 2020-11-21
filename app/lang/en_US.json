@@ -2,6 +2,7 @@
     
     "id":"Account",
     "password":"Password",
+    "passwordConfirmation":"Confirm Password",
     "validation.id.is.required":"Account is required",
     "validation.password.is.required":"Password is required",
   
@@ -13,16 +14,32 @@
     "validation.birthday.is.required":"Birthday is required",
     "validation.email.is.required":"Email is required",
     "validation.whatsapp.is.required":"Whatsapp is required",
+    "validation.password.mustmatch":"Passwords must match",
 
     "button.login":"Login",
     "button.submit":"Submit",
     "button.next":"NEXT",
     "button.back":"BACK",
+    "button.forgetPassword":"Forget Password?",
+    "button.signup":"Sign Up",
+    "button.sendEmailToResetPassword":"Forget Password?",
+
+    "button.signin.google":"Sign In with Google",
+
+
 
     "name":"Name",
     "nationality":"Nationality",
     "birthday":"Birthday",
     "email":"Email",
-    "whatsapp":"Whatsapp"
+    "whatsapp":"Whatsapp",
+    "auth/email-not-exists":"There is no user record for this email. Please make sure you enter the correct email.",
+    "auth/email-already-in-use":"The email address is already in use by another account.",
+    "auth/invalid-email":"The email address is badly formatted.",
+    "auth/wrong-password": "The password is invalid or the user does not have a password.",
+    "message.send-email-reset-password":"Maid DB will send an email for you to reset password",
+    "message.reset-password-email-sent":"Password Reset Email has been send. You will be redirected to Home Page now."
+
+
 
 }

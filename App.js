@@ -32,9 +32,25 @@ export default function App() {
         }
         })
   }
+  useEffect(()=>{
+     const unsubscribe = auth().onAuthStateChanged((firebaseUser)=>{
+        unsubscribe();
+        console.log("onAuthStateChanged in initialize ", firebaseUser);
+        if(firebaseUser){
+          const appUser = firebaseAuth.buildAppUser(firebaseUser);
+          console.log("buildFrom buildAppUser",appUser);
+          setUser(appUser);
+        
+        } else {
+          setUser(null);
+        }
+        })
+      setIsReady(true);
+  },[]);
 
   if(!isReady){
-    return <AppLoading startAsync={initialize} onFinish={()=>setIsReady(true)}/>
+    // return <AppLoading startAsync={initialize} onFinish={()=>setIsReady(true)}/>
+    return <AppLoading/>
   }
   
 

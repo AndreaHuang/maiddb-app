@@ -6,19 +6,23 @@ export const saveOrUpdateFirebaseUser=(result)=>{
     const {user,additionalUserInfo} =result;
      const uid=user.uid;
     if(additionalUserInfo.isNewUser){
-        db.ref(usersRef+"/"+uid)
-        .set({
+        let dbUser = {
             providerId: additionalUserInfo.providerId,
             email : user.email,
             displayName: user.displayName,
-            firstName: additionalUserInfo.profile.given_name,
-            lastName:additionalUserInfo.profile.family_name,
             photoURL: user.photoURL,
             isAnonymous:user.isAnonymous,
             createdAt: Date.now(),
             emailVerified:user.emailVerified,
             phoneNumber:user.phoneNumber,
-        }).then((snapshot)=>{
+        };
+        if(additionalUserInfo.profile){
+            dbUser.firstName = additionalUserInfo.profile.given_name,
+            dbUser.lastName = additionalUserInfo.profile.family_name
+        };
+       
+        db.ref(usersRef+"/"+uid)
+        .set(dbUser).then((snapshot)=>{
             console.log("Created the  user in firebase database",snapshot);
         });
     }

@@ -1,4 +1,4 @@
-import active from "../config/active.env"
+import active from "./active.env"
 export const googleAuthConfig={
   dev:{
     behavior:"web",
