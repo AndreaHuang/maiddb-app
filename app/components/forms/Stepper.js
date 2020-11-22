@@ -5,7 +5,7 @@ import { AntDesign } from "@expo/vector-icons"
 import { useFormikContext } from "formik";
 
 import defaultStyles from "../../config/styles";
-import colors from "../../config/color";
+import color from "../../config/color";
 import AppButton from "../AppButton";
 
 import i18n from "../../config/i18n";
@@ -25,11 +25,11 @@ const stepperEvent = ()=>{Animated.event(
           ],
           { useNativeDriver: false }
         )}
-const Stepper = ({steps,currentStep, handleNext, handleBack,handleSubmit}) => {
+const Stepper = ({steps,currentStep, handleBack}) => {
   
     const { t } = useTranslation();
-    const { submitForm } = useFormikContext();
     const array = Array.from(Array(steps),(value,index)=>index);
+    const {submitForm} = useFormikContext();
     const isLastStep = (index)=>{
         return index === steps -1;
     }
@@ -39,24 +39,24 @@ const Stepper = ({steps,currentStep, handleNext, handleBack,handleSubmit}) => {
     const ButtonPlaceHolder=()=>{
         return <View style={styles.stepperButtonPlaceHolder}></View>
     }
-    const NextButton=({size=20}) => {
+    const NextButton=({size=18}) => {
     return (
         <TouchableOpacity
         style={[styles.stepperButton,  styles.stepperNextButton]}
         onPress={submitForm}
         >
         <Text style={[defaultStyles.text,styles.stepperButtonText,{fontSize:size}]}>{t("button.next")}</Text>
-        <AntDesign name="right" size={size} color={colors.primary} />
+        <AntDesign name="right" size={size} color={color.primary} />
         </TouchableOpacity>
     );
     }
-    const BackButton=({ onPress, size=20}) => {
+    const BackButton=({ onPress, size=18}) => {
     return (
         <TouchableOpacity
         style={[styles.stepperButton, styles.stepperBackButton]}
         onPress={onPress}
         >
-        <AntDesign name="left" size={size} color={colors.primary} />
+        <AntDesign name="left" size={size} color={color.primary} />
         <Text style={[defaultStyles.text,styles.stepperButtonText,{fontSize:size}]}>{t("button.back")}</Text>
     
         </TouchableOpacity>
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     height: 8,
     width: 8,
-    backgroundColor: colors.primary,
+    backgroundColor: color.primary,
     marginHorizontal: 4,
   },
 
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
       alignItems:"center"
   },
   stepperButtonText:{
-    color: colors.primary,
+    color: color.primary,
   },
   stepperNextButton:{
       alignSelf:"flex-end",
@@ -124,8 +124,7 @@ const styles = StyleSheet.create({
   stepperContainer: {
     flexDirection: "row",
     justifyContent:"space-between",
-    alignItems: "center",
- 
+    alignItems: "center", 
     paddingVertical:10
 
   },

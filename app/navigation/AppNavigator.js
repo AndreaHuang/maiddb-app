@@ -10,6 +10,7 @@ import AccountScreen from "../screens/AccountScreen";
 import MaidProfileEditScreen from "../screens/MaidProfileEditScreen"
 import InboxScreen from "../screens/InboxScreen";
 import MaidProfileScreen from '../screens/MaidProfileScreen';
+import constants from "../config/constants";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,10 +18,19 @@ const ProfileStack = createStackNavigator();
 
 const ProfileNavigator=()=>{
     return(
-        <ProfileStack.Navigator>
-            <ProfileStack.Screen name="Account" component={AccountScreen}/>
-            {/* <ProfileStack.Screen name="EditMaidProfile" component={MaidProfileEditScreen}/> */}
-            {/* <ProfileStack.Screen name="MaidProfile" component={MaidProfileScreen}/> */} 
+        <ProfileStack.Navigator screenOptions={{
+                headerStyle: {
+                    backgroundColor: color.primary,
+                },
+                headerTintColor: color.white,
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                }}
+            }
+            >
+            <ProfileStack.Screen name={constants.route.account}component={AccountScreen} options={{ title: 'My Account' }}/>
+            <ProfileStack.Screen name={constants.route.editMaidProfile} component={MaidProfileEditScreen} options={{ headerShown: false }}/>
+            <ProfileStack.Screen name={constants.route.maidProfile} component={MaidProfileScreen} options={{ title: 'My Profile' }}/> 
         </ProfileStack.Navigator>
     );
 

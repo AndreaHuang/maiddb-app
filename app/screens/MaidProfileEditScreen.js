@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
 
@@ -7,7 +7,10 @@ import { View, StyleSheet, FlatList } from "react-native";
 import MultiStepForm from "../components/forms/MultiStepForm";
 import Screen from "../components/Screen";
 import i18n from "../config/i18n";
+import constants from "../config/constants";
 import { AppFormField, AppSubmitButton } from '../components/forms';
+import AppText  from '../components/AppText';
+
 
 
 
@@ -63,9 +66,9 @@ const MaidProfileEditScreen = ({navigation}) => {
     // login.request(values);
     console.log("handleSubmit");
     console.log(values);
-    navigation.navigate("MaidProfile")
+    navigation.replace(constants.route.maidProfile);
 
-  };
+  };  
 
   return (<Screen>
     <MultiStepForm 

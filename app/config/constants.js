@@ -3,7 +3,10 @@ export default{
         registration:"Registration",
         login:"Login",
         resetPassword:"ResetPassword",
-        home:"Home"
+        home:"Home",
+        maidProfile:"MaidProfile",
+        editMaidProfile:"EditMaidProfile",
+        account:"Account"
     }
 
 }

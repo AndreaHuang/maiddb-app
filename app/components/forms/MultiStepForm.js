@@ -1,29 +1,33 @@
-import React,{useState,useRef} from 'react';
+import React,{useState,useRef, useEffect} from 'react';
 import {View,Text} from "react-native";
-import AppForm from './AppForm';
-
-
+import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from "react-i18next";
+import _ from "lodash";
+
+import AppForm from './AppForm';
 import i18n from "../../config/i18n";
 import Stepper from "./Stepper";
 
-import _ from "lodash";
+
 
 import AppText from "../AppText";
 
 
 const MultipleStepForm = ({items,onSubmit,initialValues}) => {
+   
     const [currentStep,setCurrentStep] =useState(0);
     const [currentValue,setCurrentValue] = useState(initialValues);
     const maxSteps= items.length;
 
+    
 
     const handleNext=(values,{resetForm})=>{
         setCurrentValue(currentValue=>Object.assign(currentValue,values));
-        setCurrentStep(currentStep=>currentStep + 1); 
+        setCurrentStep(currentStep=>currentStep + 1);
     }
     const handleBack=()=>{
         setCurrentStep(currentStep -1);
+       
     }
     const isLastStep = (index)=>{
          return index === items.length -1;

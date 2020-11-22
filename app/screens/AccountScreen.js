@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
+import { useTranslation } from "react-i18next";
+
+
 import ListItem from "../components/lists/ListItem";
+import MenuItem from "../components/MenuItem";
 import ListItemSeperator from "../components/lists/ListItemSeperator";
 import Screen from "../components/Screen";
 import colors from "../config/color";
@@ -8,14 +12,21 @@ import Icon from "../components/Icon";
 import AppButton from "../components/AppButton";
 import firebaseAuth from "../auth/FirebaseAuth";
 import AuthContext from "../auth/AuthContext";
+import ActionIcon from "../components/ActionIcon";
+import constants from "../config/constants";
+import i18n from "../config/i18n";
 
 const defaultIcon = require("../assets/icon.png");
 
 function AccountScreen({navigation, route}) {
+  const { t } = useTranslation();
   const {user,setUser} =useContext(AuthContext);
   const handleLogout=()=>{
      firebaseAuth.signout();
      setUser(null);
+  }
+  const navigateToMyProfiel=()=>{
+    navigation.navigate(constants.route.maidProfile);
   }
 
   const menuItems = [
@@ -29,6 +40,12 @@ function AccountScreen({navigation, route}) {
       icon: "email",
       backgroundColor: colors.secondary,
     },
+    {
+      title:"My Profile",
+      icon:"profile",
+      backgroundColor: colors.primary,
+      action:navigateToMyProfiel
+    }
   ];
   return (
     <Screen>
@@ -47,8 +64,10 @@ function AccountScreen({navigation, route}) {
         keyExtractor={(item) => item.title}
         ItemSeparatorComponent={ListItemSeperator}
         renderItem={({ item }) => (
-          <ListItem
+          <MenuItem
             title={item.title}
+            iconName={item.icon}
+            onPress={item.action}
             IconComponent={
               <Icon
                 iconColor={colors.white}
@@ -73,7 +92,7 @@ function AccountScreen({navigation, route}) {
           />
         }
       /> */}
-      <AppButton onPress={handleLogout} title="Logout" icon="logout"/>
+      <AppButton onPress={handleLogout} title={t("button.logout")} icon="logout"/>
     </Screen>
   );
 }
