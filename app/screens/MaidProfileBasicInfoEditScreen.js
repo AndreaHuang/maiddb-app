@@ -22,7 +22,9 @@ import maidProfileDB from "../database/maidProfile";
 import options from "../schemes/options";
 
 
-
+const phoneRegex = RegExp(
+  /^[0-9]{8,15}$/
+);
 
 const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
   //i18n
@@ -52,13 +54,36 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
      components:()=>
        <>
           <AppFormField name="name" label={t("name")}/>
-          <AppFormSwitch name="gender" label={t("gender")}/>
+          <AppFormPicker name="gender" label={t("gender")} items={options.gender}/>
           <AppFormPicker name="nationality" items={options.nationality} label={t("nationality")} />
           <AppFormField name="birthday" label={t("birthday")}/>
-          <AppButton title={t("button.cancel")} onPress={cancelEdit}/>
+         
        </>
    },
   {
+     names:["education"],
+     validationSchema: Yup.object({
+                      education: Yup.string().required(t('validation.education.is.required')).label(t('education'))
+                    }),
+     components:()=>
+        <>
+          <AppFormPicker name="education" label={t("education")} items={options.educationLevel}/>
+        </>
+   },
+   {
+     names:["email","whatsapp"],
+     validationSchema: Yup.object({
+                      email: Yup.string().email().required(t('validation.email.is.required')).label(t('email')),
+                      // whatsapp: Yup.string().required(t('validation.whatsapp.is.required')).label(t('whatsapp')),
+                       whatsapp: Yup.string().matches(phoneRegex, t("validation.whatsapp.is.invalid")).required(t("validation.whatsapp.is.required"))
+                    }),
+     components:()=>
+        <>
+          <AppFormField name="email" label={t("email")}/>
+          <AppFormField name="whatsapp" label={t("whatsapp")}/>
+        </>
+   },
+    {
      names:["religion","eatPork"],
      validationSchema: Yup.object({
                         religion: Yup.string().required(t('validation.religion.is.required')).label(t('religion')),
@@ -66,33 +91,18 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
                       }),
      components:()=>
         <>
-          <AppFormField name="religion" label={t("religion")}/>
+          <AppFormPicker name="religion" label={t("religion")} items={options.religion}/>
           <AppFormSwitch name="eatPork" label={t("eatPork")}/>
-          <AppButton title={t("button.cancel")} onPress={cancelEdit}/>
         </>
    },
   {
-     names:["weight","height"],
+     names:["weight","height","heightUnit","weightUnit"],
      components:()=>
         <>
-          <AppFormFieldWithUnit name="weight" label={t("weight")} />
-          <AppFormFieldWithUnit name="height" label={t("height")}/>
-          <AppButton title={t("button.cancel")} onPress={cancelEdit}/>
+          <AppFormFieldWithUnit name="weight" unitName="weightUnit" units={options.weightUnit} label={t("weight")} />
+          <AppFormFieldWithUnit name="height" unitName="heightUnit" units={options.heightUnit} label={t("height")}/>
         </>
    },
-   {
-     names:["email","whatsapp"],
-     validationSchema: Yup.object({
-                      email: Yup.string().required(t('validation.email.is.required')).label(t('email')),
-                      whatsapp: Yup.string().required(t('validation.whatsapp.is.required')).label(t('whatsapp')),
-                    }),
-     components:()=>
-        <>
-          <AppFormField name="email" label={t("email")}/>
-          <AppFormField name="whatsapp" label={t("whatsapp")}/>
-          <AppSubmitButton title={t("button.submit")}/>
-        </>
-   }
   ];
    const handleSubmit = async (values) => {
    
@@ -110,7 +120,7 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
     navigation.replace(constants.route.maidProfile);
 
   }; 
-  const cancelEdit =()=>{
+  const handleCancel =()=>{
     navigation.replace(constants.route.maidProfile);
   } 
 
@@ -119,7 +129,8 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
     <MultiStepForm 
     items={items} 
     initialValues={initialValues} 
-    onSubmit={handleSubmit}/>
+    onSubmit={handleSubmit}
+    onCancel={handleCancel}/>
     </Screen>  );
 }
  

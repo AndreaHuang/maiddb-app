@@ -55,7 +55,7 @@ function LoginScreen({route,navigation}) {
         setError(false);
         setErrorCode("");
         setLoading(true);
-        const loginResponse = await EmailPasswordAuth.login(id,password);
+        const loginResponse = await EmailPasswordAuth.login(account,password);
         setLoading(false);
         console.log(loginResponse);
         if(loginResponse.user){
@@ -94,14 +94,15 @@ function LoginScreen({route,navigation}) {
           keyboardType="email-address"
           placeholder={t("account")}
           autoCapitalize="none"
+          label={t("account")}
         ></AppFormField>
 
         <AppFormField
           name="password"
           placeholder={t("password")}
           secureTextEntry
-          style={styles.password}
           textAlign="left"
+           label={t("password")}
         ></AppFormField>
 
         <AppErrorMessage error={t(errorCode)} visible={error} />
@@ -125,11 +126,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    marginHorizontal: 5,
-  },
-  password: {
-    flex: 1,
-    fontSize: 18,
   },
 
   linksContainer:{

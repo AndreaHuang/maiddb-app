@@ -15,12 +15,13 @@
     "validation.email.is.required":"Email is required",
     "validation.whatsapp.is.required":"Whatsapp is required",
     "validation.password.mustmatch":"Passwords must match",
+    "validation.whatsapp.is.invalid":"Whatsapp number is incorrect",
 
     "button.login":"Login",
-    "button.submit":"Submit",
+    "button.submit":"SUBMIT",
     "button.next":"NEXT",
     "button.back":"BACK",
-    "button.cancel":"Cancel",
+    "button.cancel":"CANCEL",
     "button.forgetPassword":"Forget Password?",
     "button.signup":"Create Account",
     "button.sendEmailToResetPassword":"Forget Password?",
@@ -46,6 +47,11 @@
     "cantonese":"Cantonese",
     "english":"English",
     "mandarin":"Mandarin",
+    "primary":"Primary",
+    "juniorSecondary":"Junior High",
+    "seniorSecondary":"Senior High",
+    "college":"College",
+    "university":"University",
 
 
     "auth/email-not-exists":"There is no user record for this email. Please make sure you enter the correct email.",
@@ -59,7 +65,18 @@
     "message.update.failed.maid.profile":"Fail to update profile",
     "id":"Indonesia",
     "ph":"Philippines",
-    "eatPork":"Do you eat pork?"
+    "eatPork":"Do you eat pork?",
+    "moselem":"Moselem",
+    "christian":"Christian",
+    "catholic":"Catholic",
+    "buddhism":"Buddhism",
+    "no_religion":"No religion",
+    "lb":"LB",
+    "kg":"KG",
+    "cm":"CM",
+    "inch":"INCH",
+    "f":"Female",
+    "m":"Male"
 
 
 

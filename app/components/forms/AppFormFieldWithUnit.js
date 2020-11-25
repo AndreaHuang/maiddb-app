@@ -8,12 +8,14 @@ import AppTextInput from "../AppTextInput";
 import AppErrorMessage from "./AppErrorMessage";
 
 function AppFormFieldWithUnit({ name, unitName, units, ...otherProps }) {
-  const { errors, handleChange, setFieldTouched, touched } = useFormikContext();
+  const { errors, values,handleChange, setFieldTouched, touched } = useFormikContext();
+  console.log("values in AppFormFieldWithUnit",values)
   return (
     <>
       <View style={styles.container}>
         <View style={styles.inputContainer}>
           <AppTextInput
+            value={values[name]}
             onBlur={() => setFieldTouched(name)}
             onChangeText={handleChange(name)}
             {...otherProps}
@@ -31,15 +33,15 @@ function AppFormFieldWithUnit({ name, unitName, units, ...otherProps }) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    justifyContent: "center",
+    // justifyContent: "space-between",
     alignItems: "center",
   },
   inputContainer: {
-    flex: 8,
+    flex: 3,
   },
   unitContainer: {
     flex: 2,
-    paddingLeft: 10,
+    marginLeft: -10,
   },
 });
 export default AppFormFieldWithUnit;

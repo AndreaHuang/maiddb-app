@@ -51,17 +51,16 @@ const MaidProfileScreen = ({navigation}) => {
         navigation.replace(editScreen,{data:data,uid:user.uid})
     }
     // const {basicInfo,experience,family,language,preference} = profile;
+    if(loading || !profile) {
+        return  <ActivityIndicator />
+    }
     return ( 
     
         <Screen>
-        {(loading || !profile )&& <ActivityIndicator />}
-        {!loading && profile &&
-            <>
+        
                 <AppSection sectionTitle="Basic Info" items={profile.basicInfo} editFunction={()=>{navigateToEditProfile(constants.route.editMaidProfileBasicInfo,profile.basicInfo)}}/>
                 {/* <AppSection sectionTitle="Work History" items={profile.experience} editFunction={()=>{navigateToEditProfile("WorkHistory")}}/> */}
                 <AppSection sectionTitle="Language" items={profile.language} editFunction={()=>{navigateToEditProfile(constants.route.editMaidProfileLanguage,profile.language)}}/>
-            </>
-        }
 
     </Screen>);
 }

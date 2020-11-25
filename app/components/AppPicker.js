@@ -30,9 +30,10 @@ function AppPicker({
    const {t}= useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
   const width = (100 / numberOfColumns).toFixed(0).toString() + "%";
+  console.log("selectedItem",selectedItem);
   return (
     <View style={styles.container}>
-      <AppText style={styles.label}>{label}</AppText>
+      {label && <AppText style={styles.label}>{label}</AppText>}
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
         <View style={styles.valueContainer}>
           {iconName && (

@@ -7,7 +7,12 @@ const initialScheme={
             height:"",
             weight:"",
             education:"",
-            gender:"F"
+            gender:"f",
+            heightUnit:"cm",
+            weightUnit:"kg",
+            eatPork:"false"
+
+
         },
         family:{
             brothers:0,

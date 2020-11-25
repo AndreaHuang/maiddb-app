@@ -5,16 +5,23 @@ import constants from "../config/constants";
 
 const maidProfileRef = "/maidProfile";
 
-const createProfile= async (uid)=>{
-    if(!uid) {
+const createProfile= async (currentUser)=>{
+    if(!currentUser) {
         return {
             error:true,
             errorCode: "uid.is.null"
         }
     }
-    console.log("createProfile",uid);
+    const uid=currentUser.uid;
 
-    const init = Object.assign({user_uid:uid},maidProfileScheme.initialScheme);
+    console.log("createProfile",currentUser.uid);
+
+    const init = Object.assign({
+        user_uid:uid,
+        basicInfo:{
+            email:currentUser.email
+        }}
+        ,maidProfileScheme.initialScheme);
     try{
         const newUser = await db.ref(maidProfileRef+"/"+uid).set(init);
         console.debug("Created the  Maid profile in firebase database",newUser);
@@ -28,9 +35,9 @@ const createProfile= async (uid)=>{
     
 }
 const retreiveOrCreateProfile=async ()=>{
-    const uid = auth().currentUser.uid;
+    const currentUser = auth().currentUser;
 
-    const snapshot =await(await db.ref(maidProfileRef+"/"+uid).once('value')).val();
+    const snapshot =await(await db.ref(maidProfileRef+"/"+currentUser.uid).once('value')).val();
     
     if(snapshot){
         console.debug("route to existing")
@@ -38,7 +45,7 @@ const retreiveOrCreateProfile=async ()=>{
         return snapshot;
     } else {
          console.debug("route to initProfile")
-        const newProfile= createProfile(uid);
+        const newProfile= createProfile(currentUser);
         cache.store(constants.cache.maidProfile,newProfile);
         return newProfile;
     }

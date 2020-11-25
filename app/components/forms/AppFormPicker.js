@@ -1,5 +1,4 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
 import { useFormikContext } from "formik";
 import AppPicker from "../AppPicker";
 import AppErrorMessage from "./AppErrorMessage";
@@ -13,6 +12,9 @@ function AppFormPicker({
   placeholder,
 }) {
   const { errors, touched, values, setFieldValue } = useFormikContext();
+  console.log("values",values),
+    console.log("name",name);
+
   return (
     <>
       <AppPicker
@@ -28,9 +30,4 @@ function AppFormPicker({
     </>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    
-  },
-});
 export default AppFormPicker;

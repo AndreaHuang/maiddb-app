@@ -1,5 +1,5 @@
 import React,{useState,useRef, useEffect} from 'react';
-import {View,Text} from "react-native";
+import {View,StyleSheet,Text} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
@@ -9,11 +9,12 @@ import i18n from "../../config/i18n";
 import Stepper from "./Stepper";
 
 
+import AppLink from "../AppLink";
+import AppSubmitButton from "./AppSubmitButton";
 
-import AppText from "../AppText";
 
-
-const MultipleStepForm = ({items,onSubmit,initialValues}) => {
+const MultipleStepForm = ({items,onSubmit,initialValues,onCancel}) => {
+    const {t} = useTranslation();
    
     const [currentStep,setCurrentStep] = useState(0);
     const [currentValue,setCurrentValue] = useState(initialValues);
@@ -58,6 +59,11 @@ const MultipleStepForm = ({items,onSubmit,initialValues}) => {
                {
                  item.components()
                }
+            <View style={styles.bottomButtonContainer}>
+                <AppSubmitButton title={isLastStep(index)? t("button.submit"): t("button.next")}/>
+                 <AppLink title={t("button.cancel")} onPress={onCancel} style={styles.cancelButton}/>
+                
+            </View>
            
            </AppForm> : null)
          }
@@ -65,4 +71,19 @@ const MultipleStepForm = ({items,onSubmit,initialValues}) => {
     </View>);
 }
  
+const styles=StyleSheet.create({
+    bottomButtonContainer:{
+        alignItems:"flex-end",
+        justifyContent:"flex-start"
+        
+    },
+    cancelButton:{
+        fontSize:16,
+        alignContent:"flex-end",
+        alignSelf:"flex-end",
+        paddingRight:25,
+    },
+
+
+});
 export default MultipleStepForm;

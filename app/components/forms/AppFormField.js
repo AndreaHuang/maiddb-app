@@ -22,7 +22,7 @@ function AppFormField({ name,label, ...otherProps }) {
         value={values[name]}
         placeholder={label}
         label={label}
-        error={errors.hasOwnProperty(name)}
+        error={errors.hasOwnProperty(name) && touched[name]}
         {...otherProps}
       />
       <AppErrorMessage error={errors[name]} visible={touched[name]} />
