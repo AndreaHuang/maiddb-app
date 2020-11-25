@@ -1,5 +1,5 @@
 import {auth} from "../services/firebase";
-import {saveOrUpdateFirebaseUser} from "../database/FirebaseDB"
+import {saveOrUpdateFirebaseUser} from "../database/user"
 
 const buildAppUser =({additionalUserInfo,user})=>{
  
@@ -7,7 +7,8 @@ const buildAppUser =({additionalUserInfo,user})=>{
       email:user.email,
       name:user.displayName,
       photoURL:user.photoURL,
-      providerId:additionalUserInfo.providerId
+      providerId:additionalUserInfo.providerId,
+      uid:user.uid
   }
 
 }

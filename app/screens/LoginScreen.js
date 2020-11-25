@@ -2,7 +2,6 @@ import React, { useContext,useEffect,useState} from "react";
 import {View, StyleSheet} from "react-native";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
-import {useFormikContext} from "formik";
 
 
 import {
@@ -37,12 +36,12 @@ function LoginScreen({route,navigation}) {
 
     //Form initialValues
     const intialValues = {
-      id: route.params? route.params.id:"",
+      account: route.params? route.params.id:"",
       password: "",
     };
     //Form validationScheme
     const validationScheme = Yup.object({
-      id: Yup.string().email().required(t("validation.id.is.required")).label(t("id")),
+      account: Yup.string().email().required(t("validation.id.is.required")).label(t("account")),
       password: Yup.string()
         .required(t("validation.password.is.required"))
         .label(t("password")),
@@ -51,7 +50,7 @@ function LoginScreen({route,navigation}) {
  
 
   const handleEmailPasswordLogin= async (values)=>{
-    const {id,password} = values;
+    const {account,password} = values;
     console.log("handleEmailRegistration");
         setError(false);
         setErrorCode("");
@@ -69,9 +68,9 @@ function LoginScreen({route,navigation}) {
 
     const handleGoogleLogin = async ()=>{
         console.log("Google login called");
-        setLoginLoading(true);
+        setLoading(true);
         const loginResponse = await GoogleAppAuth.login();
-        setLoginLoading(false);
+        setLoading(false);
         if(loginResponse.user){
             setUser(loginResponse.user);
         } else if(loginResponse.cancelled || loginResponse.error){
@@ -91,9 +90,9 @@ function LoginScreen({route,navigation}) {
         validationSchema={validationScheme}
       >
         <AppFormField
-          name="id"
+          name="account"
           keyboardType="email-address"
-          placeholder={t("id")}
+          placeholder={t("account")}
           autoCapitalize="none"
         ></AppFormField>
 

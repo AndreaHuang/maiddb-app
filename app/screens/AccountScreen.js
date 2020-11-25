@@ -32,7 +32,7 @@ function AccountScreen({navigation, route}) {
   const menuItems = [
     {
       title: "My Favorite",
-      icon: "format-list-bulleted",
+      icon: "heart-outline",
       backgroundColor: colors.primary,
     },
     {
@@ -42,7 +42,7 @@ function AccountScreen({navigation, route}) {
     },
     {
       title:"My Profile",
-      icon:"profile",
+      icon:"account-details",
       backgroundColor: colors.primary,
       action:navigateToMyProfiel
     }

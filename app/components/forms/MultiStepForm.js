@@ -15,15 +15,14 @@ import AppText from "../AppText";
 
 const MultipleStepForm = ({items,onSubmit,initialValues}) => {
    
-    const [currentStep,setCurrentStep] =useState(0);
+    const [currentStep,setCurrentStep] = useState(0);
     const [currentValue,setCurrentValue] = useState(initialValues);
     const maxSteps= items.length;
-
     
 
-    const handleNext=(values,{resetForm})=>{
+    const handleNext=(values)=>{
         setCurrentValue(currentValue=>Object.assign(currentValue,values));
-        setCurrentStep(currentStep=>currentStep + 1);
+        setCurrentStep(currentStep + 1);
     }
     const handleBack=()=>{
         setCurrentStep(currentStep -1);
@@ -42,7 +41,7 @@ const MultipleStepForm = ({items,onSubmit,initialValues}) => {
         {/* <AppText style={{fontSize:"30"}}>{t("title.edit.profile")}</AppText> */}
         {/* Stepper  */}
        {items.map((item,index)=>
-           currentStep ===index 
+           currentStep ===index
            ? 
            <AppForm  
             key={index} 

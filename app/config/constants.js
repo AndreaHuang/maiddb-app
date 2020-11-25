@@ -6,7 +6,12 @@ export default{
         home:"Home",
         maidProfile:"MaidProfile",
         editMaidProfile:"EditMaidProfile",
+        editMaidProfileBasicInfo:"editMaidProfileBasicInfo",
         account:"Account"
+    },
+    cache:{
+        maidProfile:"maidProfile"
     }
+   
 
 }

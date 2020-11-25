@@ -8,5 +8,6 @@ export default {
   light: "#fafafa",
   danger:"#df2030",
   warning:"#ffccd0",
-  success:"green"
+  success:"green",
+  error:"#B00020"
 };

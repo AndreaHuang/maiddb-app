@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React,{useEffect, useState} from 'react';
-import AuthContext from "./app/auth/AuthContext"
+import AuthContext from "./app/auth/AuthContext";
 import { NavigationContainer } from "@react-navigation/native";
 
 import AppNavigator from "./app/navigation/AppNavigator";
@@ -18,20 +18,6 @@ export default function App() {
   const[user,setUser]=useState(null);
   const[isReady,setIsReady]=useState(false);
 
-  const initialize=async ()=>{
-    const unsubscribe = auth().onAuthStateChanged((firebaseUser)=>{
-        unsubscribe();
-        console.log("onAuthStateChanged in initialize ", firebaseUser);
-        if(firebaseUser){
-          const appUser = firebaseAuth.buildAppUser(firebaseUser);
-          console.log("buildFrom buildAppUser",appUser);
-          setUser(appUser);
-        
-        } else {
-          setUser(null);
-        }
-        })
-  }
   useEffect(()=>{
      const unsubscribe = auth().onAuthStateChanged((firebaseUser)=>{
         unsubscribe();
@@ -49,7 +35,6 @@ export default function App() {
   },[]);
 
   if(!isReady){
-    // return <AppLoading startAsync={initialize} onFinish={()=>setIsReady(true)}/>
     return <AppLoading/>
   }
   

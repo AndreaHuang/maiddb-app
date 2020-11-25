@@ -7,7 +7,6 @@ import AppTextInput from "../AppTextInput";
 import AppErrorMessage from "./AppErrorMessage";
 import color from "../../config/color";
 function AppFormField({ name,label, ...otherProps }) {
-  const [focused,setFocused]=useState(false);
   const {
     errors,
     setFieldTouched,
@@ -17,33 +16,18 @@ function AppFormField({ name,label, ...otherProps }) {
   } = useFormikContext();
   return (
     <>
-      {(focused || values[name] !=="") && <AppText style={focused ?styles.activeLabel : styles.inactiveLabel}>{label}</AppText>}
       <AppTextInput
-        onBlur={() => {setFocused(false); setFieldTouched(name)}}
-        onFocus={()=> setFocused(true) }
+        onBlur={() => {setFieldTouched(name)}}
         onChangeText={(value) => setFieldValue(name, value)}
         value={values[name]}
         placeholder={label}
+        label={label}
+        error={errors.hasOwnProperty(name)}
         {...otherProps}
       />
       <AppErrorMessage error={errors[name]} visible={touched[name]} />
     </>
   );
 }
-
-const styles=StyleSheet.create({
-  activeLabel: {
-    color:"blue",
-    fontSize:14,
-    marginLeft:20,
-    marginBottom:-5
-  },
-  inactiveLabel: {
-    color:color.medium,
-    fontSize:14,
-    marginLeft:20,
-    marginBottom:-5
-  },
-});
 
 export default AppFormField;

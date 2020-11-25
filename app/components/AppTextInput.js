@@ -1,39 +1,28 @@
 import React from "react";
-import { View, TextInput, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import {TextInput} from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import defaultStyles from "../config/styles";
+import paperTheme from "../config/paperTheme";
 
-function AppTextInput({ iconName, ...otherProps }) {
+
+function AppTextInput({ iconName, label, error=false, ...otherProps }) {
   return (
-    <View style={styles.container}>
-      {iconName && (
-        <MaterialCommunityIcons
-          style={styles.icon}
-          name={iconName}
-          size={20}
-          color={defaultStyles.colors.medium}
-        />
-      )}
-      <TextInput
-        placeholderTextColor={defaultStyles.colors.medium}
-        style={defaultStyles.text}
-        {...otherProps}
+        <TextInput
+          mode="outlined"
+          style={[styles.text,defaultStyles.text]}
+          label={label}
+          theme={paperTheme}
+          error={error}
+          {...otherProps}
       ></TextInput>
-    </View>
   );
 }
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    width: "100%",
-    marginVertical: 10,
-    padding: 15,
-    backgroundColor: defaultStyles.colors.light,
-    borderRadius: 25,
-    alignItems: "center",
+  text:{
+    paddingHorizontal:10,
+    marginVertical:10,
   },
-  icon: {
-    marginRight: 10,
-  },
+  
 });
 export default AppTextInput;

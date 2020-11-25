@@ -1,7 +1,7 @@
 // import firebase from 'firebase';
 // import firebaseConfig from '../services/firebaseConfig';
 import {auth,db} from '../services/firebase';
-import {saveOrUpdateFirebaseUser} from "../database/FirebaseDB"
+import {saveOrUpdateFirebaseUser} from "../database/user"
 
 
 const signout=()=>{
@@ -18,7 +18,8 @@ const buildAppUser=(firebaseUser)=>{
       email:firebaseUser.email,
       name:firebaseUser.displayName,
       photoURL:firebaseUser.photoURL,
-      providerId:firebaseUser.providerId
+      providerId:firebaseUser.providerId,
+      uid:firebaseUser.uid
     }
 
 }

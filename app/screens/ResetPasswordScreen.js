@@ -30,7 +30,7 @@ const ResestPasswordScreen = ({navigation}) => {
     };
     //Form validationScheme
     const validationScheme = Yup.object({
-        email: Yup.string().email().required(t("validation.id.is.required")).label(t("id"))
+        email: Yup.string().email().required(t("validation.id.is.required")).label(t("account"))
     });
 
     const handleForgetPassword= async ({email})=>{

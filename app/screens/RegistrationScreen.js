@@ -25,13 +25,13 @@ const RegistrationScreen = ({navigation}) => {
     const [error,setError]=useState(false);
     const [errorCode,setErrorCode]=useState("");
     const intialValues = {
-        id: "",
+        account: "",
         password: "",
         passwordConfirmation:""
     };
     //Form validationScheme
     const validationScheme = Yup.object({
-        id: Yup.string().email().required(t("validation.id.is.required")).label(t("id")),
+        account: Yup.string().email().required(t("validation.id.is.required")).label(t("account")),
         password: Yup.string()
         .required(t("validation.password.is.required"))
         .label(t("password")),
@@ -45,7 +45,7 @@ const RegistrationScreen = ({navigation}) => {
         setError(false);
         setErrorCode("");
         setLoading(true);
-        const registrationResponse = await EmailPasswordAuth.register(values.id,values.password,"");
+        const registrationResponse = await EmailPasswordAuth.register(values.account,values.password,"");
         setLoading(false);
         console.log(registrationResponse);
         if(registrationResponse.user){
@@ -65,9 +65,9 @@ const RegistrationScreen = ({navigation}) => {
         validationSchema={validationScheme}
       >
         <AppFormField
-          name="id"
+          name="account"
           keyboardType="email-address"
-          placeholder={t("id")}
+          placeholder={t("account")}
            autoCapitalize="none"
         ></AppFormField>
 
