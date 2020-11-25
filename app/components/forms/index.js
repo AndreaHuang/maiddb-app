@@ -8,3 +8,4 @@ export { default as AppFormImagePicker } from "./AppFormImagePicker";
 export { default as AppFormSwitch } from './AppFormSwitch';
 export { default as AppFormRadioGroup } from "./AppFormRadioGroup";
 export { default as MultiStepForm } from "./MultiStepForm";
+export { default as AppFormRating } from "./AppFormRating";

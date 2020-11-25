@@ -16,6 +16,9 @@
     "validation.whatsapp.is.required":"Whatsapp is required",
     "validation.password.mustmatch":"Passwords must match",
     "validation.whatsapp.is.invalid":"Whatsapp number is incorrect",
+    "validation.cantonese.is.required":"Must provide rating for Cantonese",
+    "validation.mandarin.is.required":"Must provide rating for Mandarin",
+    "validation.english.is.required":"Must provide rating for English",
 
     "button.login":"Login",
     "button.submit":"SUBMIT",
@@ -76,7 +79,13 @@
     "cm":"CM",
     "inch":"INCH",
     "f":"Female",
-    "m":"Male"
+    "m":"Male",
+    "languageRating_0":"Terrible",
+    "languageRating_1":"Bad",
+    "languageRating_2":"Okay",
+    "languageRating_3":"Good",
+    "languageRating_4":"Great"
+
 
 
 

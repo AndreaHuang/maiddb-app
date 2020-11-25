@@ -10,7 +10,10 @@ const initialScheme={
             gender:"f",
             heightUnit:"cm",
             weightUnit:"kg",
-            eatPork:"false"
+            eatPork:"false",
+            cantonese:"",
+            english:"",
+            mandarin:""
 
 
         },

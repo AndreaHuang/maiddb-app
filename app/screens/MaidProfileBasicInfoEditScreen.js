@@ -9,14 +9,11 @@ import constants from "../config/constants";
 
 import { AppFormField, 
   AppFormFieldWithUnit, 
-  AppSubmitButton,
   AppFormSwitch,
   AppFormPicker,
   AppErrorMessage,
-  AppFormRadioGroup
+  AppFormRating
 } from '../components/forms';
-import AppText  from '../components/AppText';
-import AppButton  from '../components/AppButton';
 import maidProfileScheme from "../schemes/maidProfile";
 import maidProfileDB from "../database/maidProfile";
 import options from "../schemes/options";
@@ -61,13 +58,19 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
        </>
    },
   {
-     names:["education"],
+     names:["education", "cantonese","english","mandarin"],
      validationSchema: Yup.object({
-                      education: Yup.string().required(t('validation.education.is.required')).label(t('education'))
+                      education: Yup.string().required(t('validation.education.is.required')).label(t('education')),
+                      cantonese: Yup.number().min(1,t('validation.cantonese.is.required')).label(t('cantonese')),
+                      english: Yup.number().min(1,t('validation.english.is.required')).label(t('english')),
+                      mandarin: Yup.number().min(1,t('validation.mandarin.is.required')).label(t('mandarin')),
                     }),
      components:()=>
         <>
           <AppFormPicker name="education" label={t("education")} items={options.educationLevel}/>
+          <AppFormRating name="english" label={t("english")} category="languageRating" count={5} />
+          <AppFormRating name="cantonese" label={t("cantonese")}  category="languageRating" count={5} />
+          <AppFormRating name="mandarin" label={t("mandarin")}  category="languageRating" count={5} />
         </>
    },
    {
