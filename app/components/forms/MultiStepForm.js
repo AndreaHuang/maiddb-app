@@ -21,7 +21,8 @@ const MultipleStepForm = ({items,onSubmit,initialValues}) => {
     
 
     const handleNext=(values)=>{
-        setCurrentValue(currentValue=>Object.assign(currentValue,values));
+        const newCurrentValue = _.assign(currentValue,values);
+        setCurrentValue(newCurrentValue);
         setCurrentStep(currentStep + 1);
     }
     const handleBack=()=>{

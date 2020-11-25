@@ -7,8 +7,13 @@ import Screen from "../components/Screen";
 import i18n from "../config/i18n";
 import constants from "../config/constants";
 
-import { AppFormField, AppFormFieldWithUnit, AppSubmitButton,AppFormSwitch, AppErrorMessage
-  // ,AppFormRadioGroup
+import { AppFormField, 
+  AppFormFieldWithUnit, 
+  AppSubmitButton,
+  AppFormSwitch,
+  AppFormPicker,
+  AppErrorMessage,
+  AppFormRadioGroup
 } from '../components/forms';
 import AppText  from '../components/AppText';
 import AppButton  from '../components/AppButton';
@@ -48,7 +53,7 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
        <>
           <AppFormField name="name" label={t("name")}/>
           <AppFormSwitch name="gender" label={t("gender")}/>
-          <AppFormSwitch name="nationality" label={t("nationality")} options={options.nationality}/>
+          <AppFormPicker name="nationality" items={options.nationality} label={t("nationality")} />
           <AppFormField name="birthday" label={t("birthday")}/>
           <AppButton title={t("button.cancel")} onPress={cancelEdit}/>
        </>

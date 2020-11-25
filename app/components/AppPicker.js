@@ -7,6 +7,7 @@ import {
   View,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useTranslation } from "react-i18next";
 
 import defaultStyles from "../config/styles";
 import AppText from "./AppText";
@@ -14,8 +15,10 @@ import Screen from "./Screen";
 import PickerItem from "./PickerItem";
 
 import AppButton from "./AppButton";
+import i18n from "../config/i18n";
 
 function AppPicker({
+  label,
   iconName,
   items,
   numberOfColumns = 1,
@@ -24,13 +27,14 @@ function AppPicker({
   placeholder,
   selectedItem,
 }) {
+   const {t}= useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
   const width = (100 / numberOfColumns).toFixed(0).toString() + "%";
-  console.log("width:", width);
   return (
-    <>
+    <View style={styles.container}>
+      <AppText style={styles.label}>{label}</AppText>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-        <View style={styles.container}>
+        <View style={styles.valueContainer}>
           {iconName && (
             <MaterialCommunityIcons
               style={styles.icon}
@@ -40,7 +44,7 @@ function AppPicker({
             />
           )}
           {selectedItem ? (
-            <AppText style={styles.text}>{selectedItem.label}</AppText>
+            <AppText style={styles.text}>{t(selectedItem)}</AppText>
           ) : (
             <AppText style={styles.placeholder}>{placeholder}</AppText>
           )}
@@ -71,11 +75,21 @@ function AppPicker({
           />
         </Screen>
       </Modal>
-    </>
+    </View>
   );
 }
 const styles = StyleSheet.create({
-  container: {
+  container:{
+    flexDirection: "row",
+    marginHorizontal:15,
+     alignItems:"center"
+    
+  },
+  label:{
+    flex:1
+  },
+  valueContainer: {
+     flex:2,
     flexDirection: "row",
     width: "100%",
     marginVertical: 10,

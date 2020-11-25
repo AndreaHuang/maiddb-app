@@ -58,7 +58,8 @@
     "uid.is.null":"User uid is not presented",
     "message.update.failed.maid.profile":"Fail to update profile",
     "id":"Indonesia",
-    "ph":"Philippines"
+    "ph":"Philippines",
+    "eatPork":"Do you eat pork?"
 
 
 

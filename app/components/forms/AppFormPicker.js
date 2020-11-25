@@ -5,6 +5,7 @@ import AppPicker from "../AppPicker";
 import AppErrorMessage from "./AppErrorMessage";
 
 function AppFormPicker({
+  label,
   name,
   items,
   numberOfLines,
@@ -15,6 +16,7 @@ function AppFormPicker({
   return (
     <>
       <AppPicker
+        label={label}
         items={items}
         onSelectItem={(item) => setFieldValue(name, item)}
         numberOfColumns={numberOfLines}
@@ -27,6 +29,8 @@ function AppFormPicker({
   );
 }
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    
+  },
 });
 export default AppFormPicker;
