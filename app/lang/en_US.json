@@ -1,6 +1,6 @@
 {
     
-    "id":"Account",
+    "account":"Account",
     "password":"Password",
     "passwordConfirmation":"Confirm Password",
     "validation.id.is.required":"Account is required",
@@ -20,8 +20,9 @@
     "button.submit":"Submit",
     "button.next":"NEXT",
     "button.back":"BACK",
+    "button.cancel":"Cancel",
     "button.forgetPassword":"Forget Password?",
-    "button.signup":"Sign Up",
+    "button.signup":"Create Account",
     "button.sendEmailToResetPassword":"Forget Password?",
     "button.logout":"Log out",
 
@@ -29,17 +30,35 @@
 
 
 
+
+
     "name":"Name",
     "nationality":"Nationality",
     "birthday":"Birthday",
+    "gender":"Gender",
     "email":"Email",
     "whatsapp":"Whatsapp",
+ 
+    "education":"Education",
+    "height":"Height",
+    "religion":"Religion",
+    "weight":"Weight",
+    "cantonese":"Cantonese",
+    "english":"English",
+    "mandarin":"Mandarin",
+
+
     "auth/email-not-exists":"There is no user record for this email. Please make sure you enter the correct email.",
     "auth/email-already-in-use":"The email address is already in use by another account.",
     "auth/invalid-email":"The email address is badly formatted.",
     "auth/wrong-password": "The password is invalid or the user does not have a password.",
     "message.send-email-reset-password":"Maid DB will send an email for you to reset password",
-    "message.reset-password-email-sent":"Password Reset Email has been send. You will be redirected to Home Page now."
+    "message.reset-password-email-sent":"Password Reset Email has been send. You will be redirected to Home Page now.",
+
+    "uid.is.null":"User uid is not presented",
+    "message.update.failed.maid.profile":"Fail to update profile",
+    "id":"Indonesia",
+    "ph":"Philippines"
 
 
 

@@ -1,5 +1,5 @@
 {
-    "id":"Account",
+    "account":"Account",
     "password":"Password",
     "validation.id.is.required":"Account is required",
     "validation.password.is.required":"Password is required",
