@@ -56,10 +56,7 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
           <AppFormField name="name" label={t("name")}/>
           <AppFormPicker name="gender" label={t("gender")} items={options.gender}/>
           <AppFormPicker name="nationality" items={options.nationality} label={t("nationality")} />
-          {/* <AppFormField name="birthday" label={t("birthday")}/> */}
-         <AppFormDatePicker name="birthday" label={t("birthday")} />
-          
-         
+          <AppFormDatePicker name="birthday" label={t("birthday")} />
        </>
    },
   {
@@ -82,7 +79,6 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
      names:["email","whatsapp"],
      validationSchema: Yup.object({
                       email: Yup.string().email().required(t('validation.email.is.required')).label(t('email')),
-                      // whatsapp: Yup.string().required(t('validation.whatsapp.is.required')).label(t('whatsapp')),
                        whatsapp: Yup.string().matches(phoneRegex, t("validation.whatsapp.is.invalid")).required(t("validation.whatsapp.is.required"))
                     }),
      components:()=>
@@ -101,6 +97,18 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
         <>
           <AppFormPicker name="religion" label={t("religion")} items={options.religion}/>
           <AppFormSwitch name="eatPork" label={t("eatPork")}/>
+        </>
+   },
+       {
+     names:["currentLocation","currentStatus"],
+     validationSchema: Yup.object({
+                        currentLocation: Yup.string().required(t('validation.currentLocation.is.required')).label(t('currentLocation')),
+                        currentStatus: Yup.string().required(t('validation.currentStatus.is.required')).label(t('currentStatus')),
+                      }),
+     components:()=>
+        <>
+          <AppFormPicker name="currentLocation" label={t("currentLocation")} items={options.location}/>
+          <AppFormPicker name="currentStatus" label={t("currentStatus")} items={options.maidStatus}/>
         </>
    },
   {

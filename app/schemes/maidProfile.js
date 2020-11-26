@@ -13,7 +13,8 @@ const initialScheme={
             eatPork:"false",
             cantonese:"",
             english:"",
-            mandarin:""
+            mandarin:"",
+            currentLocation:""
 
 
         },
