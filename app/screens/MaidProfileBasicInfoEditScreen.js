@@ -12,11 +12,13 @@ import { AppFormField,
   AppFormSwitch,
   AppFormPicker,
   AppErrorMessage,
-  AppFormRating
+  AppFormRating,
+  AppFormDatePicker
 } from '../components/forms';
 import maidProfileScheme from "../schemes/maidProfile";
 import maidProfileDB from "../database/maidProfile";
 import options from "../schemes/options";
+import AppDatePicker from "../components/forms/AppFormDatePicker";
 
 
 const phoneRegex = RegExp(
@@ -29,6 +31,7 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
   const [errorMessage,setErrorMessage] =useState("");
   const [error,setError] =useState(false);
   const [loading,setLoading] =useState(false);
+  const [date,setDate] =useState(new Date());
   //initialValue
   console.log("route.params.uid",route.params.uid);
   let initialValues = Object.assign({},maidProfileScheme.initialScheme.basicInfo);
@@ -53,7 +56,9 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
           <AppFormField name="name" label={t("name")}/>
           <AppFormPicker name="gender" label={t("gender")} items={options.gender}/>
           <AppFormPicker name="nationality" items={options.nationality} label={t("nationality")} />
-          <AppFormField name="birthday" label={t("birthday")}/>
+          {/* <AppFormField name="birthday" label={t("birthday")}/> */}
+         <AppFormDatePicker name="birthday" label={t("birthday")} />
+          
          
        </>
    },

@@ -30,7 +30,12 @@
     "button.sendEmailToResetPassword":"Forget Password?",
     "button.logout":"Log out",
 
+    
+
     "button.signin.google":"Sign In with Google",
+    "label.pick.date":"Pick a date",
+    "label.confirm.date":"Confirm",
+    "label.cancel.date":"Cancel",
 
 
 

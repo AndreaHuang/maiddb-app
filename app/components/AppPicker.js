@@ -62,10 +62,10 @@ function AppPicker({
             data={items}
             keyExtractor={(item) => item.label}
             numColumns={numberOfColumns}
-            renderItem={({ item }) => (
-              <View style={{ width: width }}>
+            renderItem={({ item ,index}) => (
+              <View style={{ width: width }} >
                 <PickerItemComponent
-                  item={item}
+                  item={item} key={index}
                   onPress={() => {
                     setModalVisible(false);
                     onSelectItem(item);

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import color from "../config/color";
-import { Rating, AirbnbRating } from 'react-native-ratings';
+import {AirbnbRating } from 'react-native-ratings';
 import { useTranslation } from "react-i18next";
 
 import paperTheme from "../config/paperTheme";
