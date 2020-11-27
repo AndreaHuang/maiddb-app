@@ -9,7 +9,6 @@ import AppErrorMessage from "./AppErrorMessage";
 
 function AppFormFieldWithUnit({ name, unitName, units, ...otherProps }) {
   const { errors, values,handleChange, setFieldTouched, touched } = useFormikContext();
-  console.log("values in AppFormFieldWithUnit",values)
   return (
     <>
       <View style={styles.container}>

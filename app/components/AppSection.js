@@ -1,12 +1,12 @@
 import React,{useState} from 'react';
-import { View,StyleSheet } from 'react-native';
+import { View,StyleSheet,TouchableOpacity } from 'react-native';
 import { useTranslation } from "react-i18next";
 
 import i18n from "../config/i18n";
 import color from "../config/color";
 import AppText from "../components/AppText";
-import AppLink from "../components/AppLink";
 import ActionIcon from "../components/ActionIcon";
+import Icon from "../components/Icon";
 
 
 const AppSection = ({children, onEdit,onAdd,onDelete,sectionTitle,defaultCollapsed=true,smallMode=false}) => {
@@ -14,12 +14,12 @@ const AppSection = ({children, onEdit,onAdd,onDelete,sectionTitle,defaultCollaps
      const [collapsed,setCollapsed]= useState(defaultCollapsed);
     return ( <View style={styles.container}>
                 <View style={styles.headerRow}>
+                    <TouchableOpacity onPress={()=>{collapsed? setCollapsed(false):setCollapsed(true)}}>
                     <View style={styles.titleIcon}>
-                        
-                        {collapsed ? <ActionIcon iconName="expand-all-outline" onPress={()=>setCollapsed(false)}/> : 
-                        <ActionIcon iconName="collapse-all-outline" onPress={()=>setCollapsed(true)}/> }
+                        {collapsed ? <Icon name="expand-all-outline"/> : <Icon name="collapse-all-outline" /> }
                         <AppText style={[styles.title, smallMode?styles.titleSmall:null]}>{sectionTitle}</AppText>
                     </View>
+                    </TouchableOpacity>
                     <View style={styles.buttonContainer}>
                         {onEdit && <ActionIcon  iconName="square-edit-outline" iconColor ={color.primary} onPress={onEdit} /> }
                         {onAdd && <ActionIcon  iconName="plus-box-outline" onPress={onAdd} iconColor ={color.primary} /> }

@@ -5,7 +5,8 @@ import * as Yup from "yup";
 
 import Screen from "../../components/Screen";
 import AppLink from "../../components/AppLink";
-import {AppForm,AppFormPicker,AppFormDatePicker,AppSubmitButton, AppFormSwitch} from "../../components/forms";
+import {AppForm,AppFormPicker,AppFormDatePicker,AppSubmitButton, 
+  AppFormSwitch,AppFormMultipleSelect} from "../../components/forms";
 import i18n from "../../config/i18n";
 import constants from "../../config/constants";
 import options from "../../schemes/options"
@@ -31,11 +32,11 @@ const WorkHistoryEditScreen = ({navigation,route}) => {
       endDate:Yup.string().label(t("endDate")),
       isCurrentJob:Yup.boolean().label("isCurrentJob"),
       location:Yup.string().required(t("validation.location.is.required")).label(t("location")),
-      // duties:Yup.array().label(t("duties")),
+      duties:Yup.array().required(t("validation.duties.is.required")).label(t("duties")),
     //   employer:Yup.string().label(t("employer")),
     // employer:"",
     // details:"",
-    // reasongOfLeaving:""
+    reasonOfLeaving:""
 
   })
   const handleCancel =()=>{
@@ -54,7 +55,9 @@ const WorkHistoryEditScreen = ({navigation,route}) => {
             <AppFormDatePicker name="endDate" label={t("endDate")} />
             <AppFormSwitch name="isCurrentJob" label={t("isCurrentJob")} />
             <AppFormPicker name="location" label={t("location")} items={options.location} />
-
+            <AppFormPicker name="reasonOfLeaving" label={t("reasonOfLeaving")} items={options.reasonOfLeaving} />
+            <AppFormMultipleSelect name="duties" label={t("duties")} items={options.maidDuties}/>
+            
             <AppSubmitButton title={t("button.submit")}/>
             <AppLink onPress={handleCancel}/>
         </AppForm>

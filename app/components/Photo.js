@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/color";
-function Icon({
+function Photo({
   iconColor = colors.white,
   backgroundColor = colors.black,
   name,
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
-export default Icon;
+export default Photo;

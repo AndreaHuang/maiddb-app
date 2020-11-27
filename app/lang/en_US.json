@@ -22,6 +22,7 @@
 
     "validation.startDate.is.required":"Work Start Date is required",
     "validation.location.is.required":"Work Location is required",
+    "validation.duties.is.required":"Job Duties are required",
 
     "button.login":"Login",
     "button.submit":"SUBMIT",
@@ -111,10 +112,30 @@
     "workHistory":"Work History",
     "startDate":"Start Date",
     "endDate":"End Date",
-    "isCurrentJob":"I Stil Work Here",
+    "isCurrentJob":"I Still Work Here",
     "location":"Location",
+    
     "title.editWorkHistory":"Edit Work History",
-    "now":"Now"
+
+    "now":"Now",
+
+    "reasonOfLeaving":"Reason Of Leaving",
+    "selfResign": "I Resigned By Myself",
+    "employerMigration":"Employer Migration",
+    "elderlyPassAway":"Elderly Pass Away",
+
+    "duties" :"Job Duties",
+     "cook":"Cooking",
+    "pet":"Pet",
+    "wash car":"Wash Car",
+    "elderly":"Elderly",
+    "disabled":"Disabled",
+    "cleaning":"Cleaning",
+    "drive":"Driver",
+    "children":"Children (above 6)",
+    "toddler":"Toddler (2 - 5)",
+    "newborn":"New Born"
+
 
 
 

@@ -12,9 +12,6 @@ function AppFormPicker({
   placeholder,
 }) {
   const { errors, touched, values, setFieldValue } = useFormikContext();
-  console.log("values",values),
-    console.log("name",name);
-
   return (
     <>
       <AppPicker

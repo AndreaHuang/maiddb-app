@@ -8,7 +8,7 @@ import MenuItem from "../components/MenuItem";
 import ListItemSeperator from "../components/lists/ListItemSeperator";
 import Screen from "../components/Screen";
 import colors from "../config/color";
-import Icon from "../components/Icon";
+import Photo from "../components/Photo";
 import AppButton from "../components/AppButton";
 import firebaseAuth from "../auth/FirebaseAuth";
 import AuthContext from "../auth/AuthContext";
@@ -69,7 +69,7 @@ function AccountScreen({navigation, route}) {
             iconName={item.icon}
             onPress={item.action}
             IconComponent={
-              <Icon
+              <Photo
                 iconColor={colors.white}
                 name={item.icon}
                 size={40}
@@ -84,7 +84,7 @@ function AccountScreen({navigation, route}) {
       <ListItem
         title="Logout"
         IconComponent={
-          <Icon
+          <Photo
             iconColor={colors.white}
             name="logout"
             size={40}

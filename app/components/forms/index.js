@@ -10,3 +10,4 @@ export { default as AppFormRadioGroup } from "./AppFormRadioGroup";
 export { default as MultiStepForm } from "./MultiStepForm";
 export { default as AppFormRating } from "./AppFormRating";
 export { default as AppFormDatePicker } from "./AppFormDatePicker";
+export { default as AppFormMultipleSelect } from "./AppFormMultipleSelect";

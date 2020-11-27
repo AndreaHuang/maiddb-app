@@ -3,14 +3,14 @@ import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import AppText from "../components/AppText";
-import Icon from "../components/Icon";
+import Photo from "../components/Photo";
 import colors from "../config/color";
 function CategeoryPickItem({ item, onPress }) {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
         {item.icon && (
-          <Icon
+          <Photo
             name={item.icon}
             backgroundColor={
               item.backgroundColor ? item.backgroundColor : colors.secondary

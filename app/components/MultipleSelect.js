@@ -1,24 +1,18 @@
 import React from "react";
+import _ from "lodash";
 import {
-  FlatList,
   View,
   StyleSheet,
-  Text,
-  TouchableOpacity,
 } from "react-native";
 import colors from "../config/color";
-import defaultStyles from "../config/styles";
 import MultiSelectItem from "./MultiSelectItem";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
-function MultipleSelect({ items, onSelect }) {
-  console.log("test", items);
+function MultipleSelect({value, items, onSelect }) {
+  if(!items) return null;
   return (
     <View style={styles.container}>
-      {items.map((item) => (
-        <View key={item.key} style={styles.image}>
-          <MultiSelectItem item={item} onToggleItem={onSelect} />
-        </View>
-      ))}
+      {items.map((item,index) =>
+        { return  <MultiSelectItem  key={index} item={item} selected={_.indexOf(value,item) > -1} onToggleItem={onSelect} /> }
+      )}
     </View>
   );
 }
@@ -26,7 +20,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     flexWrap: "wrap",
-  },
-  image: {},
+    marginVertical:8,
+  }
 });
 export default MultipleSelect;

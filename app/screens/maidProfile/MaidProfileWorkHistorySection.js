@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import AppSection from "../../components/AppSection"
 import i18n from "../../config/i18n";
 import AppText from '../../components/AppText';
+import AppLabelValue from '../../components/AppLabelValue';
 
 const locale="zh";
 
@@ -21,7 +22,8 @@ const MaidProfilWorkHistorySection = ({data,onEdit,onDelete}) => {
     
     
     return ( <AppSection sectionTitle={buildTitle(data)} smallMode onEdit={onEdit} onDelete={onDelete} defaultCollapsed={true}>
-            <AppText></AppText>
+            <AppLabelValue label={t("location")} value={t(data.location)}/>
+
         </AppSection>
     );
 }
