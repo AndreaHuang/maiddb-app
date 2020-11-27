@@ -34,20 +34,21 @@ const initialScheme={
             eatPork:false,
             dutyPreference:[]
         },
-        experience:
-            [{
-                location:"",
-                from:"",
-                to:"",
-                peopleToTakecase:[],
-                duties:[],
-                employer:"",
-                details:"",
-                reasonOfLeaving:""
-            }],
+        workHistory:[],
         training:[], 
     }
+const workHistoryInitialScheme ={
+    startDate:"",
+    endDate:"",
+    isCurrentJob:false,
+    location:"",
+    duties:[],
+    employer:"",
+    details:"",
+    reasongOfLeaving:""
+}
 
     export default {
-        initialScheme
+        initialScheme,
+        workHistoryInitialScheme
     }

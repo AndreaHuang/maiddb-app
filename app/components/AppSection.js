@@ -9,31 +9,27 @@ import AppLink from "../components/AppLink";
 import ActionIcon from "../components/ActionIcon";
 
 
-const AppSection = ({items, editFunction,sectionTitle,defaultCollapsed=true}) => {
+const AppSection = ({children, onEdit,onAdd,onDelete,sectionTitle,defaultCollapsed=true,smallMode=false}) => {
      const { t } = useTranslation();
-    const keys = Object.keys(items);
-    const [collapsed,setCollapsed]= useState(defaultCollapsed);
+     const [collapsed,setCollapsed]= useState(defaultCollapsed);
     return ( <View style={styles.container}>
                 <View style={styles.headerRow}>
                     <View style={styles.titleIcon}>
-                        <AppText style={styles.title}>{sectionTitle}</AppText>
+                        
                         {collapsed ? <ActionIcon iconName="expand-all-outline" onPress={()=>setCollapsed(false)}/> : 
                         <ActionIcon iconName="collapse-all-outline" onPress={()=>setCollapsed(true)}/> }
+                        <AppText style={[styles.title, smallMode?styles.titleSmall:null]}>{sectionTitle}</AppText>
                     </View>
-                    <AppLink title="Edit" onPress={editFunction} style={styles.editButton}></AppLink>
+                    <View style={styles.buttonContainer}>
+                        {onEdit && <ActionIcon  iconName="square-edit-outline" iconColor ={color.primary} onPress={onEdit} /> }
+                        {onAdd && <ActionIcon  iconName="plus-box-outline" onPress={onAdd} iconColor ={color.primary} /> }
+                        {onDelete && <ActionIcon iconName="trash-can-outline" iconColor ={color.primary}  onPress={onDelete} /> }
+                    </View>
                 </View>
-                <View style={[styles.collapsible,collapsed ? {display: "none"}:null ]} >
-                {keys.map((key,index)=>{
-                    return(
-                        <View style={styles.itemRow} key={index}>
-                                <AppText style={styles.label}>{t(key)}</AppText>
-                                <AppText style={styles.value}>{items[key]}</AppText>
-                        </View>
-                    );
-                })}
+                <View style={styles.itemContainer}>
+                {collapsed? null: children}
                 </View>
-
-    </View> );
+            </View> );
 }
 
 const styles=StyleSheet.create(
@@ -41,12 +37,11 @@ const styles=StyleSheet.create(
         container:{
 
         },
-        editButton:{
-            backgroundColor:color.primary,
-            color:color.white,
-            paddingHorizontal:15,
-            // marginRight:10,
-            borderRadius:15
+        buttonContainer:{
+            flexDirection:"row"
+        },
+        itemContainer:{
+            marginLeft:20     
         },
         headerRow:{
             flexDirection:"row",
@@ -68,24 +63,10 @@ const styles=StyleSheet.create(
             marginLeft:5
 
         },
-        itemRow:{
-             flexDirection:"row",
-             marginHorizontal:15,
-             marginVertical:5,
-             paddingVertical:2,
-             borderBottomColor:color.medium,
-             borderBottomWidth:.5
-
+        titleSmall:{
+            fontSize:18
         },
-        label:{
-            color:color.dark,
-            flex:2
-        },
-        value:{
-            color:color.dark,
-            fontWeight:"200",
-            flex:4
-        }
+       
     }
 );
 

@@ -27,10 +27,10 @@ function AppPicker({
   placeholder,
   selectedItem,
 }) {
-   const {t}= useTranslation();
+  const {t}= useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
   const width = (100 / numberOfColumns).toFixed(0).toString() + "%";
-  console.log("selectedItem",selectedItem);
+  // console.log("selectedItem",selectedItem);
   return (
     <View style={styles.container}>
       {label && <AppText style={styles.label}>{label}</AppText>}

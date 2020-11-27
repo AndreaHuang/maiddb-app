@@ -10,7 +10,7 @@ const AppFormSwitch = ({name,label}) => {
     return ( 
         <View style={styles.container}>
             <AppText>{label}</AppText>
-            <AppSwitch  
+            <AppSwitch style={styles.switch}
                 onChange={(value) => setFieldValue(name, value)}
                 value={values[name]}
             /> 
@@ -24,7 +24,9 @@ const styles=StyleSheet.create({
         justifyContent:"space-between",
         paddingHorizontal:15,
         marginVertical:10,
+        paddingRight:20,
     }
+   
 });
  
 export default AppFormSwitch;

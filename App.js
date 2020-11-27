@@ -32,7 +32,7 @@ export default function App() {
         }
         })
       setIsReady(true);
-  },[]);
+  },[isReady]);
 
   if(!isReady){
     return <AppLoading/>

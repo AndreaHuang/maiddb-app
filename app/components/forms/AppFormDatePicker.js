@@ -15,10 +15,9 @@ import i18n from "../config/i18n";
 
 
 const AppFormDatePicker = ({name,label,locale="en_GB"}) => {
-    const{t} =useTranslation();
-    const{values,errors,touched,setFieldValue,setFieldTouched} = useFormikContext();
+    const {t} =useTranslation();
+    const {values,errors,touched,setFieldValue,setFieldTouched} = useFormikContext();
     const [visible,setVisible] =useState(false);
-    console.debug("AppDatePicker loaded");
     const handleConfirm =(date)=>{
             console.log(date.toDateString());
             setVisible(false);

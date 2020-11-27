@@ -2,10 +2,10 @@ import React, { useEffect,useState } from 'react';
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
 
-import MultiStepForm from "../components/forms/MultiStepForm";
-import Screen from "../components/Screen";
-import i18n from "../config/i18n";
-import constants from "../config/constants";
+import MultiStepForm from "../../components/forms/MultiStepForm";
+import Screen from "../../components/Screen";
+import i18n from "../../config/i18n";
+import constants from "../../config/constants";
 
 import { AppFormField, 
   AppFormFieldWithUnit, 
@@ -14,11 +14,11 @@ import { AppFormField,
   AppErrorMessage,
   AppFormRating,
   AppFormDatePicker
-} from '../components/forms';
-import maidProfileScheme from "../schemes/maidProfile";
-import maidProfileDB from "../database/maidProfile";
-import options from "../schemes/options";
-import AppDatePicker from "../components/forms/AppFormDatePicker";
+} from '../../components/forms';
+import maidProfileScheme from "../../schemes/maidProfile";
+import maidProfileDB from "../../database/maidProfile";
+import options from "../../schemes/options";
+import AppDatePicker from "../../components/forms/AppFormDatePicker";
 
 
 const phoneRegex = RegExp(

@@ -20,6 +20,9 @@
     "validation.mandarin.is.required":"Must provide rating for Mandarin",
     "validation.english.is.required":"Must provide rating for English",
 
+    "validation.startDate.is.required":"Work Start Date is required",
+    "validation.location.is.required":"Work Location is required",
+
     "button.login":"Login",
     "button.submit":"SUBMIT",
     "button.next":"NEXT",
@@ -36,6 +39,7 @@
     "label.pick.date":"Pick a date",
     "label.confirm.date":"Confirm",
     "label.cancel.date":"Cancel",
+
 
 
 
@@ -71,6 +75,9 @@
 
     "uid.is.null":"User uid is not presented",
     "message.update.failed.maid.profile":"Fail to update profile",
+    "message.update.failed.work.history":"Fail to update work history",
+    "message.remove.failed.work.history":"Fail to remove work history",
+
     "id":"Indonesia",
     "ph":"Philippines",
     "hk":"Hong Kong",
@@ -99,8 +106,16 @@
     "finishContract":"Finish Contract",
     "breakContract":"Break Contract",
     "new":"New Maid",
-    "currentStatus": "You are currently",
-    "currentLocation":"Where are you now?"
+    "currentStatus": "Current Employment Status",
+    "currentLocation":"Current Location",
+    "workHistory":"Work History",
+    "startDate":"Start Date",
+    "endDate":"End Date",
+    "isCurrentJob":"I Stil Work Here",
+    "location":"Location",
+    "title.editWorkHistory":"Edit Work History",
+    "now":"Now"
+
 
 
 

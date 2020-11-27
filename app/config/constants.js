@@ -7,7 +7,8 @@ export default{
         maidProfile:"MaidProfile",
         editMaidProfile:"EditMaidProfile",
         editMaidProfileBasicInfo:"editMaidProfileBasicInfo",
-        account:"Account"
+        account:"Account",
+        editWorkHistory:"editWorkHistory"
     },
     cache:{
         maidProfile:"maidProfile"
