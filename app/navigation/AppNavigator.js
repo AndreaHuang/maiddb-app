@@ -38,7 +38,7 @@ const ProfileNavigator=()=>{
             <ProfileStack.Screen name={constants.route.account}component={AccountScreen} options={{ title: 'My Account' }}/>
             <ProfileStack.Screen name={constants.route.editMaidProfile} component={MaidProfileEditScreen} options={{ headerShown: false }}/>
             <ProfileStack.Screen name={constants.route.editMaidProfileBasicInfo} component={MaidProfileBasicInfoEditScreen} options={{ headerShown: false }}/>
-            <ProfileStack.Screen name={constants.route.editWorkHistory} component={MaidProfileWorkHistoryEditScreen} options={{headerTitle:t("title.editWorkHistory")}}/>
+            <ProfileStack.Screen name={constants.route.editWorkHistory} component={MaidProfileWorkHistoryEditScreen} options={{ headerShown: false }}/>
             <ProfileStack.Screen name={constants.route.maidProfile} component={MaidProfileScreen} options={{ title: 'My Profile' }}/> 
         </ProfileStack.Navigator>
     );

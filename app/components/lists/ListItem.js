@@ -3,7 +3,7 @@ import { View, StyleSheet, Image } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppText from "../AppText";
 import colors from "../../config/color";
-function ListItem({ IconComponent, title, subTitle, image }) {
+function ListItem({ IconComponent, title, subTitle, image ,expandable=true}) {
   return (
     <View style={styles.container}>
       {IconComponent}
@@ -19,11 +19,11 @@ function ListItem({ IconComponent, title, subTitle, image }) {
         )}
       </View>
 
-      <MaterialCommunityIcons
+      { expandable && <MaterialCommunityIcons
         color={colors.medium}
         name="chevron-right"
         size={20}
-      />
+      />}
     </View>
   );
 }

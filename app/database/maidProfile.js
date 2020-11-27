@@ -41,7 +41,7 @@ const retreiveOrCreateProfile=async ()=>{
     
     if(snapshot){
         // console.debug("route to existing")
-        console.debug("route to existing",snapshot);
+        // console.debug("route to existing",snapshot);
         cache.store(constants.cache.maidProfile,snapshot);
         return snapshot;
     } else {

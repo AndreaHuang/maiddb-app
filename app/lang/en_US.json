@@ -11,7 +11,7 @@
 
     "validation.name.is.required":"Name is required",
     "validation.nationality.is.required":"Nationality is required",
-    "validation.birthday.is.required":"Birthday is required",
+    "validation.birthday.is.required":"Birth Date is required",
     "validation.email.is.required":"Email is required",
     "validation.whatsapp.is.required":"Whatsapp is required",
     "validation.password.mustmatch":"Passwords must match",
@@ -40,6 +40,9 @@
     "label.pick.date":"Pick a date",
     "label.confirm.date":"Confirm",
     "label.cancel.date":"Cancel",
+    "years":"Y",
+    "months":"M",
+    "days":"D",
 
 
 
@@ -48,7 +51,7 @@
 
     "name":"Name",
     "nationality":"Nationality",
-    "birthday":"Birthday",
+    "birthdate":"Birth Date",
     "gender":"Gender",
     "email":"Email",
     "whatsapp":"Whatsapp",
@@ -107,7 +110,7 @@
     "finishContract":"Finish Contract",
     "breakContract":"Break Contract",
     "new":"New Maid",
-    "currentStatus": "Current Employment Status",
+    "currentStatus": "Current Status",
     "currentLocation":"Current Location",
     "workHistory":"Work History",
     "startDate":"Start Date",
@@ -134,7 +137,10 @@
     "drive":"Driver",
     "children":"Children (above 6)",
     "toddler":"Toddler (2 - 5)",
-    "newborn":"New Born"
+    "newborn":"New Born",
+    "basicInfo":"Basic Info",
+    "yearsOld":"Years Old",
+    "age":"Age"
 
 
 

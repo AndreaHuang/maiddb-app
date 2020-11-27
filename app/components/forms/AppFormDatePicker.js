@@ -14,7 +14,7 @@ import i18n from "../config/i18n";
 
 
 
-const AppFormDatePicker = ({name,label,locale="en_GB"}) => {
+const AppFormDatePicker = ({name,label,locale="zh_HK"}) => {
     const {t} =useTranslation();
     const {values,errors,touched,setFieldValue,setFieldTouched} = useFormikContext();
     const [visible,setVisible] =useState(false);
@@ -52,7 +52,7 @@ const AppFormDatePicker = ({name,label,locale="en_GB"}) => {
                         headerTextIOS ={t("label.pick.date")}
                         cancelTextIOS={t("label.cancel.date")}
                         confirmTextIOS={t("label.confirm.date")}
-                        value={new Date(values[name])}
+                        date={new Date(values[name])}
                         mode="date"
                         onConfirm={handleConfirm}
                         onCancel={()=>setVisible(false)}

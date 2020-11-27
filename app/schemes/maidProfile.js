@@ -2,7 +2,7 @@ const initialScheme={
         basicInfo:{
             name:"",
             nationality:"",
-            birthday:"",
+            birthdate:"",
             religion:"",
             height:"",
             weight:"",
@@ -43,8 +43,6 @@ const workHistoryInitialScheme ={
     isCurrentJob:false,
     location:"",
     duties:[],
-    employer:"",
-    details:"",
     reasongOfLeaving:""
 }
 

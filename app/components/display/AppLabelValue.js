@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet,View} from "react-native";
-import AppText from "./AppText";
-import color from "../config/color";
+import AppText from "../AppText";
+import color from "../../config/color";
 const AppLabelValue = ({label,value,smallMode=false}) => {
     return (  <View style={styles.itemRow}>
                     <AppText style={[styles.label,smallMode?small:null]}>{label}</AppText>
@@ -15,9 +15,6 @@ const styles=StyleSheet.create({
              marginHorizontal:15,
              marginVertical:5,
              paddingVertical:2,
-             borderBottomColor:color.medium,
-             borderBottomWidth:.5
-
         },
         label:{
             color:color.dark,

@@ -42,13 +42,13 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
 
   const items=[
     {
-     names:["name","nationality","birthday","gender"],
+     names:["name","nationality","birthdate","gender"],
      validationSchema:  Yup.object({
                           name: Yup.string().required(t("validation.name.is.required")).label(t("name")),
                           nationality: Yup.string()
                             .required(t("validation.nationality.is.required"))
                             .label(t("nationality")),
-                          birthday: Yup.string().required(t('validation.birthday.is.required')).label(t('birthday')),
+                          birthdate: Yup.string().required(t('validation.birthday.is.required')).label(t('birthday')),
                           gender: Yup.string().required(t('validation.gender.is.required')).label(t('gender'))
                         }),
      components:()=>
@@ -56,7 +56,7 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
           <AppFormField name="name" label={t("name")}/>
           <AppFormPicker name="gender" label={t("gender")} items={options.gender}/>
           <AppFormPicker name="nationality" items={options.nationality} label={t("nationality")} />
-          <AppFormDatePicker name="birthday" label={t("birthday")} />
+          <AppFormDatePicker name="birthdate" label={t("birthdate")} />
        </>
    },
   {
@@ -99,7 +99,7 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
           <AppFormSwitch name="eatPork" label={t("eatPork")}/>
         </>
    },
-       {
+  {
      names:["currentLocation","currentStatus"],
      validationSchema: Yup.object({
                         currentLocation: Yup.string().required(t('validation.currentLocation.is.required')).label(t('currentLocation')),
