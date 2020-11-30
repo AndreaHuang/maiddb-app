@@ -4,6 +4,7 @@ const firebaseConfig={
   databaseURL: "https://maiddb.firebaseio.com",
   projectId: "maiddb",
   storageBucket: "maiddb.appspot.com",
+  // storageBucket: "maiddb-files-test",
   messagingSenderId: "621363690446",
   appId: "1:621363690446:web:b7f2227709f7be4bcec99f"
 

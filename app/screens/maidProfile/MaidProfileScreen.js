@@ -84,7 +84,10 @@ const MaidProfileScreen = ({navigation}) => {
                 {/* <AppSection sectionTitle="Basic Info" items={profile.basicInfo} editFunction={()=>{navigateToEditProfile(constants.route.editMaidProfileBasicInfo,profile.basicInfo)}}/> */}
                 {/* <AppSection sectionTitle="Work History" items={profile.experience} editFunction={()=>{navigateToEditProfile("WorkHistory")}}/> */}
                 
-                <AppSection sectionTitle={t("workHistory")} defaultCollapsed={false}  onAdd={()=>{navigateToEditProfile(constants.route.editWorkHistory,null,-1)}}>
+                <AppSection sectionTitle={t("image")} defaultCollapsed={false}  onEdit={()=>{navigateToEditProfile(constants.route.editImage)}}>
+
+                </AppSection>
+                <AppSection sectionTitle={t("workHistory")} defaultCollapsed={true}  onAdd={()=>{navigateToEditProfile(constants.route.editWorkHistory,null,-1)}}>
                     {profile.workHistory?
                         profile.workHistory.map((item,index)=>{return  <MaidProfileWorkHistorySection key={index} data={item}
                                 onDelete={()=>removeWorkHistory(index)}

@@ -19,10 +19,15 @@ function ImageInput({ imageUri = null, onChangeImage }) {
   };
   const selectImage = async () => {
     if (!imageUri) {
-      let pickerResult = await ImagePicker.launchImageLibraryAsync();
-      console.log(pickerResult);
+      let pickerResult = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.All,
+          allowsEditing: true,
+          aspect: [4, 3],
+          quality: 1,
+        });
+      console.log("pickerResult",pickerResult);
       if (pickerResult && pickerResult.uri) {
-        onChangeImage(pickerResult.uri);
+        onChangeImage(pickerResult);
       }
       return;
     } else {

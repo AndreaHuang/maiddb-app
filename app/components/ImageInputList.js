@@ -5,7 +5,6 @@ import ImageInput from "./ImageInput";
 import { ScrollView } from "react-native-gesture-handler";
 function ImageInputList({ imageUris = [], onAddImage, onRemoveImage }) {
   const scrollView = useRef();
-  console.log(imageUris);
   return (
     <View>
       <ScrollView
@@ -14,15 +13,15 @@ function ImageInputList({ imageUris = [], onAddImage, onRemoveImage }) {
         ref={scrollView}
       >
         <View style={styles.container}>
-          {imageUris.map((uri) => (
-            <View key={uri} style={styles.image}>
+          {imageUris.map((imageItem,index) => (
+            <View key={index} style={styles.image}>
               <ImageInput
-                imageUri={uri}
-                onChangeImage={() => onRemoveImage(uri)}
+                imageUri={imageItem.uri}
+                onChangeImage={() => onRemoveImage(imageItem)}
               />
             </View>
           ))}
-          <ImageInput onChangeImage={(uri) => onAddImage(uri)} />
+          <ImageInput onChangeImage={(imageItem) => onAddImage(imageItem)} />
         </View>
       </ScrollView>
     </View>

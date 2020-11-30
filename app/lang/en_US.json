@@ -74,6 +74,7 @@
     "auth/email-already-in-use":"The email address is already in use by another account.",
     "auth/invalid-email":"The email address is badly formatted.",
     "auth/wrong-password": "The password is invalid or the user does not have a password.",
+    "storage/unauthorized" :"You don't have the access.",
     "message.send-email-reset-password":"Maid DB will send an email for you to reset password",
     "message.reset-password-email-sent":"Password Reset Email has been send. You will be redirected to Home Page now.",
 
