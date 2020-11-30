@@ -12,45 +12,12 @@ import ListItem from "../../components/lists/ListItem";
 import ListItemSeperator from "../../components/lists/ListItemSeperator";
 import { date } from 'yup';
 
-const locale="zh_CN";
-const femaleIcon=require("../../assets/female.png");
-const maleIcon=require("../../assets/male.png");
 
-const calculateAge =(birthDateString)=>{
-    if(!birthDateString) return "";
-    console.debug(birthDateString);
-    const birthDate = new Date(birthDateString);
-    console.debug(birthDate);
-    const today = new Date();
-
-    var years = (today.getFullYear() - birthDate.getFullYear());
-
-    if (today.getMonth() < birthDate.getMonth() || 
-        today.getMonth() == birthDate.getMonth() && today.getDate() < birthDate.getDate()) {
-        years--;
-    }
-
-    return years;        
- }
 
 const MaidProfileBasicInfoSection = ({data,onEdit,collapsed=true}) => {
     const {t} = useTranslation();
-    const age = calculateAge(data.birthdate);
-    const ageToDisplay = age? age + " " + t("yearsOld")  : ""
-    
-
     return (   
-    <>
-     <ListItem
-                    title={data.name}
-                    subTitle={t(data.nationality)  +  "    " +ageToDisplay }
-                    image={
-                    data.photoURL
-                        ? { source: { url: data.photoURL } }
-                        : (data.gender ==='f' ? femaleIcon:maleIcon)
-                    }
-                    expandable={false}
-                />
+
     <AppSection sectionTitle={t("basicInfo")} onEdit={onEdit}>
                 <AppLabelValue label ={t("currentLocation")} value = {t(data.currentLocation)} />
                 <AppLabelValue label ={t("currentStatus")} value = {t(data.currentStatus)} />
@@ -69,9 +36,6 @@ const MaidProfileBasicInfoSection = ({data,onEdit,collapsed=true}) => {
                 {(data.height || date.weight) && <ListItemSeperator/>}
 
                </AppSection>
-               </>
-
-
     );
 }
 

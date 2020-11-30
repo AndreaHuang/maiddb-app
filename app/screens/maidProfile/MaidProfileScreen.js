@@ -1,11 +1,11 @@
 import React, { useContext, useEffect,useState } from 'react';
-import {Text,Alert} from 'react-native';
+import {StyleSheet,Text,Alert} from 'react-native';
 import { useTranslation } from "react-i18next";
 
 
 import cache from "../../utiity/Cache";
 
-import Screen from '../../components/Screen';
+import ScrollScreen from '../../components/ScrollScreen';
 import AppButton from "../../components/AppButton";
 import AppSection from "../../components/AppSection";
 import constants from "../../config/constants";
@@ -19,6 +19,9 @@ import { set } from 'lodash';
 import ActivityIndicator from '../../components/ActivityIndicator';
 import MaidProfileBasicInfoSection from "./MaidProfileBasicInfoSection";
 import MaidProfileWorkHistorySection from "./MaidProfileWorkHistorySection";
+import Carosel from '../../components/Carosel';
+import MaidProfileHeaderSection from './MaidProfileHeaderSection';
+
 
 const MaidProfileScreen = ({navigation}) => {
     const [loading,setLoading]=useState(false);
@@ -79,7 +82,9 @@ const MaidProfileScreen = ({navigation}) => {
     }
     return ( 
     
-        <Screen>
+        <ScrollScreen>
+                <MaidProfileHeaderSection data={profile.basicInfo}/>
+                <Carosel data={profile.images}/>
                 <MaidProfileBasicInfoSection data={profile.basicInfo} onEdit={()=>navigateToEditProfile(constants.route.editMaidProfileBasicInfo,profile.basicInfo)}/>
                 {/* <AppSection sectionTitle="Basic Info" items={profile.basicInfo} editFunction={()=>{navigateToEditProfile(constants.route.editMaidProfileBasicInfo,profile.basicInfo)}}/> */}
                 {/* <AppSection sectionTitle="Work History" items={profile.experience} editFunction={()=>{navigateToEditProfile("WorkHistory")}}/> */}
@@ -95,8 +100,12 @@ const MaidProfileScreen = ({navigation}) => {
                         />})
                         :null}
                 </AppSection>
-
-    </Screen>);
+    </ScrollScreen>);
 }
  
+const styles=StyleSheet.create({
+    container:{
+        height:6000
+    }
+})
 export default MaidProfileScreen;

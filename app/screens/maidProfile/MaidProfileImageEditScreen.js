@@ -10,6 +10,7 @@ import storage from "../../database/storage";
 import AuthContext from '../../auth/AuthContext';
 import ActivityIndicator from "../../components/ActivityIndicator";
 import constants from '../../config/constants';
+import maidProfileDB from "../../database/maidProfile";
 
 const MaidProfileImageEditScreen = ({navigation}) => {
     const {user} = useContext(AuthContext);
@@ -21,6 +22,14 @@ const MaidProfileImageEditScreen = ({navigation}) => {
     const [count,setCount] = useState(0);
     const [totalCount,setTotalCount] = useState(0);
     const [downloadUrls] = useState([]);
+
+    const segment="images";
+
+    const updateProfile =async (images)=>{
+        await maidProfileDB.updateProfile(user.uid,segment,images);
+    }
+    
+
     const onSuccess =(downloadUrl)=>{
         setLoading(false);
         console.log("upload sucessfully",downloadUrl);
@@ -30,6 +39,7 @@ const MaidProfileImageEditScreen = ({navigation}) => {
         if(count ===totalCount){
          navigation.replace(constants.route.maidProfile);
          console.log("all downloadUrl", downloadUrls);
+         updateProfile(downloadUrls);
         }
 
 

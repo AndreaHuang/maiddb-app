@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import i18n from "../config/i18n";
 import color from "../config/color";
+import defaultStyles from "../config/styles";
 import AppText from "../components/AppText";
 import ActionIcon from "../components/ActionIcon";
 import Icon from "../components/Icon";
@@ -17,7 +18,7 @@ const AppSection = ({children, onEdit,onAdd,onDelete,sectionTitle,defaultCollaps
                     <TouchableOpacity onPress={()=>{collapsed? setCollapsed(false):setCollapsed(true)}}>
                     <View style={styles.titleIcon}>
                         {collapsed ? <Icon name="expand-all-outline"/> : <Icon name="collapse-all-outline" /> }
-                        <AppText style={[styles.title, smallMode?styles.titleSmall:null]}>{sectionTitle}</AppText>
+                        <AppText style={smallMode? defaultStyles.smallTitle: defaultStyles.title}>{sectionTitle}</AppText>
                     </View>
                     </TouchableOpacity>
                     <View style={styles.buttonContainer}>
@@ -56,17 +57,7 @@ const styles=StyleSheet.create(
         titleIcon:{
             flexDirection:"row",
             alignItems:"center"
-        },
-        title:{
-            fontSize:24,
-            fontWeight:"400",
-            marginLeft:5
-
-        },
-        titleSmall:{
-            fontSize:18
-        },
-       
+        },   
     }
 );
 

@@ -6,15 +6,17 @@ import colors from "../config/color";
 function Card({ title, subTitle, image }) {
   return (
     <View style={styles.card}>
-      <Image style={styles.image} source={image} />
+      <Image style={styles.image} source={{url:image}} />
+      {(title || subTitle) &&
       <View style={styles.detailsContainer}>
-        <AppText numberOfLines={1} style={styles.title}>
+       {title && <AppText numberOfLines={1} style={styles.title}>
           {title}
-        </AppText>
-        <AppText numberOfLines={2} style={styles.subTitle}>
+        </AppText> }
+       
+        {subTitle && <AppText numberOfLines={2} style={styles.subTitle}>
           {subTitle}
-        </AppText>
-      </View>
+         </AppText> }
+      </View>}
     </View>
   );
 }
@@ -23,13 +25,17 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: 15,
     backgroundColor: colors.white,
-    margin: 15,
-    overflow: "hidden",
-    marginBottom: 5,
+    // margin: 15,
+    // overflow: "hidden",
+    // marginBottom: 5,
+    minWidth:200,
+    width:"100%",
+    alignSelf:"center",
+    padding:5
   },
   image: {
     resizeMode: "contain",
-    width: "100%",
+    // width: "100%",
     height: 200,
   },
   detailsContainer: {

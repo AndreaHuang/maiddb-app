@@ -5,7 +5,7 @@ import colors from "../config/color";
 export default {
   colors,
   text: {
-    fontSize: 18,
+    fontSize: 16,
     color: colors.dark,
     fontFamily: Platform === "android" ? "Roboto" : "Avenir",
   },
@@ -16,4 +16,15 @@ export default {
   card: {
     itemHeight: Dimensions.get("window").height * 0.4,
   },
+  smallText:{
+    fontSize:14
+  },
+  title:{
+    fontSize:20,
+    fontWeight:"400",
+    marginLeft:5
+  },
+  smallTitle:{
+    fontSize:18
+  }
 };

@@ -19,9 +19,7 @@ const AppFormDatePicker = ({name,label,locale="zh_HK"}) => {
     const {values,errors,touched,setFieldValue,setFieldTouched} = useFormikContext();
     const [visible,setVisible] =useState(false);
     const handleConfirm =(date)=>{
-            console.log(date.toDateString());
             setVisible(false);
-
             setFieldValue(name,date.toDateString());
 
     }
