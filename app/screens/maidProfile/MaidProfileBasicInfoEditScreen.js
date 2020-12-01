@@ -33,10 +33,10 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
   const [loading,setLoading] =useState(false);
   const [date,setDate] =useState(new Date());
   //initialValue
-  console.log("route.params.uid",route.params.uid);
+ 
   let initialValues = Object.assign({},maidProfileScheme.initialScheme.basicInfo);
   initialValues = Object.assign(initialValues,route.params.data);
-  console.log("initialValues",initialValues);
+
 
  
 

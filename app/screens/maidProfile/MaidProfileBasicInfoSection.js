@@ -14,11 +14,11 @@ import { date } from 'yup';
 
 
 
-const MaidProfileBasicInfoSection = ({data,onEdit,collapsed=true}) => {
+const MaidProfileBasicInfoSection = ({data,onEdit,defaultCollapsed=true}) => {
     const {t} = useTranslation();
     return (   
 
-    <AppSection sectionTitle={t("basicInfo")} onEdit={onEdit}>
+    <AppSection sectionTitle={t("basicInfo")} onEdit={onEdit} defaultCollapsed={defaultCollapsed}>
                 <AppLabelValue label ={t("currentLocation")} value = {t(data.currentLocation)} />
                 <AppLabelValue label ={t("currentStatus")} value = {t(data.currentStatus)} />
                  <ListItemSeperator/>

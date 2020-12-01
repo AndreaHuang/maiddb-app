@@ -82,6 +82,7 @@
     "message.update.failed.maid.profile":"Fail to update profile",
     "message.update.failed.work.history":"Fail to update work history",
     "message.remove.failed.work.history":"Fail to remove work history",
+    "alert.confirm.remove.workhistory":"Confirm to remove the work history?",
 
     "id":"Indonesia",
     "ph":"Philippines",

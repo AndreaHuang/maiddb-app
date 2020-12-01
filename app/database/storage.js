@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import _ from "lodash";
 
 
 const prefixImage="images";
@@ -11,6 +12,9 @@ const uploadFile =async (userId,listOfUri,onSuccess,onError) =>{
         contentType:"jpg"
     }
     listOfUri.forEach(async (uri)=>{
+        if(_.startsWith(uri,"https://")){ //previously uploaded files;
+            onSuccess(uri);
+        }
         let uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri;
         let name= new Date().getTime() +".jpg";
         const uploaded = await fetch(uploadUri);
@@ -62,12 +66,8 @@ const uploadFile =async (userId,listOfUri,onSuccess,onError) =>{
 
     });
 }
-const listFile = async (userId,onSuccess,onError) => {
-    console.debug("listFile get called");
-    
-}
+
 
 export default{
     uploadFile,
-    listFile,
 }

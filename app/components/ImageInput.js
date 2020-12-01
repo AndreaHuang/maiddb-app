@@ -27,7 +27,7 @@ function ImageInput({ imageUri = null, onChangeImage }) {
         });
       console.log("pickerResult",pickerResult);
       if (pickerResult && pickerResult.uri) {
-        onChangeImage(pickerResult);
+        onChangeImage(pickerResult.uri);
       }
       return;
     } else {

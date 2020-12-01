@@ -15,9 +15,7 @@ function AppFormImagePicker({ name }) {
    
   };
   const handleRmove = (imageItem) => {
-     console.log("try to remove ",imageItem);
     let currentValue = values[name];
-    console.log("before remove",currentValue);
     // const newArray=[];
     // currentValue.forEach(item => {
     //    if(!item.uri.normalize() === imageItem.uri.normalize()){
@@ -27,7 +25,7 @@ function AppFormImagePicker({ name }) {
     //   });
        
     const newArray= currentValue.filter(function(item){
-        return item.uri.normalize() === imageItem.uri.normalize()
+        return !item.normalize() === imageItem.normalize()
     } 
       // console.debug(item.uri);
       // console.debug(imageItem.uri);

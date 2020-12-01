@@ -12,10 +12,10 @@ import ActivityIndicator from "../../components/ActivityIndicator";
 import constants from '../../config/constants';
 import maidProfileDB from "../../database/maidProfile";
 
-const MaidProfileImageEditScreen = ({navigation}) => {
+const MaidProfileImageEditScreen = ({navigation,route}) => {
     const {user} = useContext(AuthContext);
     const { t } = useTranslation();
-    const initialValue={images:[]}
+    let initialValue= {images:[]}
     const [error,setError] = useState(false);
     const [loading,setLoading] = useState(false);
     const [errorMessage,setErrorMessage] = useState("");
@@ -24,6 +24,11 @@ const MaidProfileImageEditScreen = ({navigation}) => {
     const [downloadUrls] = useState([]);
 
     const segment="images";
+
+    if(route.params.data){
+        initialValue ={images:route.params.data}
+    }
+    console.debug("initialValue",initialValue);
 
     const updateProfile =async (images)=>{
         await maidProfileDB.updateProfile(user.uid,segment,images);
@@ -64,11 +69,11 @@ const MaidProfileImageEditScreen = ({navigation}) => {
         setErrorMessage("");
         setError(false);
         setLoading(true);
+    
+        setTotalCount(values.images.length);
         
-        const listOfUri = values.images.map(image=>image.uri);
-        setTotalCount(listOfUri.length);
-        
-        await storage.uploadFile(user.uid,listOfUri,onSuccess,onError);
+        await storage.uploadFile(user.uid,values.images,onSuccess,onError);
+        navigation.replace(constants.route.maidProfile);
     }
     const validationSchema =Yup.array();
 

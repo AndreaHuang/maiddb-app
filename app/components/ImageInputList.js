@@ -13,15 +13,15 @@ function ImageInputList({ imageUris = [], onAddImage, onRemoveImage }) {
         ref={scrollView}
       >
         <View style={styles.container}>
-          {imageUris.map((imageItem,index) => (
+          {imageUris.map((imageUri,index) => (
             <View key={index} style={styles.image}>
               <ImageInput
-                imageUri={imageItem.uri}
-                onChangeImage={() => onRemoveImage(imageItem)}
+                imageUri={imageUri}
+                onChangeImage={() => onRemoveImage(imageUri)}
               />
             </View>
           ))}
-          <ImageInput onChangeImage={(imageItem) => onAddImage(imageItem)} />
+          <ImageInput onChangeImage={(imageUri) => onAddImage(imageUri)} />
         </View>
       </ScrollView>
     </View>
