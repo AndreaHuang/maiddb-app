@@ -14,7 +14,7 @@ export default {
     height: Dimensions.get("window").height,
   },
   card: {
-    itemHeight: Dimensions.get("window").height * 0.4,
+    itemHeight: Dimensions.get("window").height * 0.25,
   },
   smallText:{
     fontSize:14

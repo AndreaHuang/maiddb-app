@@ -19,9 +19,6 @@ const MaidProfileImageEditScreen = ({navigation,route}) => {
     const [error,setError] = useState(false);
     const [loading,setLoading] = useState(false);
     const [errorMessage,setErrorMessage] = useState("");
-    const [count,setCount] = useState(0);
-    const [totalCount,setTotalCount] = useState(0);
-    const [downloadUrls] = useState([]);
 
     const segment="images";
 
@@ -31,34 +28,17 @@ const MaidProfileImageEditScreen = ({navigation,route}) => {
     console.debug("initialValue",initialValue);
 
     const updateProfile =async (images)=>{
-        await maidProfileDB.updateProfile(user.uid,segment,images);
-    }
-    
-
-    const onSuccess =(downloadUrl)=>{
+        await maidProfileDB.updateProfile(user.uid,segment,images); 
         setLoading(false);
-        console.log("upload sucessfully",downloadUrl);
-        setCount(count+1);
-         downloadUrls.push(downloadUrl);
-        if(count ===totalCount){
-         navigation.replace(constants.route.maidProfile);
-         
-         updateProfile(downloadUrls);
-        }
-
-
+        navigation.replace(constants.route.maidProfile);
     }
-    const onError =(error)=>{
-         setLoading(false);
-         setError(true);
-         setErrorMessage(t(error.code))
-        console.error("upload failed",error);
-        setCount(count+1);
-        console.log("onError"+count);
-        if(count ===totalCount){
-         navigation.replace(constants.route.maidProfile);
-        }
+    const handleError=(error)=>{
+            setLoading(false);
+            setErrorMessage(t(error.errorCode));
+            setError(true);
+            return;
     }
+
     const handleSubmit = async (values)=>{
         console.log("MaidProfileImageEditScreen handleSubmit",values);
         if(!values.images){
@@ -70,10 +50,7 @@ const MaidProfileImageEditScreen = ({navigation,route}) => {
         setError(false);
         setLoading(true);
     
-        setTotalCount(values.images.length);
-        
-        await storage.uploadFile(user.uid,values.images,onSuccess,onError);
-        navigation.replace(constants.route.maidProfile);
+        storage.uploadFile(user.uid,values.images,updateProfile,handleError);
     }
     const validationSchema =Yup.array();
 
@@ -86,17 +63,16 @@ const MaidProfileImageEditScreen = ({navigation,route}) => {
                     onSubmit={handleSubmit}>
 
                     <AppFormImagePicker name="images"/>
-                    <AppErrorMessage error={errorMessage} visible ={error}/>
                     <AppSubmitButton title={t("button.submit")} />
+                    <AppErrorMessage error={errorMessage} visible ={error}/>
 
                     </AppForm>
                 </View>
             </Screen> );
 }
-const styles=StyleSheet.create({
+const styles = StyleSheet.create({
     container:{
-        marginHorizontal:15
+
     }
 })
- 
 export default MaidProfileImageEditScreen;

@@ -59,7 +59,7 @@ const MaidProfileScreen = ({navigation}) => {
     const removeWorkHistory = (index)=>{
         const confirmToDelete = () =>
             Alert.alert(
-            "My Alert Msg",
+            t("message.confirm.remove.workhistory"),
             null,
             [   {
                 text: "Cancel",

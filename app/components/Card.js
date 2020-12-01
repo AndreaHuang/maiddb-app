@@ -12,7 +12,7 @@ function Card({
   width = defaultStyles.dimension.width,
   height = defaultStyles.card.itemHeight,
 }) {
-  console.log(width, height);
+
   const dimension = { height: height, width: width - 20 };
   return (
     <View style={[styles.container, dimension]}>
