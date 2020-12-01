@@ -14,6 +14,8 @@ import MaidProfileScreen from '../screens/maidProfile/MaidProfileScreen';
 import MaidProfileBasicInfoEditScreen from "../screens/maidProfile/MaidProfileBasicInfoEditScreen";
 import MaidProfileWorkHistoryEditScreen from "../screens/maidProfile/MaidProfileWorkHistoryEditScreen";
 import MaidProfileImageEditScreen from "../screens/maidProfile/MaidProfileImageEditScreen";
+import TestScreen from "../screens/maidProfile/TestScreen";
+
 import constants from "../config/constants";
 import i18n from "../config/i18n";
 

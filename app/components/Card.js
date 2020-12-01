@@ -1,51 +1,79 @@
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
-import AppText from "./AppText";
-import colors from "../config/color";
+import { Image, View, StyleSheet, Text } from "react-native";
 
-function Card({ title, subTitle, image }) {
+import colors from "../config/color";
+import defaultStyles from "../config/styles";
+import AppText from "../components/AppText";
+
+function Card({
+  imageUrl,
+  title,
+  subTitle,
+  width = defaultStyles.dimension.width,
+  height = defaultStyles.card.itemHeight,
+}) {
+  console.log(width, height);
+  const dimension = { height: height, width: width - 20 };
   return (
-    <View style={styles.card}>
-      <Image style={styles.image} source={{url:image}} />
-      {(title || subTitle) &&
-      <View style={styles.detailsContainer}>
-       {title && <AppText numberOfLines={1} style={styles.title}>
-          {title}
-        </AppText> }
-       
-        {subTitle && <AppText numberOfLines={2} style={styles.subTitle}>
-          {subTitle}
-         </AppText> }
-      </View>}
+    <View style={[styles.container, dimension]}>
+      <Image
+        style={[styles.image, dimension]}
+        source={{ uri: imageUrl }}
+      ></Image>
+      <View style={styles.textContainer}>
+        {title && (
+          <AppText numberOfLines={1} style={styles.title}>
+            {title}
+          </AppText>
+        )}
+        {subTitle && (
+          <AppText numberOfLines={3} style={styles.subTitle}>
+            {subTitle}
+          </AppText>
+        )}
+      </View>
     </View>
   );
 }
-export default Card;
 const styles = StyleSheet.create({
-  card: {
-    borderRadius: 15,
+  container: {
     backgroundColor: colors.white,
-    // margin: 15,
-    // overflow: "hidden",
-    // marginBottom: 5,
-    minWidth:200,
-    width:"100%",
-    alignSelf:"center",
-    padding:5
+    borderRadius: 10,
+    elevation: 5,
+    margin: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0.5, height: 0.5 },
+    shadowOpacity: 0.5,
+    shadowRadius: 3,
   },
   image: {
+    borderRadius: 10,
     resizeMode: "contain",
-    // width: "100%",
-    height: 200,
   },
-  detailsContainer: {
-    padding: 20,
-  },
-  subTitle: {
-    color: colors.secondary,
-    fontWeight: "bold",
+  textContainer: {
+    //position: "absolute",
+    bottom: 10,
+    margin: 10,
+    left: 5,
   },
   title: {
+    color: colors.white,
+    elevation: 5,
+    fontWeight: "bold",
+    shadowColor: "#000",
+    shadowOffset: { width: 0.8, height: 0.8 },
+    shadowOpacity: 1,
+    shadowRadius: 2,
     marginBottom: 5,
   },
+  subTitle: {
+    color: colors.white,
+    elevation: 5,
+    fontSize: 12,
+    shadowColor: "#000",
+    shadowOffset: { width: 0.8, height: 0.8 },
+    shadowOpacity: 1,
+    shadowRadius: 2,
+  },
 });
+export default Card;

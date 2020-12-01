@@ -18,9 +18,7 @@ const maleIcon=require("../../assets/male.png");
 
 const calculateAge =(birthDateString)=>{
     if(!birthDateString) return "";
-    console.debug(birthDateString);
     const birthDate = new Date(birthDateString);
-    console.debug(birthDate);
     const today = new Date();
 
     var years = (today.getFullYear() - birthDate.getFullYear());

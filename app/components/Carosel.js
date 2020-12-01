@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Animated, FlatList,Image, View, StyleSheet } from "react-native";
+import { Animated, FlatList, View, StyleSheet } from "react-native";
 
 import Card from "../components/Card";
 import colors from "../config/color";
@@ -7,11 +7,9 @@ import defaultStyles from "../config/styles";
 
 const width = defaultStyles.dimension.width;
 function Carosel({ data }) {
-  if(!data) return null;
   const [activeIndex, setAcitveIndex] = useState();
   const scrollX = new Animated.Value(0);
   let position = Animated.divide(scrollX, width);
-
   return (
     <View style={styles.container}>
       <FlatList
@@ -35,8 +33,7 @@ function Carosel({ data }) {
         )}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => {
-          return <Card image={item} />;
-          // return <Image source={{url:item}} style={{height:200,width:200}} />
+          return <Card imageUrl={item} />;
         }}
       ></FlatList>
       <View style={styles.paginationContainer}>
@@ -58,10 +55,7 @@ function Carosel({ data }) {
   );
 }
 const styles = StyleSheet.create({
-  container: {
-    marginHorizontal:15,
-    justifyContent:"center"
-  },
+  container: {},
   dot: {
     borderRadius: 4,
     height: 8,

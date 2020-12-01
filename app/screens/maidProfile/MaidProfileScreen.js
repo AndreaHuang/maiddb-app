@@ -21,6 +21,7 @@ import MaidProfileBasicInfoSection from "./MaidProfileBasicInfoSection";
 import MaidProfileWorkHistorySection from "./MaidProfileWorkHistorySection";
 import Carosel from '../../components/Carosel';
 import MaidProfileHeaderSection from './MaidProfileHeaderSection';
+import AppImageSlider from "../../components/display/AppImageSlider"
 
 
 const MaidProfileScreen = ({navigation}) => {

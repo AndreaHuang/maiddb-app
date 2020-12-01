@@ -34,11 +34,10 @@ const MaidProfileImageEditScreen = ({navigation}) => {
         setLoading(false);
         console.log("upload sucessfully",downloadUrl);
         setCount(count+1);
-         console.log("onError"+count);
          downloadUrls.push(downloadUrl);
         if(count ===totalCount){
          navigation.replace(constants.route.maidProfile);
-         console.log("all downloadUrl", downloadUrls);
+         
          updateProfile(downloadUrls);
         }
 
