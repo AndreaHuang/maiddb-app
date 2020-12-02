@@ -15,13 +15,11 @@ import maidProfileScheme from "../../schemes/maidProfile";
 
 import i18n from "../../config/i18n";
 import AuthContext from '../../auth/AuthContext';
-import { set } from 'lodash';
 import ActivityIndicator from '../../components/ActivityIndicator';
 import MaidProfileBasicInfoSection from "./MaidProfileBasicInfoSection";
 import MaidProfileWorkHistorySection from "./MaidProfileWorkHistorySection";
 import CaroselWithModal from '../../components/CaroselWithModal';
 import MaidProfileHeaderSection from './MaidProfileHeaderSection';
-import AppImageSlider from "../../components/display/AppImageSlider"
 
 
 const MaidProfileScreen = ({navigation}) => {

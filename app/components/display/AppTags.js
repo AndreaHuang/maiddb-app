@@ -2,7 +2,7 @@ import React from 'react';
 import {View,Text,StyleSheet} from "react-native";
 import { useTranslation } from "react-i18next";
 
-import i18 from "../config/i18n";
+import i18 from "../../config/i18n";
 import color from '../../config/color';
 import AppText from "../AppText";
 

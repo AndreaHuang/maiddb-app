@@ -9,7 +9,8 @@ export default{
         editMaidProfileBasicInfo:"editMaidProfileBasicInfo",
         account:"Account",
         editWorkHistory:"editWorkHistory",
-        editImage:"editImage"
+        editImage:"editImage",
+        mailList:"maidList",
     },
     cache:{
         maidProfile:"maidProfile"

@@ -18,6 +18,7 @@ const createProfile= async (currentUser)=>{
 
     const init = Object.assign({
         user_uid:uid,
+        createdAt:new Date(),
         basicInfo:{
             email:currentUser.email
         }}
@@ -57,6 +58,7 @@ const updateProfile = async(uid,segment,values)=>{
     try{
         const update={};
         update[segment]=values;
+        update.lastUpdatedAt=new Date();
         // console.debug("updateProfile",update);
         await db.ref(maidProfileRef+"/"+uid).update(update);
         
@@ -72,6 +74,7 @@ const updateProfile = async(uid,segment,values)=>{
 const addOrUpdateWorkHistory = async(uid,values,index)=>{
     const segment="workHistory";
     try{
+        values.lastUpdatedAt=new Date();
         // if(index < 0) //new item
         const existing = await (await db.ref(maidProfileRef+"/"+uid+"/"+segment).once('value')).val();
         // await db.ref(maidProfileRef+"/"+uid).update(update); 
@@ -92,6 +95,7 @@ const addOrUpdateWorkHistory = async(uid,values,index)=>{
         }
         const update={};
         update[segment]=array;
+        update.lastUpdatedAt=new Date();
         await db.ref(maidProfileRef+"/"+uid).update(update);
         return {success:true}
 
@@ -123,6 +127,7 @@ const removeWorkHistory =async (uid,index) =>{
         console.debug("after delete",existing);
         const update={};
         update[segment]=existing;
+        update.lastUpdatedAt=new Date();
         await db.ref(maidProfileRef+"/"+uid).update(update);
         return {success:true}
 
@@ -135,10 +140,49 @@ const removeWorkHistory =async (uid,index) =>{
         }
     }
 }
+
+
+const search =async (keyword,offset,limit) =>{
+    
+   const snapshot = await db.ref(maidProfileRef).once('value');
+
+//    ref.once('value', (snapshot) => {
+//         snapshot.forEach((childSnapshot) => {
+//             var childKey = childSnapshot.key;
+//             var childData = childSnapshot.val();
+//             // ...
+//         });
+// });
+
+   const allPromise = [];
+   const allResult = []
+   snapshot.forEach((childSnapshot) =>{
+    //    const value = childSnapshot.val();
+    //    console.debug("value",value);
+        allResult.push(childSnapshot.val());
+    //    allResult.push({id:childSnapshot.key,basicInfo:{name:"test"}});
+    //    const promise = childSnapshot.val().then((value)=>{
+    //             allResult.push(value);
+    //     });
+    //     allPromise.push(promise);
+   });
+
+//    if(allPromise.length > 0 ){
+//         await Promise.all(allPromise);
+//         return allResult;
+//    } else {
+//        return allResult;
+//    }
+   return allResult;
+
+
+}
+
 export default {
     retreiveOrCreateProfile,
     updateProfile,
     addOrUpdateWorkHistory,
-    removeWorkHistory
+    removeWorkHistory,
     // updateBasicInfo
+    search,
 }
