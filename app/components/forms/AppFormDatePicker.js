@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import defaultStyles from "../../config/styles";
 import AppText from "../AppText"
 import AppErrorMessage from './AppErrorMessage';
-import i18n from "../config/i18n";
+import i18n from "../../config/i18n";
 
 
 

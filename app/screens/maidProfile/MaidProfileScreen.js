@@ -19,7 +19,7 @@ import { set } from 'lodash';
 import ActivityIndicator from '../../components/ActivityIndicator';
 import MaidProfileBasicInfoSection from "./MaidProfileBasicInfoSection";
 import MaidProfileWorkHistorySection from "./MaidProfileWorkHistorySection";
-import Carosel from '../../components/Carosel';
+import CaroselWithModal from '../../components/CaroselWithModal';
 import MaidProfileHeaderSection from './MaidProfileHeaderSection';
 import AppImageSlider from "../../components/display/AppImageSlider"
 
@@ -86,7 +86,7 @@ const MaidProfileScreen = ({navigation}) => {
         <ScrollScreen>
                 <MaidProfileHeaderSection data={profile.basicInfo}/>
                 <AppSection sectionTitle={t("image")} defaultCollapsed={false}  onEdit={()=>{navigateToEditProfile(constants.route.editImage,profile.images)}} />
-                <Carosel data={profile.images}/>
+                <CaroselWithModal data={profile.images}/>
                 <MaidProfileBasicInfoSection data={profile.basicInfo} defaultCollapsed={false}  onEdit={()=>navigateToEditProfile(constants.route.editMaidProfileBasicInfo,profile.basicInfo)}/>
                 {/* <AppSection sectionTitle="Basic Info" items={profile.basicInfo} editFunction={()=>{navigateToEditProfile(constants.route.editMaidProfileBasicInfo,profile.basicInfo)}}/> */}
                 {/* <AppSection sectionTitle="Work History" items={profile.experience} editFunction={()=>{navigateToEditProfile("WorkHistory")}}/> */}

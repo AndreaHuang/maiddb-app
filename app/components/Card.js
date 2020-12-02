@@ -11,13 +11,14 @@ function Card({
   subTitle,
   width = defaultStyles.dimension.width,
   height = defaultStyles.card.itemHeight,
+  style
 }) {
 
   const dimension = { height: height, width: width - 20 };
   return (
-    <View style={[styles.container, dimension]}>
+    <View style={[styles.container, dimension,style]}>
       <Image
-        style={[styles.image, dimension]}
+        style={[styles.image, dimension,style]}
         source={{ uri: imageUrl }}
       ></Image>
       <View style={styles.textContainer}>

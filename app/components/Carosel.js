@@ -1,20 +1,21 @@
 import React, { useState } from "react";
-import { Animated, FlatList, View, StyleSheet } from "react-native";
+import { Animated, FlatList, Modal,View, StyleSheet } from "react-native";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 import Card from "../components/Card";
 import colors from "../config/color";
 import defaultStyles from "../config/styles";
 
 const width = defaultStyles.dimension.width;
-function Carosel({ data }) {
-  const [activeIndex, setAcitveIndex] = useState();
+function Carosel({ data, onPress,cardStyle}) {
   const scrollX = new Animated.Value(0);
   let position = Animated.divide(scrollX, width);
+  
   return (
     <View style={styles.container}>
       <FlatList
         data={data}
-        keyExtractor={(item, index) => item.id}
+        keyExtractor={(item, index) => index.toString()}
         horizontal
         pagingEnabled
         scrollEnabled
@@ -32,8 +33,15 @@ function Carosel({ data }) {
           { useNativeDriver: false }
         )}
         showsHorizontalScrollIndicator={false}
-        renderItem={({ item }) => {
-          return <Card imageUrl={item} />;
+        renderItem={({ item ,index}) => {
+          if(onPress) {
+              return (<TouchableWithoutFeedback onPress={onPress}>
+                    <Card key={index} imageUrl={item} style={cardStyle} />
+                </TouchableWithoutFeedback>);
+          }else{
+            return (<Card key={index} imageUrl={item} style={cardStyle}/>)
+          }
+         
         }}
       ></FlatList>
       <View style={styles.paginationContainer}>
@@ -52,6 +60,7 @@ function Carosel({ data }) {
         })}
       </View>
     </View>
+
   );
 }
 const styles = StyleSheet.create({
