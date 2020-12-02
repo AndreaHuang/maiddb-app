@@ -8,20 +8,21 @@ function ImageInputList({ imageUris = [], onAddImage, onRemoveImage }) {
   return (
     <View>
       <ScrollView
-        horizontal
+        // horizontal
         onContentSizeChange={() => scrollView.current.scrollToEnd()}
         ref={scrollView}
       >
         <View style={styles.container}>
-          {imageUris.map((imageUri,index) => (
-            <View key={index} style={styles.image}>
-              <ImageInput
+          {imageUris.map((imageUri,index) => { 
+            if (!imageUri) return null;
+            return ( <View key={index} style={styles.image}>
+              <ImageInput index={index}
                 imageUri={imageUri}
-                onChangeImage={() => onRemoveImage(imageUri)}
+                onChangeImage={(index) => onRemoveImage(index)}
               />
-            </View>
-          ))}
-          <ImageInput onChangeImage={(imageUri) => onAddImage(imageUri)} />
+            </View>)}
+          )}
+          <ImageInput onChangeImage={(imageUri) => onAddImage(imageUri)}/>
         </View>
       </ScrollView>
     </View>
@@ -32,9 +33,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
+    flexWrap:"wrap"
   },
   image: {
-    marginRight: 5,
+    marginHorizontal: 10,
+    marginTop:15
   },
 });
 export default ImageInputList;

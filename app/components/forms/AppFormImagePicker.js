@@ -1,5 +1,5 @@
 import React from "react";
-
+import _ from "lodash";
 import ImageInputList from "../ImageInputList";
 import AppErrorMessage from "./AppErrorMessage";
 import { useFormikContext } from "formik";
@@ -14,27 +14,22 @@ function AppFormImagePicker({ name }) {
     }
    
   };
-  const handleRmove = (imageItem) => {
-    let currentValue = values[name];
-    // const newArray=[];
-    // currentValue.forEach(item => {
-    //    if(!item.uri.normalize() === imageItem.uri.normalize()){
-    //      console.log("got a item");
-    //      newArray.push(item);
-    //    }
-    //   });
-       
-    const newArray= currentValue.filter(function(item){
-        return !item.normalize() === imageItem.normalize()
-    } 
-      // console.debug(item.uri);
-      // console.debug(imageItem.uri);
-      // console.debug(item.uri === imageItem.uri);
-      // console.debug(item.uri.normalize() === imageItem.uri.normalize());
-     
-    );
-     console.log("after remove",newArray);
-     return newArray;
+  const handleRmove = (targetIndex) => {
+    //  console.log("to be remove",imageItem);
+    // let currentValue = values[name];
+    //  console.log("currentValue",currentValue);
+  
+    // const newArray= currentValue.filter((item)=>{
+    //       return !imageItem === item;
+    // });
+    //  console.log("after remove",newArray);
+    //  return newArray;
+    console.log("to be remove",targetIndex);
+    let currentValue = values[name];    
+    delete currentValue[targetIndex];
+    console.log("after remove",currentValue);
+    return currentValue;
+    
 
     
   };
@@ -43,7 +38,7 @@ function AppFormImagePicker({ name }) {
       <ImageInputList
         imageUris={values[name]}
         onAddImage={(imageItem) => setFieldValue(name, handleAdd(imageItem))}
-        onRemoveImage={(imageItem) => setFieldValue(name, handleRmove(imageItem))}
+        onRemoveImage={(index) => setFieldValue(name, handleRmove(index))}
       />
       <AppErrorMessage error={errors[name]} visible={touched[name]} />
     </>

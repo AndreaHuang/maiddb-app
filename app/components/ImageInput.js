@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/color";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
-function ImageInput({ imageUri = null, onChangeImage }) {
+function ImageInput({ imageUri = null, onChangeImage,index }) {
   useEffect(() => {
     requestPermission();
   }, []);
@@ -32,7 +32,7 @@ function ImageInput({ imageUri = null, onChangeImage }) {
       return;
     } else {
       Alert.alert("Delete", "Are you sure to delete this image ?", [
-        { text: "Yes", onPress: () => onChangeImage(null) },
+        { text: "Yes", onPress: () => onChangeImage(index) },
         { text: "No" },
       ]);
       return;

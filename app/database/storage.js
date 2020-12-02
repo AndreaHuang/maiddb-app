@@ -7,16 +7,23 @@ const metadata ={
     contentType:"jpg"
 }
 
-const uploadFile =async (userId,listOfUri,onSuccess,onError) =>{
+const uploadFile =async (userId,originalList,onSuccess,onError) =>{
 
-    const downloadUrls =Array.apply(null, Array(listOfUri.length));
+  
     const allPromises = [];
+    const listOfUri = originalList.filter((item)=>{
+        return !(!item);
+    })
     console.debug("Place 1",listOfUri);
+    const downloadUrls =Array.apply(null, Array(listOfUri.length));
      console.debug("Place 1",downloadUrls);
     await listOfUri.forEach(async (uri,index)=>{
          console.debug("Place 5",index);
+          console.debug("Place 5",uri);
          if(!uri){
-             return; //skip empty result;
+            console.log("place 5 skip undefined",) 
+            return; //skip empty result;
+
          }
         if(_.startsWith(uri,"https://")){ //previously uploaded files;
            downloadUrls[index] = uri;
