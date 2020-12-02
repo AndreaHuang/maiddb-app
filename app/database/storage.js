@@ -4,24 +4,17 @@ import _ from "lodash";
 
 const prefixImage="images";
 const metadata ={
-    contentType:"jpg"
+    contentType:"image/png",
 }
 
 const uploadFile =async (userId,originalList,onSuccess,onError) =>{
-
-  
     const allPromises = [];
     const listOfUri = originalList.filter((item)=>{
         return !(!item);
     })
-    console.debug("Place 1",listOfUri);
     const downloadUrls =Array.apply(null, Array(listOfUri.length));
-     console.debug("Place 1",downloadUrls);
     await listOfUri.forEach(async (uri,index)=>{
-         console.debug("Place 5",index);
-          console.debug("Place 5",uri);
          if(!uri){
-            console.log("place 5 skip undefined",) 
             return; //skip empty result;
 
          }
@@ -36,7 +29,6 @@ const uploadFile =async (userId,originalList,onSuccess,onError) =>{
 
         const filePromise 
             = fetch(uploadUri).then(async file=>{
-                                console.log("place 7");
                                 const blob = await  file.blob();
                                 const snapshot = await firebase.storage().ref().child(prefixImage+"/"+userId +"/"+name).put(blob,metadata);
                                 console.log("place 8");
@@ -53,17 +45,20 @@ const uploadFile =async (userId,originalList,onSuccess,onError) =>{
     if(allPromises.length > 0) {
         Promise.all(allPromises).then((values) =>{
              onSuccess(downloadUrls);
+             clearnup(uid,downloadUrls);
         },(error)=>{
              console.error("upload error",error);
              onError(error);
         });
     } else{
-        console.debug("Place 4");
         console.log("no new upload");
         onSuccess(downloadUrls);
+        clearnup(uid,downloadUrls);
     }
 }
-
+const clearnup =(uid,validUrls)=>{
+    //TODO : need to remove the image that is not in use.
+}
 
 export default{
     uploadFile,

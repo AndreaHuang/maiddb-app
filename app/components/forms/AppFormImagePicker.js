@@ -15,15 +15,6 @@ function AppFormImagePicker({ name }) {
    
   };
   const handleRmove = (targetIndex) => {
-    //  console.log("to be remove",imageItem);
-    // let currentValue = values[name];
-    //  console.log("currentValue",currentValue);
-  
-    // const newArray= currentValue.filter((item)=>{
-    //       return !imageItem === item;
-    // });
-    //  console.log("after remove",newArray);
-    //  return newArray;
     console.log("to be remove",targetIndex);
     let currentValue = values[name];    
     delete currentValue[targetIndex];

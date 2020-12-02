@@ -26,5 +26,8 @@ export default {
   },
   smallTitle:{
     fontSize:18
+  },
+  image:{
+    resizeToWidth:400
   }
 };

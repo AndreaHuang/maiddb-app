@@ -25,7 +25,7 @@ const MaidProfileImageEditScreen = ({navigation,route}) => {
     if(route.params.data){
         initialValue ={images:route.params.data}
     }
-    console.debug("initialValue",initialValue);
+
 
     const updateProfile =async (images)=>{
         await maidProfileDB.updateProfile(user.uid,segment,images); 

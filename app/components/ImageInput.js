@@ -4,7 +4,8 @@ import * as ImagePicker from "expo-image-picker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import colors from "../config/color";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+
+import ImageResizer from "../utiity/ImageResizer";
 
 function ImageInput({ imageUri = null, onChangeImage,index }) {
   useEffect(() => {
@@ -24,10 +25,17 @@ function ImageInput({ imageUri = null, onChangeImage,index }) {
           allowsEditing: true,
           aspect: [4, 3],
           quality: 1,
+
         });
       console.log("pickerResult",pickerResult);
       if (pickerResult && pickerResult.uri) {
-        onChangeImage(pickerResult.uri);
+        const resizeResult = await ImageResizer.resize(pickerResult.uri);
+        if(resizeResult.error){
+           onChangeImage(pickerResult.uri);
+        } else {
+           onChangeImage(resizeResult.data);
+        }
+       
       }
       return;
     } else {
