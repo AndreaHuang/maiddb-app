@@ -27,7 +27,6 @@ const MaidProfileScreen = ({navigation}) => {
     const {user} = useContext(AuthContext);
     const { t } = useTranslation();
     const [profile,setProfile] = useState(null);
-    
      useEffect(()=>{
         async function retreiveOrCreateProfile(){
             setLoading(true);
@@ -42,11 +41,7 @@ const MaidProfileScreen = ({navigation}) => {
         } else{
             setProfile(maidProfileScheme.initialScheme)
         }
-       
-       
         retreiveOrCreateProfile();
-    
-        
      },[]);
 
    
@@ -80,17 +75,11 @@ const MaidProfileScreen = ({navigation}) => {
         return  <ActivityIndicator />
     }
     return ( 
-    
         <ScrollScreen>
                 <MaidProfileHeaderSection data={profile.basicInfo}/>
                 <AppSection sectionTitle={t("image")} defaultCollapsed={false}  onEdit={()=>{navigateToEditProfile(constants.route.editImage,profile.images)}} />
                 <CaroselWithModal data={profile.images}/>
                 <MaidProfileBasicInfoSection data={profile.basicInfo} defaultCollapsed={false}  onEdit={()=>navigateToEditProfile(constants.route.editMaidProfileBasicInfo,profile.basicInfo)}/>
-                {/* <AppSection sectionTitle="Basic Info" items={profile.basicInfo} editFunction={()=>{navigateToEditProfile(constants.route.editMaidProfileBasicInfo,profile.basicInfo)}}/> */}
-                {/* <AppSection sectionTitle="Work History" items={profile.experience} editFunction={()=>{navigateToEditProfile("WorkHistory")}}/> */}
-                
-             
-                
                 <AppSection sectionTitle={t("workHistory")} defaultCollapsed={false}  onAdd={()=>{navigateToEditProfile(constants.route.editWorkHistory,null,-1)}}>
                     {profile.workHistory?
                         profile.workHistory.map((item,index)=>{return  <MaidProfileWorkHistorySection key={index} data={item}
@@ -99,7 +88,10 @@ const MaidProfileScreen = ({navigation}) => {
                         />})
                         :null}
                 </AppSection>
-    </ScrollScreen>);
+
+        </ScrollScreen>
+
+    );
 }
  
 const styles=StyleSheet.create({

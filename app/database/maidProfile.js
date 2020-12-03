@@ -36,6 +36,7 @@ const createProfile= async (currentUser)=>{
     
 }
 const retreiveOrCreateProfile=async ()=>{
+
     const currentUser = auth().currentUser;
 
     const snapshot = await(await db.ref(maidProfileRef+"/"+currentUser.uid).once('value')).val();
@@ -51,7 +52,7 @@ const retreiveOrCreateProfile=async ()=>{
         cache.store(constants.cache.maidProfile,newProfile);
         return newProfile;
     }
-    
+
 }
 
 const updateProfile = async(uid,segment,values)=>{
