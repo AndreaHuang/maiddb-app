@@ -35,6 +35,7 @@
     "react-i18next": "^11.7.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
     "react-native-date-picker": "^3.2.5",
+    "react-native-elements": "^3.0.0-alpha.1",
     "react-native-flatlist-slider": "^1.0.5",
     "react-native-gesture-handler": "~1.7.0",
     "react-native-image-gallery": "^2.1.5",
