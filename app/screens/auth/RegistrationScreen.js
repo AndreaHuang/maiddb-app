@@ -1,11 +1,11 @@
 import React,{useState,useContext} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet,View} from 'react-native';
 
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
+
 import i18n from "../../config/i18n";
-
-
+import constants from "../../config/constants";
 import Screen from '../../components/Screen';
 import {
   AppForm,
@@ -13,6 +13,7 @@ import {
   AppFormField,
   AppSubmitButton,
 } from "../../components/forms";
+import AppLink from "../../components/AppLink";
 import ActivityIndicator from "../../components/ActivityIndicator";
 import EmailPasswordAuth from "../../auth/EmailPasswordAuth";
 import AuthContext from '../../auth/AuthContext';
@@ -36,7 +37,7 @@ const RegistrationScreen = ({navigation}) => {
         .required(t("validation.password.is.required"))
         .label(t("password")),
         passwordConfirmation: Yup.ref('password')
-        // .required(t("validation.password.mustmatch"))
+        //  .required(t("validation.password.mustmatch"))
         // .label(t("passwordConfirmation"))
     });
 
@@ -68,28 +69,32 @@ const RegistrationScreen = ({navigation}) => {
           name="account"
           keyboardType="email-address"
           placeholder={t("account")}
-           autoCapitalize="none"
+          autoCapitalize="none"
+          label={t("account")}
         ></AppFormField>
 
         <AppFormField
           name="password"
           placeholder={t("password")}
           secureTextEntry
-          style={styles.password}
           textAlign="left"
+          label={t("password")}
         ></AppFormField>
 
         <AppFormField
           name="passwordConfirmation"
           placeholder={t("passwordConfirmation")}
           secureTextEntry
-          style={styles.password}
           textAlign="left"
+           label={t("password")}
         ></AppFormField>
 
         <AppErrorMessage error={t(errorCode)} visible={error} />
         <AppSubmitButton title={t("button.signup")}></AppSubmitButton>
       </AppForm>
+      <View style={styles.linksContainer}>
+          <AppLink title={t("button.cancel")} onPress={()=>navigation.navigate(constants.route.login)}/>
+       </View>
     </Screen>
   );
 }
@@ -99,10 +104,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginHorizontal: 5,
   },
-  password: {
-    flex: 1,
-    fontSize: 18,
-  },
+  linksContainer:{
+    flexDirection:"row",
+    justifyContent:"flex-end",
+    marginHorizontal:15,
+    paddingBottom:35,
+    paddingTop:15,
+    flexWrap:"nowrap",
+
+    
+  }
 });
  
 export default RegistrationScreen;

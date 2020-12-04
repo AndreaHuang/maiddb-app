@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet,View} from 'react-native';
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
 import i18n from "../../config/i18n";
@@ -15,6 +15,7 @@ import {
   AppFormField,
   AppSubmitButton,
 } from "../../components/forms";
+import AppLink from "../../components/AppLink";
 import ActivityIndicator from "../../components/ActivityIndicator";
 import EmailPasswordAuth from "../../auth/EmailPasswordAuth";
 
@@ -26,11 +27,11 @@ const ResestPasswordScreen = ({navigation}) => {
     const [loading,setLoading]=useState(false);
 
       const intialValues = {
-        email: ""
+        account: ""
     };
     //Form validationScheme
     const validationScheme = Yup.object({
-        email: Yup.string().email().required(t("validation.id.is.required")).label(t("account"))
+        account: Yup.string().email().required(t("validation.id.is.required")).label(t("account"))
     });
 
     const handleForgetPassword= async ({email})=>{
@@ -67,10 +68,11 @@ const ResestPasswordScreen = ({navigation}) => {
        <AppText style={{color:color.medium}}>{t("message.send-email-reset-password")}</AppText>
       
         <AppFormField
-          name="email"
+          name="account"
           keyboardType="email-address"
-          placeholder={t("email")}
-           autoCapitalize="none"
+          placeholder={t("account")}
+          autoCapitalize="none"
+          label={t("account")}
         ></AppFormField>
 
   
@@ -82,6 +84,9 @@ const ResestPasswordScreen = ({navigation}) => {
          {emailSent && <AppText style={{color:color.success}}>{t("message.reset-password-email-sent")}</AppText>}
 
       </AppForm>
+      <View style={styles.linksContainer}>
+          <AppLink title={t("button.cancel")} onPress={()=>navigation.navigate(constants.route.login)}/>
+       </View>
     </Screen>
   );
 }
@@ -90,6 +95,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     marginHorizontal: 5,
+  },
+  linksContainer:{
+    flexDirection:"row",
+    justifyContent:"flex-end",
+    marginHorizontal:15,
+    paddingBottom:35,
+    paddingTop:15,
+    flexWrap:"nowrap",
+
+    
   }
 });
  
