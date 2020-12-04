@@ -24,6 +24,7 @@
     "validation.location.is.required":"Work Location is required",
     "validation.duties.is.required":"Job Duties are required",
     "validation.role.is.required":"To conitune, please tell us if you are an employer or a maid.",
+    "validation.displayName.is.required":"The Account Name will be shown to other users.",
 
     "button.login":"Login",
     "button.submit":"SUBMIT",
@@ -147,7 +148,8 @@
     "image":"Images and Videos",
     "role":"I am ",
     "employer":"An Employer",
-    "maid":"A Maid"
+    "maid":"A Maid",
+    "displayName":"Account Name"
 
 
 

@@ -50,7 +50,7 @@ const AppFormDatePicker = ({name,label,locale="zh_HK"}) => {
                         headerTextIOS ={t("label.pick.date")}
                         cancelTextIOS={t("label.cancel.date")}
                         confirmTextIOS={t("label.confirm.date")}
-                        date={new Date(values[name])}
+                        date={values[name]? new Date(values[name]) :new Date()}
                         mode="date"
                         onConfirm={handleConfirm}
                         onCancel={()=>setVisible(false)}

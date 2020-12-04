@@ -5,7 +5,7 @@ import * as Yup from "yup";
 
 import Screen from "../../components/Screen";
 import options from "../../schemes/options";
-import {AppForm,AppSubmitButton,AppFormToggle} from "../../components/forms";
+import {AppForm,AppFormField,AppSubmitButton,AppFormToggle} from "../../components/forms";
 // Who are you?
 //location
 import i18n from "../../config/i18n";
@@ -25,14 +25,16 @@ const AccountInitiationScreen = ({navigation}) => {
         if(values.role === "maid"){
             navigation.navigate(constants.route.maidProfile);
         } else {
-
+            navigation.navigate(constants.route.maidList);
         }
     }
     const initialValue={
         role:"",
+        displayName:"",
     }
     const validationScheme=Yup.object({
-        role: Yup.string().required(t("validation.role.is.required"))
+        role: Yup.string().required(t("validation.role.is.required")),
+        displayName:Yup.string().required(t("validation.displayName.is.required")),
     });
 
     return (<Screen style={styles.container}>
@@ -40,6 +42,7 @@ const AccountInitiationScreen = ({navigation}) => {
         initialValues={initialValue} 
         validationSchema={validationScheme}
         onSubmit = {handleSubmit} >
+            <AppFormField name="displayName" label={t("displayName")}/>
             <AppFormToggle name="role" items={options.role} label={t("role")}/>
             <AppSubmitButton title={t("button.next")} />
        </AppForm>

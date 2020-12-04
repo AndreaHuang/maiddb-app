@@ -12,10 +12,10 @@ const CommonNavigator=({screen})=>{
    
     return(
         <Stack.Navigator>
-                <Stack.Screen name={constants.route.mailList}  
+                <Stack.Screen name={constants.route.maidList}  
                 component={MaidListScreen} options={{ title: 'Maid List' }}/>  
                 <Stack.Screen name={constants.route.maidDetails}
-                component={MaidDetailsScreen} options={{ title: 'Maid Profile' }}/> 
+                component={MaidDetailsScreen} options={{ title: 'Maid Details' }}/> 
         </Stack.Navigator>
     );
 }

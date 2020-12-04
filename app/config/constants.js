@@ -11,7 +11,7 @@ export default{
         accountProfile:"accountProfile",
         editWorkHistory:"editWorkHistory",
         editImage:"editImage",
-        mailList:"maidList",
+        maidList:"maidList",
         maidDetails:"maidDetails"
     },
     cache:{
