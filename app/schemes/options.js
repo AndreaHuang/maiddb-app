@@ -10,5 +10,6 @@ export default {
     gender:["f","m"],
     location:["id","hk","sg","tw","ph","th","other"],
     maidStatus:["finishContract","breakContract","new"],
-    reasonOfLeaving:["finishContract","employerMigration","elderlyPassAway","selfResign","other"]
+    reasonOfLeaving:["finishContract","employerMigration","elderlyPassAway","selfResign","other"],
+    role:["employer","maid"]
 }

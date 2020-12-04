@@ -31,7 +31,7 @@ const MaidProfileScreen = ({navigation}) => {
         async function retreiveOrCreateProfile(){
             setLoading(true);
             const profileResult=  await maidProfileDB.retreiveOrCreateProfile();
-            // console.debug("profileResult",profileResult);
+            console.debug("profileResult",profileResult);
             setProfile(profileResult);
             setLoading(false);
         }

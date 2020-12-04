@@ -59,10 +59,9 @@ const MultipleStepForm = ({items,onSubmit,initialValues,onCancel}) => {
                {
                  item.components()
                }
-            <View style={styles.bottomButtonContainer}>
-                <AppSubmitButton title={isLastStep(index)? t("button.submit"): t("button.next")}/>
+            <AppSubmitButton title={isLastStep(index)? t("button.submit"): t("button.next")}/>
+            <View style={styles.bottomButtonContainer}> 
                  <AppLink title={t("button.cancel")} onPress={onCancel} style={styles.cancelButton}/>
-                
             </View>
            
            </AppForm> : null)

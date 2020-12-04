@@ -23,6 +23,7 @@
     "validation.startDate.is.required":"Work Start Date is required",
     "validation.location.is.required":"Work Location is required",
     "validation.duties.is.required":"Job Duties are required",
+    "validation.role.is.required":"To conitune, please tell us if you are an employer or a maid.",
 
     "button.login":"Login",
     "button.submit":"SUBMIT",
@@ -143,7 +144,11 @@
     "basicInfo":"Basic Info",
     "yearsOld":"Years Old",
     "age":"Age",
-    "image":"Images and Videos"
+    "image":"Images and Videos",
+    "role":"I am ",
+    "employer":"An Employer",
+    "maid":"A Maid"
+
 
 
 

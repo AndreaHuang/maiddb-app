@@ -43,8 +43,9 @@ const AppNavigator=({screen})=>{
             }
             >
 
-                <Tab.Screen name="Home"  component={CommonNavigator} />  
+                
                 <Tab.Screen name="Profile"  component={ProfileNavigator} /> 
+                <Tab.Screen name="Home"  component={CommonNavigator} />  
                 <Tab.Screen name="Inbox"  component={InboxScreen} />      
         </Tab.Navigator>
     );

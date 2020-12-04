@@ -11,12 +11,10 @@ const initialScheme={
             heightUnit:"cm",
             weightUnit:"kg",
             eatPork:"false",
-            cantonese:"",
-            english:"",
-            mandarin:"",
+            cantonese:0,
+            english:0,
+            mandarin:0,
             currentLocation:""
-
-
         },
         family:{
             brothers:0,
@@ -30,10 +28,8 @@ const initialScheme={
             english:"",
             mandarin:""
         },
-        preference:{
-            eatPork:false,
-            dutyPreference:[]
-        },
+      
+        dutyPreference:[],
         workHistory:[],
         training:[], 
     }

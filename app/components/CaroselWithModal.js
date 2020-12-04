@@ -10,6 +10,7 @@ const width = defaultStyles.dimension.width;
 const screenHeight = defaultStyles.dimension.height;
 
 function CaroselWithModal({ data }) {
+  if(!data) {return null;}
   const [modalVisible,setModalVisible] = useState(false);
   return (
       <>

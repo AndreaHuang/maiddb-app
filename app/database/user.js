@@ -36,6 +36,13 @@ export const saveOrUpdateFirebaseUser=(result)=>{
     return;
 }
 
+export const updateUserRole=(uid,role)=>{
+     db.ref(usersRef+"/"+uid)
+        .update({
+            role:role
+     });
+}
+
 
 // Object {
 //   "additionalUserInfo": cg {

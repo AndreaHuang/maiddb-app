@@ -31,9 +31,9 @@ const MaidProfileBasicInfoSection = ({data,onEdit,defaultCollapsed=true}) => {
                 <AppRating label ={t("mandarin")} value = {t(data.mandarin)} disabled={true}/>
                 <ListItemSeperator/>
 
-                {data.height && <AppLabelValue label ={t("height")} value = {data.height + " " + t(data.heightUnit)} /> }
-                {data.weight && <AppLabelValue label ={t("weight")} value = {data.weight + " " + t(data.weightUnit)} /> }
-                {(data.height || date.weight) && <ListItemSeperator/>}
+                <AppLabelValue label ={t("height")} value = {data.height + " " + t(data.heightUnit)} /> 
+                <AppLabelValue label ={t("weight")} value = {data.weight + " " + t(data.weightUnit)} />
+                 <ListItemSeperator/>
 
                </AppSection>
     );
