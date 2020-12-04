@@ -20,14 +20,29 @@ export default {
     fontSize:14
   },
   title:{
-    fontSize:20,
+    fontSize:18,
     fontWeight:"400",
     marginLeft:5
   },
   smallTitle:{
-    fontSize:18
+    fontSize:16
   },
   image:{
     resizeToWidth:400
+  },
+  buttonText:{
+    color: colors.white,
+    fontWeight:"400",
+    fontSize:18,
+    fontFamily: Platform === "android" ? "Roboto" : "Avenir",
+  },
+  smallButtonText:{
+    fontSize:16,
+  },
+  linkText :{
+    color: colors.dark,
+    textDecorationLine: "underline",
+    fontSize: 16,
+    fontWeight:"400"
   }
 };
