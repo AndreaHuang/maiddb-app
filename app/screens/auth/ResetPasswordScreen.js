@@ -2,21 +2,21 @@ import React,{useState} from 'react';
 import {StyleSheet} from 'react-native';
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
-import i18n from "../config/i18n";
-import color from "../config/color";
-import constants from "../config/constants";
+import i18n from "../../config/i18n";
+import color from "../../config/color";
+import constants from "../../config/constants";
 
-import Screen from '../components/Screen';
-import AppText from "../components/AppText";
+import Screen from '../../components/Screen';
+import AppText from "../../components/AppText";
 
 import {
   AppForm,
   AppErrorMessage,
   AppFormField,
   AppSubmitButton,
-} from "../components/forms";
-import ActivityIndicator from "../components/ActivityIndicator";
-import EmailPasswordAuth from "../auth/EmailPasswordAuth";
+} from "../../components/forms";
+import ActivityIndicator from "../../components/ActivityIndicator";
+import EmailPasswordAuth from "../../auth/EmailPasswordAuth";
 
 const ResestPasswordScreen = ({navigation}) => {
     const { t } = useTranslation();

@@ -9,24 +9,24 @@ import {
   AppErrorMessage,
   AppFormField,
   AppSubmitButton,
-} from "../components/forms";
-import AppButton from "../components/AppButton";
-import AppLink from "../components/AppLink";
+} from "../../components/forms";
+import AppButton from "../../components/AppButton";
+import AppLink from "../../components/AppLink";
 
-import Screen from "../components/Screen";
-import authApi from "../api/auth";
-import useApi from "../hooks/useApi";
-import ActivityIndicator from "../components/ActivityIndicator";
+import Screen from "../../components/Screen";
+import authApi from "../../api/auth";
+import useApi from "../../hooks/useApi";
+import ActivityIndicator from "../../components/ActivityIndicator";
 
-import i18n from "../config/i18n";
-import constants from "../config/constants";
-import AuthContext from "../auth/AuthContext";
+import i18n from "../../config/i18n";
+import constants from "../../config/constants";
+import AuthContext from "../../auth/AuthContext";
 import jwtDecode from "jwt-decode";
 
-import GoogleAppAuth from "../auth/GoogleAppAuth";
-import EmailPasswordAuth from "../auth/EmailPasswordAuth";
+import GoogleAppAuth from "../../auth/GoogleAppAuth";
+import EmailPasswordAuth from "../../auth/EmailPasswordAuth";
 
-
+const googleLogo =require("../../assets/logo/Google.png");
 function LoginScreen({route,navigation}) {
     const { t } = useTranslation();
     const {user,setUser} = useContext(AuthContext);
@@ -110,7 +110,7 @@ function LoginScreen({route,navigation}) {
       </AppForm>
 
      <AppButton title={t("button.signin.google")}
-        image={require('../assets/logo/Google.png')}
+        image={googleLogo}
          onPress={handleGoogleLogin}></AppButton>
     
       <View style={styles.linksContainer}>

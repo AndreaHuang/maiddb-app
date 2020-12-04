@@ -1,7 +1,7 @@
 import React from 'react';
-import LoginScreen from "../screens/LoginScreen";
-import RegistrationScreen from "../screens/RegistrationScreen";
-import ResestPasswordScreen from "../screens/ResetPasswordScreen";
+import LoginScreen from "../screens/auth/LoginScreen";
+import RegistrationScreen from "../screens/auth/RegistrationScreen";
+import ResestPasswordScreen from "../screens/auth/ResetPasswordScreen";
 import {createStackNavigator} from '@react-navigation/stack';
 import constants from "../config/constants";
 const Stack=createStackNavigator();

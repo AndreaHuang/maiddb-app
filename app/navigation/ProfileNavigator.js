@@ -7,7 +7,7 @@ import color from "../config/color";
 import i18n from "../config/i18n";
 
 
-import AccountScreen from "../screens/AccountScreen";
+import AccountScreen from "../screens/account/AccountScreen";
 import MaidProfileScreen from '../screens/maidProfile/MaidProfileScreen';
 import MaidProfileBasicInfoEditScreen from "../screens/maidProfile/MaidProfileBasicInfoEditScreen";
 import MaidProfileWorkHistoryEditScreen from "../screens/maidProfile/MaidProfileWorkHistoryEditScreen";

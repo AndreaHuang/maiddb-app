@@ -3,19 +3,19 @@ import {StyleSheet} from 'react-native';
 
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
-import i18n from "../config/i18n";
+import i18n from "../../config/i18n";
 
 
-import Screen from '../components/Screen';
+import Screen from '../../components/Screen';
 import {
   AppForm,
   AppErrorMessage,
   AppFormField,
   AppSubmitButton,
-} from "../components/forms";
-import ActivityIndicator from "../components/ActivityIndicator";
-import EmailPasswordAuth from "../auth/EmailPasswordAuth";
-import AuthContext from '../auth/AuthContext';
+} from "../../components/forms";
+import ActivityIndicator from "../../components/ActivityIndicator";
+import EmailPasswordAuth from "../../auth/EmailPasswordAuth";
+import AuthContext from '../../auth/AuthContext';
 
 
 const RegistrationScreen = ({navigation}) => {

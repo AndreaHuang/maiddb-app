@@ -3,20 +3,20 @@ import { View, StyleSheet, FlatList } from "react-native";
 import { useTranslation } from "react-i18next";
 
 
-import ListItem from "../components/lists/ListItem";
-import MenuItem from "../components/MenuItem";
-import ListItemSeperator from "../components/lists/ListItemSeperator";
-import Screen from "../components/Screen";
-import colors from "../config/color";
-import Photo from "../components/Photo";
-import AppButton from "../components/AppButton";
-import firebaseAuth from "../auth/FirebaseAuth";
-import AuthContext from "../auth/AuthContext";
-import ActionIcon from "../components/ActionIcon";
-import constants from "../config/constants";
-import i18n from "../config/i18n";
+import ListItem from "../../components/lists/ListItem";
+import MenuItem from "../../components/MenuItem";
+import ListItemSeperator from "../../components/lists/ListItemSeperator";
+import Screen from "../../components/Screen";
+import colors from "../../config/color";
+import Photo from "../../components/Photo";
+import AppButton from "../../components/AppButton";
+import firebaseAuth from "../../auth/FirebaseAuth";
+import AuthContext from "../../auth/AuthContext";
+import ActionIcon from "../../components/ActionIcon";
+import constants from "../../config/constants";
+import i18n from "../../config/i18n";
 
-const defaultIcon = require("../assets/icon.png");
+const defaultIcon = require("../../assets/icon.png");
 
 function AccountScreen({navigation, route}) {
   const { t } = useTranslation();
