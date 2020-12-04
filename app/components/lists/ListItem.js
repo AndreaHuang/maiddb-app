@@ -1,9 +1,9 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image,TouchableWithoutFeedback } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppText from "../AppText";
 import colors from "../../config/color";
-function ListItem({ IconComponent, title, subTitle, image ,expandable=true}) {
+function ListItem({ IconComponent, title, subTitle, image ,onPress}) {
   return (
     <View style={styles.container}>
       {IconComponent}
@@ -18,12 +18,16 @@ function ListItem({ IconComponent, title, subTitle, image ,expandable=true}) {
           </AppText>
         )}
       </View>
-
-      { expandable && <MaterialCommunityIcons
-        color={colors.medium}
-        name="chevron-right"
-        size={20}
-      />}
+      {
+        onPress &&
+      <TouchableWithoutFeedback onPress ={onPress}>
+        <MaterialCommunityIcons
+                color={colors.medium}
+                name="chevron-right"
+                size={20}
+              />
+      </TouchableWithoutFeedback>
+      }
     </View>
   );
 }

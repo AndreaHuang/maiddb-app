@@ -46,7 +46,6 @@ const MaidProfileHeaderSection = ({data}) => {
                     ? { source: { url: data.photoURL } }
                     : (data.gender ==='f' ? femaleIcon:maleIcon)
                 }
-                expandable={false}
         />
     
 

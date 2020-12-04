@@ -17,7 +17,6 @@ const MaidCard =({data,onPress})=>{
 }
 const MaidListScreen = ({navigation}) => {
     const handleOpenMaidProfile = (maidProfile) =>{
-        Alert.alert("clicked");
         navigation.navigate(constants.route.maidDetails,{data:maidProfile});
     };
 
