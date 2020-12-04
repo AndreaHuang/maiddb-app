@@ -8,7 +8,6 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import AppNavigator from "./app/navigation/AppNavigator";
 import AuthNavigator from "./app/navigation/AuthNavigator";
-import CommonNavigator from "./app/navigation/CommonNavigator";
 import { LogBox } from 'react-native';
 import firebaseAuth from "./app/auth/FirebaseAuth";
 

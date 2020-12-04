@@ -23,9 +23,9 @@ const AccountInitiationScreen = ({navigation}) => {
             updateUserRole(user.uid,values.role);
         }
         if(values.role === "maid"){
-            navigation.navigate(constants.route.maidProfile);
+            navigation.navigate(constants.route.profile.maidProfile);
         } else {
-            navigation.navigate(constants.route.maidList);
+            navigation.navigate(constants.route.main.maidList);
         }
     }
     const initialValue={

@@ -8,7 +8,7 @@ import color from "../config/color";
 function ActivityIndicator({ visible = false }) {
   if (!visible) return null;
   return (
-    <Overlay  isVisiable={visible} overlayStyle={styles.overlay} 
+    <Overlay isVisiable={visible} overlayStyle={styles.overlay} 
     fullScreen={true}>
       
     <LottieView

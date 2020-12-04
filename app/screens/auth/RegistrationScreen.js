@@ -93,7 +93,7 @@ const RegistrationScreen = ({navigation}) => {
         <AppSubmitButton title={t("button.signup")}></AppSubmitButton>
       </AppForm>
       <View style={styles.linksContainer}>
-          <AppLink title={t("button.cancel")} onPress={()=>navigation.navigate(constants.route.login)}/>
+          <AppLink title={t("button.cancel")} onPress={()=>navigation.navigate(constants.route.auth.login)}/>
        </View>
     </Screen>
   );

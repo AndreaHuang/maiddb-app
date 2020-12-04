@@ -133,11 +133,11 @@ const MaidProfileBasicInfoEditScreen = ({navigation,route}) => {
     }
 
    
-    navigation.replace(constants.route.maidProfile);
+    navigation.replace(constants.route.profile.maidProfile);
 
   }; 
   const handleCancel =()=>{
-    navigation.replace(constants.route.maidProfile);
+    navigation.replace(constants.route.profile.maidProfile);
   } 
 
   return (<Screen>

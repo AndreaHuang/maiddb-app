@@ -26,7 +26,7 @@ function AccountScreen({navigation, route}) {
      setUser(null);
   }
   const navigateToMyProfiel=()=>{
-    navigation.navigate(constants.route.maidProfile);
+    navigation.navigate(constants.route.profile.maidProfile);
   }
 
   const menuItems = [

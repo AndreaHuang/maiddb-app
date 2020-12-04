@@ -30,7 +30,7 @@ const MaidProfileImageEditScreen = ({navigation,route}) => {
     const updateProfile =async (images)=>{
         await maidProfileDB.updateProfile(user.uid,segment,images); 
         setLoading(false);
-        navigation.replace(constants.route.maidProfile);
+        navigation.replace(constants.route.profile.maidProfile);
     }
     const handleError=(error)=>{
             setLoading(false);

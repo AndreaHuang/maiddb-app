@@ -47,7 +47,7 @@ const ResestPasswordScreen = ({navigation}) => {
         if(response.success){
             setEmailSent(true);
             setTimeout(()=>{
-              navigation.navigate(constants.route.login,{id:email});
+              navigation.navigate(constants.route.auth.login,{id:email});
             },2000)
         } else if(response.cancelled || response.error){
             setError(true);
@@ -85,7 +85,7 @@ const ResestPasswordScreen = ({navigation}) => {
 
       </AppForm>
       <View style={styles.linksContainer}>
-          <AppLink title={t("button.cancel")} onPress={()=>navigation.navigate(constants.route.login)}/>
+          <AppLink title={t("button.cancel")} onPress={()=>navigation.navigate(constants.route.auth.login)}/>
        </View>
     </Screen>
   );

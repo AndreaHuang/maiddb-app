@@ -17,7 +17,7 @@ const MaidCard =({data,onPress})=>{
 }
 const MaidListScreen = ({navigation}) => {
     const handleOpenMaidProfile = (maidProfile) =>{
-        navigation.navigate(constants.route.maidDetails,{data:maidProfile});
+        navigation.navigate(constants.route.main.maidDetails,{data:maidProfile});
     };
 
     const [data,setData] = useState([]);

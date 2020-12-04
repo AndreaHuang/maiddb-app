@@ -114,8 +114,8 @@ function LoginScreen({route,navigation}) {
          onPress={handleGoogleLogin}></AppButton>
     
       <View style={styles.linksContainer}>
-          <AppLink title={t("button.signup")} style={{fontSize:18}} onPress={()=>navigation.navigate(constants.route.registration)}/>
-          <AppLink title={t("button.forgetPassword")}  onPress={()=>navigation.navigate(constants.route.resetPassword)}/>
+          <AppLink title={t("button.signup")} style={{fontSize:18}} onPress={()=>navigation.navigate(constants.route.auth.registration)}/>
+          <AppLink title={t("button.forgetPassword")}  onPress={()=>navigation.navigate(constants.route.auth.resetPassword)}/>
 
        </View>
       

@@ -1,18 +1,29 @@
 export default{
     route:{
-        registration:"Registration",
-        login:"Login",
-        resetPassword:"ResetPassword",
-        home:"Home",
-        maidProfile:"MaidProfile",
-        editMaidProfile:"EditMaidProfile",
-        editMaidProfileBasicInfo:"editMaidProfileBasicInfo",
-        account:"account",
-        accountProfile:"accountProfile",
-        editWorkHistory:"editWorkHistory",
-        editImage:"editImage",
-        maidList:"maidList",
-        maidDetails:"maidDetails"
+        stack:{
+            main:"Main",
+            profile:"Profile",
+            inbox:"Inbox",
+        },
+        auth:{
+            registration:"Registration",
+            login:"Login",
+            resetPassword:"ResetPassword",
+        },
+        main:{
+            maidList:"maidList",
+            maidDetails:"maidDetails"
+        },
+        profile:{
+            account:"account",
+            accountProfile:"accountProfile",
+            maidProfile:"MaidProfile",
+            editMaidProfile:"EditMaidProfile",
+            editMaidProfileBasicInfo:"editMaidProfileBasicInfo",
+            editWorkHistory:"editWorkHistory",
+            editImage:"editImage",
+        } 
+       
     },
     cache:{
         maidProfile:"maidProfile"

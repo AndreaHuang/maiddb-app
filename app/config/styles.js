@@ -19,6 +19,9 @@ export default {
   smallText:{
     fontSize:14
   },
+  tinyText:{
+    fontSize:12
+  },
   title:{
     fontSize:18,
     fontWeight:"400",

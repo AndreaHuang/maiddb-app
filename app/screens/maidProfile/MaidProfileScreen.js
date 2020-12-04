@@ -61,7 +61,7 @@ const MaidProfileScreen = ({navigation}) => {
                 },
                 { text: "OK", onPress: () => {
                         maidProfileDB.removeWorkHistory(user.uid,index);
-                        navigation.replace(constants.route.maidProfile);
+                        navigation.replace(constants.route.profile.maidProfile);
                         }
                 }
                     
@@ -77,14 +77,14 @@ const MaidProfileScreen = ({navigation}) => {
     return ( 
         <ScrollScreen>
                 <MaidProfileHeaderSection data={profile.basicInfo}/>
-                <AppSection sectionTitle={t("image")} defaultCollapsed={false}  onEdit={()=>{navigateToEditProfile(constants.route.editImage,profile.images)}} />
+                <AppSection sectionTitle={t("image")} defaultCollapsed={false}  onEdit={()=>{navigateToEditProfile(constants.route.profile.editImage,profile.images)}} />
                 <CaroselWithModal data={profile.images}/>
-                <MaidProfileBasicInfoSection data={profile.basicInfo} defaultCollapsed={false}  onEdit={()=>navigateToEditProfile(constants.route.editMaidProfileBasicInfo,profile.basicInfo)}/>
-                <AppSection sectionTitle={t("workHistory")} defaultCollapsed={false}  onAdd={()=>{navigateToEditProfile(constants.route.editWorkHistory,null,-1)}}>
+                <MaidProfileBasicInfoSection data={profile.basicInfo} defaultCollapsed={false}  onEdit={()=>navigateToEditProfile(constants.route.profile.editMaidProfileBasicInfo,profile.basicInfo)}/>
+                <AppSection sectionTitle={t("workHistory")} defaultCollapsed={false}  onAdd={()=>{navigateToEditProfile(constants.route.profile.editWorkHistory,null,-1)}}>
                     {profile.workHistory?
                         profile.workHistory.map((item,index)=>{return  <MaidProfileWorkHistorySection key={index} data={item}
                                 onDelete={()=>removeWorkHistory(index)}
-                                onEdit={()=>navigateToEditProfile(constants.route.editWorkHistory,item,index)}
+                                onEdit={()=>navigateToEditProfile(constants.route.profile.editWorkHistory,item,index)}
                         />})
                         :null}
                 </AppSection>
