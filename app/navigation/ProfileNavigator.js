@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import { useTranslation } from "react-i18next";
 
@@ -15,12 +15,16 @@ import MaidProfileImageEditScreen from "../screens/maidProfile/MaidProfileImageE
 
 import AccountScreen from "../screens/account/AccountScreen";
 import AccountInitiationScreen from "../screens/account/AccountInitiationScreen";
+import AuthContext from '../auth/AuthContext';
+import {profileIsNotCompleted} from "../schemas/user";
 
 const ProfileStack = createStackNavigator();
 
 const ProfileNavigator=()=>{
     const { t } = useTranslation();
-    return(
+    const {user} = useContext(AuthContext);
+
+     return(
         <ProfileStack.Navigator screenOptions={{
                 headerStyle: {
                     backgroundColor: color.primary,
@@ -33,7 +37,7 @@ const ProfileNavigator=()=>{
                  headerBackTitleVisible:false
             }}
             >
-            <ProfileStack.Screen name={constants.route.profile.accountProfile} component={AccountInitiationScreen} options={{ title: 'Complete My Profile' }}/>
+            {profileIsNotCompleted(user) && <ProfileStack.Screen name={constants.route.profile.accountProfile} component={AccountInitiationScreen} options={{ title: 'Complete My Profile' }}/>}
             <ProfileStack.Screen name={constants.route.profile.account} component={AccountScreen} options={{ title: 'My Account' }}/>
             <ProfileStack.Screen name={constants.route.profile.editMaidProfileBasicInfo} component={MaidProfileBasicInfoEditScreen} options={{ headerShown: false }}/>
             <ProfileStack.Screen name={constants.route.profile.editWorkHistory} component={MaidProfileWorkHistoryEditScreen} options={{ headerShown: false }}/>

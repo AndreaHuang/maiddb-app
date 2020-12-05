@@ -12,6 +12,7 @@ import { LogBox } from 'react-native';
 import firebaseAuth from "./app/auth/FirebaseAuth";
 
 import {auth} from "./app/services/firebase";
+import {retrieveUserProfile} from "./app/database/user";
 import {AppLoading} from "expo";
 
 enableScreens();
@@ -27,8 +28,9 @@ export default function App() {
         // console.log("onAuthStateChanged in initialize ", firebaseUser);
         if(firebaseUser){
           const appUser = firebaseAuth.buildAppUser(firebaseUser);
-          // console.log("buildFrom buildAppUser",appUser);
-          setUser(appUser);
+          // // console.log("buildFrom buildAppUser",appUser);
+          // setUser(appUser);
+          retrieveUserProfile(appUser,setUser);
         
         } else {
           setUser(null);

@@ -15,9 +15,9 @@ import { AppFormField,
   AppFormRating,
   AppFormDatePicker
 } from '../../components/forms';
-import maidProfileScheme from "../../schemes/maidProfile";
+import maidProfileScheme from "../../schemas/maidProfile";
 import maidProfileDB from "../../database/maidProfile";
-import options from "../../schemes/options";
+import options from "../../schemas/options";
 import AppDatePicker from "../../components/forms/AppFormDatePicker";
 
 

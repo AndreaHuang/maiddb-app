@@ -1,5 +1,5 @@
 import {db,auth} from '../services/firebase';
-import maidProfileScheme from "../schemes/maidProfile";
+import maidProfileScheme from "../schemas/maidProfile";
 import cache from "../utiity/Cache";
 import constants from "../config/constants";
 
@@ -24,10 +24,12 @@ const createProfile= async (currentUser)=>{
         }}
         ,maidProfileScheme.initialScheme);
     try{
-        const newUser = await db.ref(maidProfileRef+"/"+uid).set(init);
+        const ref =  db.ref(maidProfileRef+"/"+uid);
+        await ref.set(init);
+        const newUser = await((await ref.once('value')).val());
         console.debug("Created the  Maid profile in firebase database",newUser);
         
-       return newUser.val();
+       return newUser;
 
     } catch(error){
         console.error(error);

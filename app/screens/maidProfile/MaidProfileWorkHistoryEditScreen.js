@@ -9,8 +9,8 @@ import {AppFormPicker,AppFormDatePicker,AppErrorMessage,
   AppFormSwitch,AppFormMultipleSelect,MultiStepForm} from "../../components/forms";
 import i18n from "../../config/i18n";
 import constants from "../../config/constants";
-import options from "../../schemes/options"
-import maidProfileScheme from "../../schemes/maidProfile";
+import options from "../../schemas/options"
+import maidProfileScheme from "../../schemas/maidProfile";
 import maidProfileDB from "../../database/maidProfile";
 import AuthContext from '../../auth/AuthContext';
 

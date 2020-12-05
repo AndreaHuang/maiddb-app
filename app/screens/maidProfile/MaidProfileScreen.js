@@ -11,7 +11,7 @@ import AppSection from "../../components/AppSection";
 import constants from "../../config/constants";
 
 import maidProfileDB from "../../database/maidProfile";
-import maidProfileScheme from "../../schemes/maidProfile";
+import maidProfileScheme from "../../schemas/maidProfile";
 
 import i18n from "../../config/i18n";
 import AuthContext from '../../auth/AuthContext';

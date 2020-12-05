@@ -1,3 +1,4 @@
+import _ from "lodash";
 import {db} from '../services/firebase';
 
 const usersRef = "/users";
@@ -36,11 +37,19 @@ export const saveOrUpdateFirebaseUser=(result)=>{
     return;
 }
 
-export const updateUserRole=(uid,role)=>{
-     db.ref(usersRef+"/"+uid)
-        .update({
-            role:role
-     });
+export const retrieveUserProfile=(firebaseUser,callBack)=>{
+   const ref =  db.ref(usersRef+"/"+firebaseUser.uid).
+    ref.on('value', (snapshot) =>{
+        const userInDB = snapshot.val();
+       // updateStarCount(postElement, data);
+       callBack(_.assign(firebaseUser,userInDB));
+    });
+
+}
+export const updateUserRole=(uid,updated)=>{
+    db.ref(usersRef+"/"+uid)
+        .update(updated);
+    return;
 }
 
 

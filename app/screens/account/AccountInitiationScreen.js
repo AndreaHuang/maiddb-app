@@ -4,7 +4,7 @@ import {StyleSheet} from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../../components/Screen";
-import options from "../../schemes/options";
+import options from "../../schemas/options";
 import {AppForm,AppFormField,AppSubmitButton,AppFormToggle} from "../../components/forms";
 // Who are you?
 //location
@@ -16,21 +16,25 @@ import { Alert } from 'react-native';
 
 const AccountInitiationScreen = ({navigation}) => {
     const {t} = useTranslation();
-    const {user} =useContext(AuthContext);
+    const {user,setUser} =useContext(AuthContext);
+    console.log("user",user);
     const handleSubmit = (values)=>{
-        Alert.alert(values.role);
         if(values.role){
-            updateUserRole(user.uid,values.role);
+            updateUserRole(user.uid,values);
         }
         if(values.role === "maid"){
-            navigation.navigate(constants.route.profile.maidProfile);
+            // navigation.navigate(constants.route.profile.maidProfile);
+            navigation.reset( {
+                index: 0,
+                routes: [{ name: constants.route.profile.account }]});
+
         } else {
             navigation.navigate(constants.route.main.maidList);
         }
     }
     const initialValue={
-        role:"",
-        displayName:"",
+        role:user.role,
+        displayName:user.displayName,
     }
     const validationScheme=Yup.object({
         role: Yup.string().required(t("validation.role.is.required")),
