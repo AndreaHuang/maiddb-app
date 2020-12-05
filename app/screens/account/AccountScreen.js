@@ -28,7 +28,6 @@ function AccountScreen({navigation, route}) {
   const navigateToMyProfiel=()=>{
     navigation.navigate(constants.route.profile.maidProfile);
   }
-
   const menuItems = [
     {
       title: "My Favorite",
@@ -40,13 +39,18 @@ function AccountScreen({navigation, route}) {
       icon: "email",
       backgroundColor: colors.secondary,
     },
-    {
-      title:"My Profile",
-      icon:"account-details",
-      backgroundColor: colors.primary,
-      action:navigateToMyProfiel
-    }
+  
   ];
+  if(user.role==="maid"){
+    menuItems.push(
+        {
+        title:"My Profile",
+        icon:"account-details",
+        backgroundColor: colors.primary,
+        action:navigateToMyProfiel
+      });
+  }
+  
   return (
     <Screen>
       <ListItem

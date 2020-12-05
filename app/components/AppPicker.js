@@ -60,7 +60,7 @@ function AppPicker({
         <Screen>
           <FlatList
             data={items}
-            keyExtractor={(item) => item.label}
+            keyExtractor={(item,index) => index}
             numColumns={numberOfColumns}
             renderItem={({ item ,index}) => (
               <View style={{ width: width }} key={index}>

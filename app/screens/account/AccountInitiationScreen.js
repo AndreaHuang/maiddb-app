@@ -10,7 +10,7 @@ import {AppForm,AppFormField,AppSubmitButton,AppFormToggle} from "../../componen
 //location
 import i18n from "../../config/i18n";
 import constants from "../../config/constants";
-import {updateUserRole} from "../../database/user";
+import {updateUserProfile} from "../../database/user";
 import AuthContext from '../../auth/AuthContext';
 import { Alert } from 'react-native';
 
@@ -19,8 +19,8 @@ const AccountInitiationScreen = ({navigation}) => {
     const {user,setUser} =useContext(AuthContext);
     console.log("user",user);
     const handleSubmit = (values)=>{
-        if(values.role){
-            updateUserRole(user.uid,values);
+        if(values){
+            updateUserProfile(user.uid,values);
         }
         if(values.role === "maid"){
             // navigation.navigate(constants.route.profile.maidProfile);
@@ -29,7 +29,9 @@ const AccountInitiationScreen = ({navigation}) => {
                 routes: [{ name: constants.route.profile.account }]});
 
         } else {
-            navigation.navigate(constants.route.main.maidList);
+            navigation.reset( {
+                index: 0,
+                routes: [{ name: constants.route.stack.main,params:{screen:constants.route.main.maidList} }]});
         }
     }
     const initialValue={

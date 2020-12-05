@@ -38,15 +38,20 @@ export const saveOrUpdateFirebaseUser=(result)=>{
 }
 
 export const retrieveUserProfile=(firebaseUser,callBack)=>{
-   const ref =  db.ref(usersRef+"/"+firebaseUser.uid).
+   const ref =  db.ref(usersRef+"/"+firebaseUser.uid);
     ref.on('value', (snapshot) =>{
+        console.debug("user profile is updated:",firebaseUser.uid);
+       
         const userInDB = snapshot.val();
-       // updateStarCount(postElement, data);
-       callBack(_.assign(firebaseUser,userInDB));
+        console.debug("new value",userInDB);
+        callBack(_.assign(firebaseUser,userInDB));
     });
 
 }
-export const updateUserRole=(uid,updated)=>{
+export const updateUserProfile=(uid,updated)=>{
+    console.log("try to update ",uid);
+    console.log("updatedValue ",updated);
+
     db.ref(usersRef+"/"+uid)
         .update(updated);
     return;

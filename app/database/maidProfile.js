@@ -35,7 +35,6 @@ const createProfile= async (currentUser)=>{
         console.error(error);
         return {error:true};
     }
-    
 }
 const retreiveOrCreateProfile=async ()=>{
 
