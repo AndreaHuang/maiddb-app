@@ -26,7 +26,8 @@ export default{
        
     },
     cache:{
-        maidProfile:"maidProfile"
+        maidProfile:"maidProfile",
+        favoriteMaidList:"favoriteMaidList"
     }
    
 

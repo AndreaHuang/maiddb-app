@@ -2,40 +2,45 @@ import {db} from '../services/firebase';
 import cache from "../utiity/Cache";
 import constants from "../config/constants";
 
-const cacheKey = constants.cache.favoriateMaidList;
-const toggleFavorite = async (uid,maid_uid)=>{
+const cacheKey = constants.cache.favoriteMaidList;
+const favoriteMaidRef="favoriteMaid";
+export const toggleFavorite = async (uid,maid_uid,callback)=>{
       try{
-        
-        const ref = db.ref(favoriteMaidRef+"/"+uid);
-        let favoriteList = cache.retrieve(cacheKey);
+        let favoriteList = await cache.retrieve(cacheKey);
         if( favoriteList ){ 
             const originalLength = favoriteList.length;
-            favoriteList.filter((x=>x!==maid_uid));
+            favoriteList = favoriteList.filter(x=> {
+                return x && !(x == maid_uid);
+            } 
+                );
+             console.log("favoriteList after filtering Cache",favoriteList);
             if(originalLength ===favoriteList.length ){ //same length, means not exist before
                 favoriteList.push(maid_uid);
             }   
-            ref.set(favoriteList);
-            cache.store(cacheKey,favoriteList);
-            return; 
         } else {
-            const newList =[maid_uid];
-            cache.store(cacheKey,newList);
-            ref.set(newList); // not need to wait for response
-            return; 
+            favoriteList =[maid_uid];
         }
+
+        cache.store(cacheKey,favoriteList);
+        if(callback){
+            callback(favoriteList);
+        }
+        db.ref(favoriteMaidRef+"/"+uid).set(favoriteList);// not need to wait for response
+        return; 
     } catch(error){
-        console.error(error);
+        console.error("failure of toggleFavorite",error);
         return {error:true};
     }
 
 }
-const retrieveFavorite=(uid,callback)=>{
+export const retrieveFavorite= async (uid,callback)=>{
       //retrieve from cache first,then from remote
-      let favoriteList = cache.retrieve(cacheKey);
+      let favoriteList = await cache.retrieve(cacheKey);
       if(!favoriteList) {
           favoriteList=[];
       }
       callback(favoriteList);
+     
 
       const ref = db.ref(favoriteMaidRef+"/"+uid);
       ref.on('value',(snapshot)=>{
@@ -43,13 +48,13 @@ const retrieveFavorite=(uid,callback)=>{
         if(!value){
             value=[];
         }
-        callback(value);
         cache.store(cacheKey,value);
+        callback(value);
       })
 
 
 }
-export default{
-    toggleFavorite,
-    retrieveFavorite
-}
+// export default{
+//     toggleFavorite,
+//     retrieveFavorite
+// }

@@ -45,6 +45,7 @@ const AppNavigator=({screen})=>{
             }
             >
                 <Tab.Screen name={constants.route.stack.main}  component={MainNavigator} />  
+                {/* <Tab.Screen name={constants.route.stack.activity}  component={MainNavigator} />   */}
                 <Tab.Screen name={constants.route.stack.profile} component={ProfileNavigator} /> 
                 <Tab.Screen name={constants.route.stack.inbox}  component={InboxScreen} />      
         </Tab.Navigator>
