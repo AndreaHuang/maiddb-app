@@ -84,19 +84,19 @@ function AccountScreen({navigation, route}) {
         )}
       />
       <ListItemSeperator style={{ height: 20 }} />
-{/* 
-      <ListItem
-        title="Logout"
-        IconComponent={
-          <Photo
-            iconColor={colors.white}
-            name="logout"
-            size={40}
-            backgroundColor="orange"
+
+       <MenuItem
+            title={t("button.logout")}
+            onPress={handleLogout}
+            IconComponent={
+              <Photo
+                iconColor={colors.white}
+                name='logout'
+                size={40}
+                backgroundColor={colors.danger}
+              />
+            }
           />
-        }
-      /> */}
-      <AppButton onPress={handleLogout} title={t("button.logout")} icon="logout"/>
     </Screen>
   );
 }
