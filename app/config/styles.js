@@ -14,7 +14,12 @@ export default {
     height: Dimensions.get("window").height,
   },
   card: {
-    itemHeight: Dimensions.get("window").height * 0.25,
+    width: Dimensions.get("window").width ,
+    height: Dimensions.get("window").height * 0.4,
+  },
+  smallCard: {
+    width: Dimensions.get("window").width *.6,
+    height: Dimensions.get("window").height * 0.15,
   },
   smallText:{
     fontSize:14
@@ -28,7 +33,9 @@ export default {
     marginLeft:5
   },
   smallTitle:{
-    fontSize:16
+    fontSize:16,
+    fontWeight:"400",
+    marginLeft:5
   },
   image:{
     resizeToWidth:400

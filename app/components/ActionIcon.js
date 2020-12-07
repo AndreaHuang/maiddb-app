@@ -3,16 +3,16 @@ import { TouchableOpacity, StyleSheet, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import color from "../config/color";
-function ActionIcon({ iconColor = color.primary, iconName, onPress, size = 24 }) {
+function ActionIcon({ iconColor = color.primary, iconName, onPress, size = 24,style }) {
   return (
     <TouchableOpacity style={styles.icon} onPress={onPress}>
       <View
         style={[
           styles.iconBackGround,
+          style,
           {
             width: size,
-            height: size,
-            margin: size / 16,            
+            height: size,           
           },
         ]}
       >
@@ -22,7 +22,6 @@ function ActionIcon({ iconColor = color.primary, iconName, onPress, size = 24 })
   );
 }
 const styles = StyleSheet.create({
-  icon: {},
   iconBackGround: {
     justifyContent: "center",
     alignItems: "center",

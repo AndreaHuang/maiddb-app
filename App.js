@@ -5,6 +5,7 @@ import { enableScreens } from 'react-native-screens';
 import React,{useEffect, useState} from 'react';
 import AuthContext from "./app/auth/AuthContext";
 import { NavigationContainer } from "@react-navigation/native";
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import AppNavigator from "./app/navigation/AppNavigator";
 import AuthNavigator from "./app/navigation/AuthNavigator";
@@ -46,9 +47,11 @@ export default function App() {
 
   return (
     <AuthContext.Provider value={{user,setUser}}>
-      <NavigationContainer>
-        {user ? <AppNavigator/> : <AuthNavigator/>}
+      <SafeAreaProvider>
+        <NavigationContainer>
+         {user ? <AppNavigator/> : <AuthNavigator/>}
        </NavigationContainer> 
+      </SafeAreaProvider>
    </AuthContext.Provider>
   );
 }

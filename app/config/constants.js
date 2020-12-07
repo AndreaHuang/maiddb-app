@@ -12,7 +12,8 @@ export default{
         },
         main:{
             maidList:"maidList",
-            maidDetails:"maidDetails"
+            maidDetails:"maidDetails",
+            favoriteMaidList:"favoriteMaidList"
         },
         profile:{
             account:"account",

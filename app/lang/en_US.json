@@ -149,7 +149,12 @@
     "role":"I am ",
     "employer":"An Employer",
     "maid":"A Maid",
-    "displayName":"Nick Name"
+    "displayName":"Nick Name",
+    "search.a.maid.candidate": "Search a Maid",
+    "from":"From",
+    "currently":"Current location "
+    
+
 
 
 
