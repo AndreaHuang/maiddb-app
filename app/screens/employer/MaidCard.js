@@ -20,7 +20,7 @@ import { AppLabelValue } from '../../components/display';
 const femaleIcon=require("../../assets/female.png");
 const maleIcon=require("../../assets/male.png");
 
-const MaidCard = ({onPress,onToggleFavorite,isFavorite,data,uid,small=false,rating=4.7}) => {
+const MaidCard = ({onPress,onToggleFavorite,isFavorite,data,small=false,rating}) => {
     const {t} = useTranslation();
       const {basicInfo,user_uid:maid_uid} = data;
       const age = calculateAge(basicInfo.birthdate) 

@@ -23,7 +23,9 @@ function ScrollScreen({ children, style }) {
   
 const styles = StyleSheet.create({
   screen: {
-    marginTop: constants.statusBarHeight,
+    // top: - constants.statusBarHeight,
+    marginTop:-30,
+    paddingTop:0,
     flex: 1,
   },
   view: {

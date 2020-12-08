@@ -19,6 +19,8 @@ export default{
         employer:{
             maidList:"maidList",
             maidDetails:"maidDetails",
+            maidProfileDetails:"maidProfileDetails",
+            maidRating:"maidRating",
             favoriteMaidList:"favoriteMaidList",
         },
         maid:{

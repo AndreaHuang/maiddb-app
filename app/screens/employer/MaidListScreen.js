@@ -22,7 +22,7 @@ import ListItemSeperator from '../../components/lists/ListItemSeperator';
 import SearchBox from "../../components/SearchBox";
 import ScreenHeader from "../ScreenHeader";
 import MaidCard from "./MaidCard";
-import {retrieveFavorite} from "../../database/favoriteMaid";
+import {retrieveFavorite,toggleFavorite} from "../../database/favoriteMaid";
 
 
 
@@ -36,10 +36,9 @@ const MaidListScreen = ({navigation}) => {
    
     const [searchKeyword,setSearchKeyword] =useState("");
     const [favoriteList,setFavoriteList] =useState([]);
+    const [ratings,setRatings]=useState([]);
 
-    const handleOpenMaidProfile = (maidProfile) =>{
-        navigation.navigate(constants.route.employer.maidDetails,{data:maidProfile});
-    };
+  
 
   
     useEffect(()=>{
@@ -63,9 +62,18 @@ const MaidListScreen = ({navigation}) => {
         Alert.alert(searchKeyword);
     }
     const openFilterPage=()=>{
-        navigation.navigate(constants.route.employer.favoriteMaidList,{data:user.uid});
+        navigation.navigate(constants.route.employer.favoriteMaidList, {data:user.uid});
     }
-
+    const handleToggleFavorite=(uid,maid_uid)=>{
+      toggleFavorite(uid,maid_uid,setFavoriteList);
+    }
+    const handleOpenMaidProfile = (maidProfile) =>{
+      console.log("maidProfile",maidProfile);
+        navigation.navigate(constants.route.employer.maidProfileDetails,
+          // {screen:constants.route.employer.maidProfileDetails,
+          {data:maidProfile}
+          );
+    };
     return (<Screen style={styles.container}> 
        
         <ActivityIndicator visible={loading} />
@@ -82,7 +90,11 @@ const MaidListScreen = ({navigation}) => {
             // ref={scrollView}
         >
            {data.map ((item,index)=>{
-                    return <MaidCard key={index} data={item} small isFavorite={_.includes(favoriteList,item.user_uid)} /> ;
+            //  {onPress,onToggleFavorite,isFavorite,data,uid,small=false,rating=4.7}
+                    return <MaidCard key={index} data={item} small isFavorite={_.includes(favoriteList,item.user_uid)} 
+                    onToggleFavorite={()=>handleToggleFavorite(user.uid,item.user_uid)} 
+                    onPress={()=>handleOpenMaidProfile(item)}
+                    rating={ratings[item.user_uid]}/> ;
             })}
         </ScrollView>
          <AppText style={styles.sectionHeader}>New Available</AppText>
@@ -92,7 +104,10 @@ const MaidListScreen = ({navigation}) => {
             // ref={scrollView}
         >
            {data.map ((item,index)=>{
-                    return <MaidCard key={index} data={item} small isFavorite={_.includes(favoriteList,item.user_uid)} /> ;
+                    return <MaidCard key={index} data={item} small isFavorite={_.includes(favoriteList,item.user_uid)} 
+                    onToggleFavorite={()=>handleToggleFavorite(user.uid,item.user_uid)} 
+                    onPress={()=>handleOpenMaidProfile(item)}
+                    rating={ratings[item.user_uid]}/> ;
             })}
         </ScrollView>
         <AppText style={styles.sectionHeader}>All Maids</AppText>
@@ -104,13 +119,16 @@ const MaidListScreen = ({navigation}) => {
             scrollEventThrottle={16}
             decelerationRate={"fast"}
             renderItem={({ item,index }) => {
-                    return <MaidCard key={index} data={item} /> ;
+                    return <MaidCard key={index} data={item} isFavorite={_.includes(favoriteList,item.user_uid)} 
+                    onToggleFavorite={()=>handleToggleFavorite(user.uid,item.user_uid)} 
+                    onPress={()=>handleOpenMaidProfile(item)}
+                    rating={ratings[item.user_uid]}/> ;
             }}
         ></FlatList>
                
        </Screen>);
 }
- 
+
 const styles = StyleSheet.create({
   container: {
     marginHorizontal:5
@@ -168,4 +186,5 @@ const styles = StyleSheet.create({
 
 
 });
+ 
 export default MaidListScreen;
