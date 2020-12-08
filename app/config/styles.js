@@ -54,5 +54,8 @@ export default {
     textDecorationLine: "underline",
     fontSize: 16,
     fontWeight:"400"
+  },
+  icon:{
+    size:22
   }
 };

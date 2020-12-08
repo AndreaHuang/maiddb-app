@@ -105,8 +105,9 @@ const MaidListScreen = ({navigation}) => {
          
         <View style={styles.menuBar}>
             <SearchBox value={searchKeyword} onChange ={setSearchKeyword} onSearch={()=>search(searchKeyword)}
-                placeholder ={t("search.a.maid.candidate")}/>
-        </View>
+                placeholder ={t("search.a.maid.candidate")}
+                openFilterPage={openFilterPage}/>
+       </View>
         <AppText style={styles.sectionHeader}>Top Maids</AppText>
         <ScrollView
             horizontal
@@ -148,13 +149,8 @@ const styles = StyleSheet.create({
     marginHorizontal:5
   },
 
-  icon:{
-    marginHorizontal:15
-  },
-
-
   detailsContainer: {
-       flexDirection: "row",
+    flexDirection: "row",
     marginLeft: 15,
     flex: 1,
     flexDirection: "column",
@@ -163,6 +159,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   menuBar:{
+    flexDirection: "row",
+    justifyContent:"center",
     alignItems:"center",
     marginTop:10
   },
