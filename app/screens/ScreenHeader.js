@@ -6,26 +6,52 @@ import AuthContext from '../auth/AuthContext';
 import ActionIcon from "../components/ActionIcon";
 import AppText from "../components/AppText";
 import constants from "../config/constants";
+import defaultStyles  from "../config/styles";
 
+const iconSize = defaultStyles.bigIcon.size;
+// const iconColor =defaultStyles.colors.white;
+
+const toFavoriteList=(navigation,uid)=>{
+
+    navigation.navigate(constants.route.main.favoriteMaidList,{data:uid});
+}
+const toProfile=(navigation,uid)=>{
+    navigation.navigate(constants.route.main.profile,{data:uid});
+}
+const toChatScreen=(navigation,uid)=>{
+   navigation.navigate(constants.route.main.inbox,{data:uid});
+
+}
 const ScreenHeader = () => {
     const {user} = useContext(AuthContext);
     const navigation = useNavigation();
-    const toFavoriteList=()=>{
-        navigation.navigate(constants.route.main.favoriteMaidList,{data:user.uid});
-    }
-     const toProfile=()=>{
-        navigation.navigate(constants.route.main.profile,{data:uid});
-    }
+
     return ( <View style={styles.container}>
                 <View style={styles.leftIconContainer}>
-                    <ActionIcon iconName="account-outline" size={30} onPress={toProfile}/>
+                    <ActionIcon iconName="account-outline" size={iconSize} onPress={()=>toProfile(navigation,user.uid)}/>
                     <AppText style={styles.displayName}>{user.name || user.email}</AppText>
                 </View>
                 <View style={styles.rightIconContainer}>
-                    <ActionIcon iconName="heart-outline" size={28} onPress={toFavoriteList} style={styles.icon}/>
-                    <ActionIcon iconName="chat-outline" size={28} style={styles.icon}/>
+                    <ActionIcon  iconName="heart-outline" size={iconSize} onPress={()=>toFavoriteList(navigation,user.uid)} style={styles.icon}/>
+                    <ActionIcon  iconName="chat-outline" size={iconSize} onPress={()=>toChatScreen(navigation,user.uid)} style={styles.icon} />
                 </View>
             </View> );
+}
+export const favoriteIcon =()=>{
+    const {user} = useContext(AuthContext);
+    const navigation = useNavigation();
+    return (<View style={styles.onlyRightIconContainer}>
+              <ActionIcon iconName="heart-outline" size={iconSize} onPress={()=>toFavoriteList(navigation,user.uid)}/>
+          </View>);
+}
+export const ChatIcon = ()=>{
+    const {user} = useContext(AuthContext);
+    const navigation = useNavigation();
+    return (
+            <View style={styles.onlyRightIconContainer}>
+                <ActionIcon iconName="chat-outline" size={iconSize} onPress={()=>toChatScreen(navigation,user.uid)}/>
+            </View>
+          );
 }
 const styles = StyleSheet.create({
   container: {
@@ -33,7 +59,6 @@ const styles = StyleSheet.create({
     width:"100%",
     alignItems: "center",
     flexDirection: "row",
-    // marginRight:40,
     justifyContent:"space-between"
   },
   displayName:{
@@ -51,10 +76,19 @@ const styles = StyleSheet.create({
   rightIconContainer:{
     // flex:1,
     flexDirection: "row",
-    justifyContent:"flex-end"
+    justifyContent:"flex-end",
+    alignItems:"center",
+  },
+  onlyRightIconContainer:{
+    // flex:1,
+    flexDirection: "row",
+    justifyContent:"flex-end",
+    alignItems:"center",
+    marginHorizontal:25
   },
   icon:{
       marginHorizontal:10
   }
 });
-export default  ScreenHeader;
+
+export default ScreenHeader;

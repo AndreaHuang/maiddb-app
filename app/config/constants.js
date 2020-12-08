@@ -13,7 +13,8 @@ export default{
         main:{
             maidList:"maidList",
             maidDetails:"maidDetails",
-            favoriteMaidList:"favoriteMaidList"
+            favoriteMaidList:"favoriteMaidList",
+            inbox:"inbox"
         },
         profile:{
             account:"account",

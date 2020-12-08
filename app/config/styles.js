@@ -27,6 +27,9 @@ export default {
   tinyText:{
     fontSize:12
   },
+  headerTitle:{
+    fontSize:20,
+  },
   title:{
     fontSize:18,
     fontWeight:"400",
@@ -57,5 +60,8 @@ export default {
   },
   icon:{
     size:22
+  },
+  bigIcon:{
+    size:26
   }
 };

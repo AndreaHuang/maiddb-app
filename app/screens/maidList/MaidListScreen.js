@@ -33,10 +33,6 @@ import {retrieveFavorite} from "../../database/favoriteMaid";
 const MaidListScreen = ({navigation}) => {
     const {t} = useTranslation();
     const {user} = useContext(AuthContext);
-
-    navigation.setOptions({
-            headerTitle:<ScreenHeader/>
-    });
    
     const [searchKeyword,setSearchKeyword] =useState("");
     const [favoriteList,setFavoriteList] =useState([]);
@@ -51,37 +47,6 @@ const MaidListScreen = ({navigation}) => {
        init();
     },[])
     
-     
-
-    // const MaidCard =({data})=>{
-    //     const {basicInfo,user_uid:maid_uid} = data;
-    //     return  <>
-    //             <TouchableOpacity onPress={()=>handleOpenMaidProfile(data)} style={styles.container}>
-    //                     <Image style={styles.image} source={  
-    //                         basicInfo.photoURL
-    //                         ?  { url: basicInfo.photoURL } 
-    //                         : (basicInfo.gender ==='f' ? femaleIcon:maleIcon)} />
-                       
-    //                     <View style={styles.textContainer}>
-    //                         <AppText numberOfLines={1} style={styles.title}>
-    //                             {basicInfo.name}
-    //                         </AppText>
-    //                         <AppText numberOfLines={3} style={styles.subTitle}>
-    //                             {t(basicInfo.nationality)}  {calculateAge(basicInfo.birthdate) }
-    //                         </AppText>
-    //                     </View>
-    //                    <View style={styles.iconContainer}>
-    //                     {_.includes(favoriteList,maid_uid) ?
-    //                      <ActionIcon iconName="heart" onPress={() => {toggleFavorite(user.uid, maid_uid,setFavoriteList)}} />
-    //                      :
-    //                     <ActionIcon iconName="heart-outline" onPress={() => {toggleFavorite(user.uid,maid_uid,setFavoriteList)}} />}
-    //                 </View>
-    //     </TouchableOpacity>
-    //     <ListItemSeperator/>
-    //     </>
-
-    //     }
-
     const [data,setData] = useState([]);
     const [loading,setLoading] =useState(false);
     useEffect(()=>{
@@ -116,8 +81,8 @@ const MaidListScreen = ({navigation}) => {
             // onContentSizeChange={() => scrollView.current.scrollToEnd()}
             // ref={scrollView}
         >
-           {data.map (item=>{
-                    return <MaidCard data={item} small isFavorite={_.includes(favoriteList,item.user_uid)} /> ;
+           {data.map ((item,index)=>{
+                    return <MaidCard key={index} data={item} small isFavorite={_.includes(favoriteList,item.user_uid)} /> ;
             })}
         </ScrollView>
          <AppText style={styles.sectionHeader}>New Available</AppText>
@@ -126,8 +91,8 @@ const MaidListScreen = ({navigation}) => {
             // onContentSizeChange={() => scrollView.current.scrollToEnd()}
             // ref={scrollView}
         >
-           {data.map (item=>{
-                    return <MaidCard data={item} small isFavorite={_.includes(favoriteList,item.user_uid)} /> ;
+           {data.map ((item,index)=>{
+                    return <MaidCard key={index} data={item} small isFavorite={_.includes(favoriteList,item.user_uid)} /> ;
             })}
         </ScrollView>
         <AppText style={styles.sectionHeader}>All Maids</AppText>
@@ -138,8 +103,8 @@ const MaidListScreen = ({navigation}) => {
             snapToAlignment="center"
             scrollEventThrottle={16}
             decelerationRate={"fast"}
-            renderItem={({ item }) => {
-                    return <MaidCard data={item} /> ;
+            renderItem={({ item,index }) => {
+                    return <MaidCard key={index} data={item} /> ;
             }}
         ></FlatList>
                

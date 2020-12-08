@@ -2,7 +2,7 @@ import React from 'react';
 import {Text} from 'react-native';
 import Screen from '../components/Screen';
 const InboxScreen = () => {
-    return (<Screen> <Text>Inbox Screen</Text> </Screen>);
+    return (<Text>Inbox Screen</Text>);
 }
  
 export default InboxScreen;
