@@ -20,8 +20,9 @@ import i18n from "../../config/i18n";
 import AuthContext from '../../auth/AuthContext';
 import ListItemSeperator from '../../components/lists/ListItemSeperator';
 import SearchBox from "../../components/SearchBox";
-import HeaderSection from "./HeaderSection";
+import ScreenHeader from "../ScreenHeader";
 import MaidCard from "./MaidCard";
+import {retrieveFavorite} from "../../database/favoriteMaid";
 
 
 
@@ -32,10 +33,10 @@ import MaidCard from "./MaidCard";
 const MaidListScreen = ({navigation}) => {
     const {t} = useTranslation();
     const {user} = useContext(AuthContext);
+
     navigation.setOptions({
-        headerTitle:<HeaderSection navigation={navigation} uid={user.uid}/>
+            headerTitle:<ScreenHeader/>
     });
-    
    
     const [searchKeyword,setSearchKeyword] =useState("");
     const [favoriteList,setFavoriteList] =useState([]);
@@ -43,6 +44,7 @@ const MaidListScreen = ({navigation}) => {
     const handleOpenMaidProfile = (maidProfile) =>{
         navigation.navigate(constants.route.main.maidDetails,{data:maidProfile});
     };
+
   
     useEffect(()=>{
        const init = async ()=>{await retrieveFavorite(user.uid,setFavoriteList)};

@@ -2,12 +2,12 @@ import React,{useContext} from 'react';
 import {StyleSheet,View} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
-import AuthContext from '../../auth/AuthContext';
-import ActionIcon from "../../components/ActionIcon";
-import AppText from "../../components/AppText";
-import constants from "../../config/constants";
+import AuthContext from '../auth/AuthContext';
+import ActionIcon from "../components/ActionIcon";
+import AppText from "../components/AppText";
+import constants from "../config/constants";
 
-const HeaderSection = () => {
+const ScreenHeader = () => {
     const {user} = useContext(AuthContext);
     const navigation = useNavigation();
     const toFavoriteList=()=>{
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
       marginHorizontal:10
   }
 });
-export default  HeaderSection;
+export default  ScreenHeader;
