@@ -39,17 +39,17 @@ const DrawerContent = (props) => {
         setUser(null);
     }
     const navigateToMaidProfile=()=>{
-      navigation.navigate(constants.route.maid.maidProfile);
+      navigation.navigate(constants.route.stack.maid,{screen:constants.route.maid.maidProfile});
     }
     const navigateToSettingsScreen=()=>{
       navigation.navigate(constants.route.common.settings);
     }
     const navigateToFavoriteMaid=()=>{
-        navigation.navigate(constants.route.employer.favoriteMaidList);
+        navigation.navigate(constants.route.stack.employer,{screen:constants.route.employer.favoriteMaidList});
   
     }
     const navigateToMaidList=()=>{
-         navigation.navigate(constants.route.employer.maidList);
+         navigation.navigate(constants.route.stack.employer,{screen:constants.route.employer.maidList});
     }
     const navigateToAccountInfo=()=>{
         navigation.navigate(constants.route.common.accountInfo);
@@ -72,7 +72,7 @@ const DrawerContent = (props) => {
             <Drawer.Section style={styles.drawerSection}>
                 <Drawer.Item
                         icon={()=>( <Icon
-                        iconColor={colors.primary}
+                        iconColor={colors.secondary}
                         name='account-outline'
                         size={iconSize}
                     />)} 
@@ -81,7 +81,7 @@ const DrawerContent = (props) => {
                 />
                 <Drawer.Item
                         icon={()=>( <Icon
-                        iconColor={colors.primary}
+                        iconColor={colors.secondary}
                         name='chat-outline'
                         size={iconSize}
                     />)} 
@@ -92,7 +92,7 @@ const DrawerContent = (props) => {
                 <>
                 <Drawer.Item
                     icon={()=>( <Icon
-                        iconColor={colors.secondary}
+                        iconColor={colors.primary}
                         name='home-outline'
                         size={iconSize}
                     />)} 
@@ -101,7 +101,7 @@ const DrawerContent = (props) => {
                 />
                  <Drawer.Item
                     icon={()=>( <Icon
-                        iconColor={colors.secondary}
+                        iconColor={colors.primary}
                         name='heart-outline'
                         size={iconSize}
                     />)} 
