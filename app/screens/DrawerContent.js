@@ -45,11 +45,14 @@ const DrawerContent = (props) => {
       navigation.navigate(constants.route.common.settings);
     }
     const navigateToFavoriteMaid=()=>{
-        navigation.navigate(constants.route.employer.maidList);
+        navigation.navigate(constants.route.employer.favoriteMaidList);
   
     }
+    const navigateToMaidList=()=>{
+         navigation.navigate(constants.route.employer.maidList);
+    }
     const navigateToAccountInfo=()=>{
-        navigation.navigate(constants.route.common.account);
+        navigation.navigate(constants.route.common.accountInfo);
     }
     const navigateToInbox=()=>{
         navigation.navigate(constants.route.common.inbox);
@@ -85,9 +88,19 @@ const DrawerContent = (props) => {
                     label={t("menu.message")}
                     onPress={navigateToInbox}
                 />
-             {user.role ==='employer'?
+             {user.role === 'employer'?
+                <>
                 <Drawer.Item
-                            icon={()=>( <Icon
+                    icon={()=>( <Icon
+                        iconColor={colors.secondary}
+                        name='home-outline'
+                        size={iconSize}
+                    />)} 
+                    label={t("menu.maidList")}
+                    onPress={navigateToMaidList}
+                />
+                 <Drawer.Item
+                    icon={()=>( <Icon
                         iconColor={colors.secondary}
                         name='heart-outline'
                         size={iconSize}
@@ -95,8 +108,10 @@ const DrawerContent = (props) => {
                     label={t("menu.favorite")}
                     onPress={navigateToFavoriteMaid}
                 />
+                </>
                 :null}
             </Drawer.Section>
+
             {user.role ==='maid'?
             <Drawer.Section style={styles.drawerSection}>
                 <Drawer.Item

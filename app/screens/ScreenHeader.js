@@ -16,6 +16,7 @@ const toFavoriteList=(navigation,uid)=>{
     navigation.navigate(constants.route.employer.favoriteMaidList,{data:uid});
 }
 const toAccount=(navigation,uid)=>{
+  console.log(navigation);
   navigation.openDrawer();
     // navigation.navigate(constants.route.stack.account,{data:uid});
 }

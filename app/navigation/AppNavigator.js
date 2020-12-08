@@ -1,62 +1,66 @@
-import React,{useContext} from "react";
+import React, { useContext, useEffect,useState } from 'react';
+import {StyleSheet,Text,Button,View} from 'react-native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createStackNavigator} from '@react-navigation/stack';
-import { SimpleLineIcons } from '@expo/vector-icons'; 
+import { useTranslation } from 'react-i18next';
+import constants from '../config/constants';
+import i18n from '../config/i18n';
+import defaultStyles from '../config/styles';
 
-import AuthContext from "../auth/AuthContext";
+import AccountInitiationScreen from "../screens/common/AccountInitiationScreen";
+import AccountScreen from "../screens/common/AccountScreen";
 
-import color from "../config/color";
-import InboxScreen from "../screens/InboxScreen";
-import ProfileNavigator from "./ProfileNavigator";
-import AccountNavigator from "./AccountNavigator";
-import MaidListScreen from "../screens/maidList/MaidListScreen";
-import MaidDetailsScreen from "../screens/maidList/MaidDetailsScreen";
-import FavoriteMaidList from "../screens/maidList/FavoriteMaidList";
-import ScreenHeader from "../screens/ScreenHeader";
+import InboxScreen from '../screens/common/InboxScreen';
+import DrawerContent from "../screens/DrawerContent";
 
-import constants from "../config/constants";
-import i18n from "../config/i18n";
-import defaultStyles from "../config/styles";
-import {ChatIcon} from "../screens/ScreenHeader";
-import AppText from "../components/AppText";
-import { useTranslation } from "react-i18next";
+import AuthContext from '../auth/AuthContext';
+import MaidNavigator from './MaidNavigator';
+import EmployerNavigator from './EmployerNavigator';
+import SettingsScreen from '../screens/common/SettingsScreen';
+import {profileIsNotCompleted} from "../schemas/user";
 
-const Stack = createStackNavigator();
-const AppNavigator=({navigation,screen})=>{
-      const {t}=useTranslation();
-    return(
-        <Stack.Navigator screenOptions={{
-                          headerTitleAlign:"left",
-                          headerBackTitleVisible:false,
-                          headerTintColor: color.primary,
-                          headerTitleStyle: {
-                                color:color.dark,
-                                fontWeight: '400',
-                                fontSize:defaultStyles.headerTitle.fontSize
-                          },
-                            
+const Drawer = createDrawerNavigator();
 
-
-                }}>
-
-                {/* {profileIsNotCompleted(user) && <Stack.Screen name={constants.route.profile.accountProfile} component={AccountInitiationScreen} 
-                                options={{ title: 'Complete My Profile' }}/>}     */}
-                
-                <Stack.Screen name={constants.route.employer.maidList}  
-                component={MaidListScreen} options={{headerTitle:<ScreenHeader/>}}/>
-                <Stack.Screen name={constants.route.employer.maidDetails}
-                component={MaidDetailsScreen} /> 
-                <Stack.Screen name={constants.route.employer.favoriteMaidList} component={FavoriteMaidList} options={{
-                     headerTitle:(props) =>(<AppText style={defaultStyles.title}>{t("favoritMaidList")}</AppText> ),
-                     headerRight:(props) =>(<ChatIcon {...props}/> )
-                }} />
-                <Stack.Screen name={constants.route.common.inbox}  component={InboxScreen} />  
-                <Stack.Screen name={constants.route.stack.account} component={AccountNavigator}/>
-                <Stack.Screen name={constants.route.stack.profile} component={ProfileNavigator} /> 
-                    
-        </Stack.Navigator>
-    );
+function HomeScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button
+        onPress={() => navigation.navigate('Notifications')}
+        title="Go to notifications"
+      />
+    </View>
+  );
 }
 
+function NotificationsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button onPress={() => navigation.openDrawer()} title="Go back home" />
+    </View>
+  );
+}
+
+const AppNavigator = () => {
+  const{user} = useContext(AuthContext);
+    return (  
+       <Drawer.Navigator
+            drawerContent={props=><DrawerContent {...props}/>} >
+       {profileIsNotCompleted(user) ? 
+        <Drawer.Screen name={constants.route.common.accountInitialization} component={AccountInitiationScreen} />
+        :null}    
+           {/* <Drawer.Screen name={constants.route.profile.maidProfile} component={ProfileNavigator} /> */}
+        {/* <Drawer.Screen name={constants.route.stack.inbox} component={InboxScreen} /> */}
+        
+        {(!user.profile ||  user.profile ===maid )?
+        <Drawer.Screen name={constants.route.stack.maid} component={MaidNavigator} />  : null}
+        {(!user.profile ||  user.profile ===employer )?
+        <Drawer.Screen name={constants.route.stack.employer} component={EmployerNavigator} /> :null}
+
+        <Drawer.Screen name={constants.route.common.accountInfo} component={AccountScreen}  />
+        <Drawer.Screen name={constants.route.common.settings} component={SettingsScreen}  />
+        <Drawer.Screen name={constants.route.common.inbox} component={InboxScreen}  />
+      
+      </Drawer.Navigator> );
+}
+ 
 export default AppNavigator;

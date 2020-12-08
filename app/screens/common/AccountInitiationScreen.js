@@ -12,7 +12,7 @@ import i18n from "../../config/i18n";
 import constants from "../../config/constants";
 import {updateUserProfile} from "../../database/user";
 import AuthContext from '../../auth/AuthContext';
-import { Alert } from 'react-native';
+
 
 const AccountInitiationScreen = ({navigation}) => {
     const {t} = useTranslation();
@@ -26,12 +26,12 @@ const AccountInitiationScreen = ({navigation}) => {
             // navigation.navigate(constants.route.profile.maidProfile);
             navigation.reset( {
                 index: 0,
-                routes: [{ name: constants.route.common.account }]});
+                routes: [{ name: constants.route.stack.maid, params: {screen: constants.route.maid.maidProfile} }]});
 
         } else {
             navigation.reset( {
                 index: 0,
-                routes: [{ name: constants.route.stack.common,params:{screen:constants.route.common.maidList} }]});
+                routes: [{ name: constants.route.stack.employer, params:{screen:constants.route.employer.maidList} }]});
         }
     }
     const initialValue={

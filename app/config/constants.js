@@ -13,8 +13,8 @@ export default{
         common:{
             inbox:"inbox",
             settings:"settings",
-            account:"account",
-            accountProfile:"accountProfile",
+            accountInfo:"accountInfo",
+            accountInitialization:"accountInitialization",
         },
         employer:{
             maidList:"maidList",

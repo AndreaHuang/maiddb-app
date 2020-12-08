@@ -16,10 +16,10 @@ import maidProfileScheme from "../../schemas/maidProfile";
 import i18n from "../../config/i18n";
 import AuthContext from '../../auth/AuthContext';
 import ActivityIndicator from '../../components/ActivityIndicator';
-import MaidProfileBasicInfoSection from "../maidProfile/MaidProfileBasicInfoSection";
-import MaidProfileWorkHistorySection from "../maidProfile/MaidProfileWorkHistorySection";
+import MaidProfileBasicInfoSection from "../maid/MaidProfileBasicInfoSection";
+import MaidProfileWorkHistorySection from "../maid/MaidProfileWorkHistorySection";
 import CaroselWithModal from '../../components/CaroselWithModal';
-import MaidProfileHeaderSection from '../maidProfile/MaidProfileHeaderSection';
+import MaidProfileHeaderSection from '../maid/MaidProfileHeaderSection';
 
 
 const MaidDetailsScreen = ({route}) => {

@@ -8,7 +8,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import AppNavigator from "./app/navigation/AppNavigator";
-import AccountNavigator from "./app/navigation/AccountNavigator";
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import { LogBox } from 'react-native';
 import firebaseAuth from "./app/auth/FirebaseAuth";
@@ -50,7 +49,7 @@ export default function App() {
     <AuthContext.Provider value={{user,setUser}}>
       <SafeAreaProvider>
         <NavigationContainer>
-         {user ? <AccountNavigator/> : <AuthNavigator/>}
+         {user ? <AppNavigator/> : <AuthNavigator/>}
        </NavigationContainer> 
       </SafeAreaProvider>
    </AuthContext.Provider>
