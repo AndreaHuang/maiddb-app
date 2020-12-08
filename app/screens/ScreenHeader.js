@@ -13,13 +13,14 @@ const iconSize = defaultStyles.bigIcon.size;
 
 const toFavoriteList=(navigation,uid)=>{
 
-    navigation.navigate(constants.route.main.favoriteMaidList,{data:uid});
+    navigation.navigate(constants.route.employer.favoriteMaidList,{data:uid});
 }
-const toProfile=(navigation,uid)=>{
-    navigation.navigate(constants.route.main.profile,{data:uid});
+const toAccount=(navigation,uid)=>{
+  navigation.openDrawer();
+    // navigation.navigate(constants.route.stack.account,{data:uid});
 }
 const toChatScreen=(navigation,uid)=>{
-   navigation.navigate(constants.route.main.inbox,{data:uid});
+   navigation.navigate(constants.route.common.inbox,{data:uid});
 
 }
 const ScreenHeader = () => {
@@ -28,7 +29,7 @@ const ScreenHeader = () => {
 
     return ( <View style={styles.container}>
                 <View style={styles.leftIconContainer}>
-                    <ActionIcon iconName="account-outline" size={iconSize} onPress={()=>toProfile(navigation,user.uid)}/>
+                    <ActionIcon iconName="account-outline" size={iconSize} onPress={()=>toAccount(navigation,user.uid)}/>
                     <AppText style={styles.displayName}>{user.name || user.email}</AppText>
                 </View>
                 <View style={styles.rightIconContainer}>

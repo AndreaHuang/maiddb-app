@@ -9,6 +9,7 @@ import AuthContext from "../auth/AuthContext";
 import color from "../config/color";
 import InboxScreen from "../screens/InboxScreen";
 import ProfileNavigator from "./ProfileNavigator";
+import AccountNavigator from "./AccountNavigator";
 import MaidListScreen from "../screens/maidList/MaidListScreen";
 import MaidDetailsScreen from "../screens/maidList/MaidDetailsScreen";
 import FavoriteMaidList from "../screens/maidList/FavoriteMaidList";
@@ -38,15 +39,20 @@ const AppNavigator=({navigation,screen})=>{
 
 
                 }}>
-                <Stack.Screen name={constants.route.main.maidList}  
+
+                {/* {profileIsNotCompleted(user) && <Stack.Screen name={constants.route.profile.accountProfile} component={AccountInitiationScreen} 
+                                options={{ title: 'Complete My Profile' }}/>}     */}
+                
+                <Stack.Screen name={constants.route.employer.maidList}  
                 component={MaidListScreen} options={{headerTitle:<ScreenHeader/>}}/>
-                <Stack.Screen name={constants.route.main.maidDetails}
+                <Stack.Screen name={constants.route.employer.maidDetails}
                 component={MaidDetailsScreen} /> 
-                <Stack.Screen name={constants.route.main.favoriteMaidList} component={FavoriteMaidList} options={{
+                <Stack.Screen name={constants.route.employer.favoriteMaidList} component={FavoriteMaidList} options={{
                      headerTitle:(props) =>(<AppText style={defaultStyles.title}>{t("favoritMaidList")}</AppText> ),
                      headerRight:(props) =>(<ChatIcon {...props}/> )
                 }} />
-                <Stack.Screen name={constants.route.main.inbox}  component={InboxScreen} />  
+                <Stack.Screen name={constants.route.common.inbox}  component={InboxScreen} />  
+                <Stack.Screen name={constants.route.stack.account} component={AccountNavigator}/>
                 <Stack.Screen name={constants.route.stack.profile} component={ProfileNavigator} /> 
                     
         </Stack.Navigator>

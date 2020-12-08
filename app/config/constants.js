@@ -1,24 +1,27 @@
 export default{
     route:{
         stack:{
-            main:"Main",
-            profile:"Profile",
-            inbox:"Inbox",
+            common:"Common",
+            maid:"Maid",
+            employer:"Employer",
         },
         auth:{
             registration:"Registration",
             login:"Login",
             resetPassword:"ResetPassword",
         },
-        main:{
+        common:{
+            inbox:"inbox",
+            settings:"settings",
+            account:"account",
+            accountProfile:"accountProfile",
+        },
+        employer:{
             maidList:"maidList",
             maidDetails:"maidDetails",
             favoriteMaidList:"favoriteMaidList",
-            inbox:"inbox"
         },
-        profile:{
-            account:"account",
-            accountProfile:"accountProfile",
+        maid:{
             maidProfile:"MaidProfile",
             editMaidProfile:"EditMaidProfile",
             editMaidProfileBasicInfo:"editMaidProfileBasicInfo",

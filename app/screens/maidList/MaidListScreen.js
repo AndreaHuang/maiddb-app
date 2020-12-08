@@ -38,7 +38,7 @@ const MaidListScreen = ({navigation}) => {
     const [favoriteList,setFavoriteList] =useState([]);
 
     const handleOpenMaidProfile = (maidProfile) =>{
-        navigation.navigate(constants.route.main.maidDetails,{data:maidProfile});
+        navigation.navigate(constants.route.employer.maidDetails,{data:maidProfile});
     };
 
   
@@ -63,7 +63,7 @@ const MaidListScreen = ({navigation}) => {
         Alert.alert(searchKeyword);
     }
     const openFilterPage=()=>{
-        navigation.navigate(constants.route.main.favoriteMaidList,{data:user.uid});
+        navigation.navigate(constants.route.employer.favoriteMaidList,{data:user.uid});
     }
 
     return (<Screen style={styles.container}> 

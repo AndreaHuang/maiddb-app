@@ -26,12 +26,12 @@ const AccountInitiationScreen = ({navigation}) => {
             // navigation.navigate(constants.route.profile.maidProfile);
             navigation.reset( {
                 index: 0,
-                routes: [{ name: constants.route.profile.account }]});
+                routes: [{ name: constants.route.common.account }]});
 
         } else {
             navigation.reset( {
                 index: 0,
-                routes: [{ name: constants.route.stack.main,params:{screen:constants.route.main.maidList} }]});
+                routes: [{ name: constants.route.stack.common,params:{screen:constants.route.common.maidList} }]});
         }
     }
     const initialValue={

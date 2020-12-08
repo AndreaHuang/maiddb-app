@@ -20,7 +20,7 @@ import i18n from "../../config/i18n";
 import AuthContext from '../../auth/AuthContext';
 import ListItemSeperator from '../../components/lists/ListItemSeperator';
 import SearchBox from "../../components/SearchBox";
-import HeaderSection from "./HeaderSection";
+import HeaderSection from "../ScreenHeader";
 
 
 const femaleIcon=require("../../assets/female.png");
@@ -34,7 +34,6 @@ const MaidSearchScreen = ({navigation}) => {
         <View style={styles.menuBar}>
             <SearchBox value={searchKeyword} onChange ={setSearchKeyword} onSearch={()=>search(searchKeyword)}
                 placeholder ={t("search.a.maid.candidate")}/>
-            <ActionIcon iconName="filter-outline" size={26} onPress={openFilterPage} style={styles.icon}/>
         </View>
          <FlatList
             data={data}
@@ -47,8 +46,7 @@ const MaidSearchScreen = ({navigation}) => {
                     return <MaidCard data={item} /> ;
             }}
         ></FlatList>
-       </Screen>);
-} );
+       </Screen>); 
 }
  
 export default MaidSearchScreen;{navigation}

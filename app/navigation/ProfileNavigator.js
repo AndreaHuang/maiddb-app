@@ -25,7 +25,7 @@ const ProfileNavigator=()=>{
     const {user} = useContext(AuthContext);
 
      return(
-        <ProfileStack.Navigator screenOptions={{
+        <ProfileStack.Navigator initialRouteName={constants.route.maid.maidProfile} screenOptions={{
                 headerStyle: {
                     backgroundColor: color.primary,
                 },
@@ -37,11 +37,12 @@ const ProfileNavigator=()=>{
                  headerBackTitleVisible:false
             }}
             >
-            {profileIsNotCompleted(user) && <ProfileStack.Screen name={constants.route.profile.accountProfile} component={AccountInitiationScreen} options={{ title: 'Complete My Profile' }}/>}
-            <ProfileStack.Screen name={constants.route.profile.account} component={AccountScreen} options={{ title: 'My Account' }}/>
-            <ProfileStack.Screen name={constants.route.profile.editMaidProfileBasicInfo} component={MaidProfileBasicInfoEditScreen} options={{ headerShown: false }}/>
-            <ProfileStack.Screen name={constants.route.profile.editWorkHistory} component={MaidProfileWorkHistoryEditScreen} options={{ headerShown: false }}/>
             <ProfileStack.Screen name={constants.route.profile.maidProfile} component={MaidProfileScreen} options={{ title: 'My Profile' }}/> 
+            {/* {profileIsNotCompleted(user) && <ProfileStack.Screen name={constants.route.profile.accountProfile} component={AccountInitiationScreen} options={{ title: 'Complete My Profile' }}/>}
+            <ProfileStack.Screen name={constants.route.profile.account} component={AccountScreen} options={{ title: 'My Account' }}/>
+            <ProfileStack.Screen name={constants.route.profile.editMaidProfileBasicInfo} component={MaidProfileBasicInfoEditScreen} options={{ headerShown: false }}/> */}
+            <ProfileStack.Screen name={constants.route.profile.editWorkHistory} component={MaidProfileWorkHistoryEditScreen} options={{ headerShown: false }}/>
+            
             <ProfileStack.Screen name={constants.route.profile.editImage} component={MaidProfileImageEditScreen} options={ {headerShown: false }}/> 
         </ProfileStack.Navigator>
     );

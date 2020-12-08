@@ -39,6 +39,12 @@
     
 
     "button.signin.google":"Sign In with Google",
+
+    "menu.settings":"Settings",
+    "menu.profile":"Maid Profile",
+    "menu.message":"Message",
+    "menu.favorite":"Favorite",
+    "menu.updateMyAccount":"Update Information",
     "label.pick.date":"Pick a date",
     "label.confirm.date":"Confirm",
     "label.cancel.date":"Cancel",

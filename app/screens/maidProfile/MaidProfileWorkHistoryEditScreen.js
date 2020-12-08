@@ -30,12 +30,12 @@ const WorkHistoryEditScreen = ({navigation,route}) => {
   console.log("index",index);
 
   const handleCancel =()=>{
-    navigation.replace(constants.route.profile.maidProfile);
+    navigation.replace(constants.route.maid.maidProfile);
   }
   const handleSubmit = async (values)=>{
     console.log("handleSubmit",values);
     maidProfileDB.addOrUpdateWorkHistory(user.uid,values,index);
-    navigation.replace(constants.route.profile.maidProfile);
+    navigation.replace(constants.route.maid.maidProfile);
   } 
   const items=[
    {
