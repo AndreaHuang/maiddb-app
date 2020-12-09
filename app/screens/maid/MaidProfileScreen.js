@@ -31,11 +31,11 @@ const MaidProfileScreen = ({navigation}) => {
         async function retreiveOrCreateProfile(){
             setLoading(true);
             const profileResult=  await maidProfileDB.retreiveOrCreateProfile();
-            console.debug("profileResult",profileResult);
+            // console.debug("profileResult",profileResult);
             setProfile(profileResult);
             setLoading(false);
         }
-        const cached = cache.retrieve(constants.cache.maidProfile)
+        const cached = cache.retrieve(user.uid,constants.cache.maidProfile)
         if(cached){
             setProfile(cached);
         } else{

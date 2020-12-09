@@ -1,20 +1,8 @@
 import React, { useContext, useEffect,useState } from 'react';
 import {StyleSheet,View} from 'react-native';
 import { useTranslation } from 'react-i18next';
-import {
-    Avatar,
-    Title,
-    Caption,
-    Paragraph,
-    Drawer,
-    Text,
-    TouchableRipple} from "react-native-paper";
-
-
-import {
-    DrawerContentScrollView,
-    DrawerItem
-} from "@react-navigation/drawer";
+import {Drawer} from "react-native-paper";
+import {DrawerContentScrollView } from "@react-navigation/drawer";
 import constants from '../config/constants';
 import colors from '../config/color';
 import i18n from '../config/i18n';
@@ -60,7 +48,7 @@ const DrawerContent = (props) => {
     return ( <View style={styles.container}>
         <DrawerContentScrollView {...props}>
             <ListItem
-                title={user.name}
+                title={user.displayName || user.name}
                 subTitle={user.email}
                 image={
                 user.photoURL

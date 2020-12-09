@@ -1,7 +1,7 @@
 // import firebase from 'firebase';
 // import firebaseConfig from '../services/firebaseConfig';
-import {auth,db} from '../services/firebase';
-import {saveOrUpdateFirebaseUser} from "../database/user"
+import {auth} from '../services/firebase';
+import {createOrUpdateFirebaseUser} from "../database/user"
 
 
 const signout=()=>{
@@ -55,7 +55,7 @@ const onSignIn = ({user: googleUser,idToken,accessToken})=> {
       auth().signInWithCredential(credential)
       .then((firebaseLoginResult)=>{
         console.log("after signInWithCredential, use signin firebase");
-        saveOrUpdateFirebaseUser(firebaseLoginResult);
+        createOrUpdateFirebaseUser(firebaseLoginResult);
          /*This is callback after login firebase */
          return;
       })

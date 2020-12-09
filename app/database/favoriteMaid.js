@@ -6,7 +6,7 @@ const cacheKey = constants.cache.favoriteMaidList;
 const favoriteMaidRef="favoriteMaid";
 export const toggleFavorite = async (uid,maid_uid,callback)=>{
       try{
-        let favoriteList = await cache.retrieve(cacheKey);
+        let favoriteList = await cache.retrieve(uid.cacheKey);
         if( favoriteList ){ 
             const originalLength = favoriteList.length;
             favoriteList = favoriteList.filter(x=> {
@@ -21,7 +21,7 @@ export const toggleFavorite = async (uid,maid_uid,callback)=>{
             favoriteList =[maid_uid];
         }
 
-        cache.store(cacheKey,favoriteList);
+        cache.store(uid,cacheKey,favoriteList);
         if(callback){
             callback(favoriteList);
         }
@@ -35,7 +35,7 @@ export const toggleFavorite = async (uid,maid_uid,callback)=>{
 }
 export const retrieveFavorite= async (uid,callback)=>{
       //retrieve from cache first,then from remote
-      let favoriteList = await cache.retrieve(cacheKey);
+      let favoriteList = await cache.retrieve(uid,cacheKey);
       if(!favoriteList) {
           favoriteList=[];
       }
@@ -48,7 +48,7 @@ export const retrieveFavorite= async (uid,callback)=>{
         if(!value){
             value=[];
         }
-        cache.store(cacheKey,value);
+        cache.store(uid,cacheKey,value);
         callback(value);
       })
 

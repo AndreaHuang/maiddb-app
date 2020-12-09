@@ -53,7 +53,7 @@ const MaidListScreen = ({navigation}) => {
             setLoading(true);
             const result = await maidProfileDB.search();
             setLoading(false);
-            console.debug("searchResult",result);
+            // console.debug("searchResult",result);
             setData(result);
         }
         loadMaidList();

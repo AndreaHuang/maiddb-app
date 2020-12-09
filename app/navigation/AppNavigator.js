@@ -21,39 +21,21 @@ import {profileIsNotCompleted} from "../schemas/user";
 
 const Drawer = createDrawerNavigator();
 
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        onPress={() => navigation.navigate('Notifications')}
-        title="Go to notifications"
-      />
-    </View>
-  );
-}
-
-function NotificationsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button onPress={() => navigation.openDrawer()} title="Go back home" />
-    </View>
-  );
-}
-
 const AppNavigator = () => {
-  const{user} = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
+  const profileNotCompleted = profileIsNotCompleted(user);
     return (  
        <Drawer.Navigator
             drawerContent={props=><DrawerContent {...props}/>} >
-       {profileIsNotCompleted(user) ? 
+       {profileNotCompleted?  
         <Drawer.Screen name={constants.route.common.accountInitialization} component={AccountInitiationScreen} />
         :null}    
            {/* <Drawer.Screen name={constants.route.profile.maidProfile} component={ProfileNavigator} /> */}
         {/* <Drawer.Screen name={constants.route.stack.inbox} component={InboxScreen} /> */}
         
-        {(!user.profile ||  user.profile ===maid )?
+        { profileNotCompleted ||  user.role === "maid" ?
         <Drawer.Screen name={constants.route.stack.maid} component={MaidNavigator} />  : null}
-        {(!user.profile ||  user.profile ===employer )?
+        { profileNotCompleted ||  user.role === "employer" ?
         <Drawer.Screen name={constants.route.stack.employer} component={EmployerNavigator} /> :null}
 
         <Drawer.Screen name={constants.route.common.accountInfo} component={AccountScreen}  />

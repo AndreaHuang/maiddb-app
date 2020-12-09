@@ -9,7 +9,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import AppNavigator from "./app/navigation/AppNavigator";
 import AuthNavigator from "./app/navigation/AuthNavigator";
-import { LogBox } from 'react-native';
+import { Alert, LogBox } from 'react-native';
 import firebaseAuth from "./app/auth/FirebaseAuth";
 
 import {auth} from "./app/services/firebase";
@@ -23,22 +23,26 @@ export default function App() {
   const[user,setUser]=useState(null);
   const[isReady,setIsReady]=useState(false);
 
+
   useEffect(()=>{
-     const unsubscribe = auth().onAuthStateChanged((firebaseUser)=>{
-        unsubscribe();
+    //  const unsubscribe = 
+     auth().onAuthStateChanged((firebaseUser)=>{
+        // unsubscribe();
         // console.log("onAuthStateChanged in initialize ", firebaseUser);
         if(firebaseUser){
-          const appUser = firebaseAuth.buildAppUser(firebaseUser);
+          // const appUser = firebaseAuth.buildAppUser(firebaseUser.uid);
           // // console.log("buildFrom buildAppUser",appUser);
           // setUser(appUser);
-          retrieveUserProfile(appUser,setUser);
+          retrieveUserProfile(firebaseUser.uid,setUser,(error)=>{
+            Alert.alert("Fail to retrieve user information.",error.errorCode);
+          });
         
         } else {
           setUser(null);
         }
         })
       setIsReady(true);
-  },[isReady]);
+  },[]);
 
   if(!isReady){
     return <AppLoading/>

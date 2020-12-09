@@ -27,7 +27,7 @@ const createProfile= async (currentUser)=>{
         const ref =  db.ref(maidProfileRef+"/"+uid);
         await ref.set(init);
         const newUser = await((await ref.once('value')).val());
-        console.debug("Created the  Maid profile in firebase database",newUser);
+        console.debug("Created the  Maid profile in firebase database");
         
        return newUser;
 
@@ -39,18 +39,19 @@ const createProfile= async (currentUser)=>{
 const retreiveOrCreateProfile=async ()=>{
 
     const currentUser = auth().currentUser;
+    const uid = currentUser.uid;
 
     const snapshot = await(await db.ref(maidProfileRef+"/"+currentUser.uid).once('value')).val();
     
     if(snapshot){
         // console.debug("route to existing")
         // console.debug("route to existing",snapshot);
-        cache.store(constants.cache.maidProfile,snapshot);
+        cache.store(uid,constants.cache.maidProfile,snapshot);
         return snapshot;
     } else {
         //  console.debug("route to initProfile")
         const newProfile= createProfile(currentUser);
-        cache.store(constants.cache.maidProfile,newProfile);
+        cache.store(uid,constants.cache.maidProfile,newProfile);
         return newProfile;
     }
 

@@ -1,6 +1,6 @@
 import React,{useState,useContext} from 'react';
 import { useTranslation } from "react-i18next";
-import {StyleSheet} from "react-native";
+import {Alert, StyleSheet} from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../../components/Screen";
@@ -20,7 +20,9 @@ const AccountInitiationScreen = ({navigation}) => {
     console.log("user",user);
     const handleSubmit = (values)=>{
         if(values){
-            updateUserProfile(user.uid,values);
+            updateUserProfile(user.uid,values,setUser,(error)=>{
+                Alert.alert("fail to update user profile")
+            });
         }
         if(values.role === "maid"){
             // navigation.navigate(constants.route.profile.maidProfile);
@@ -38,6 +40,7 @@ const AccountInitiationScreen = ({navigation}) => {
         role:user.role,
         displayName:user.displayName,
     }
+    console.debug("initialValue",initialValue);
     const validationScheme=Yup.object({
         role: Yup.string().required(t("validation.role.is.required")),
         displayName:Yup.string().required(t("validation.displayName.is.required")),

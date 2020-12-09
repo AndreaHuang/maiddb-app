@@ -1,8 +1,11 @@
 import _ from "lodash";
 import {db} from '../services/firebase';
+import cache from "../utiity/Cache";
+import constants from "../config/constants";
 
+const cacheKey = constants.cache.user;
 const usersRef = "/users";
-export const saveOrUpdateFirebaseUser=(result)=>{
+export const createOrUpdateFirebaseUser=(result)=>{
    
     const {user,additionalUserInfo} =result;
     const uid=user.uid;
@@ -16,12 +19,14 @@ export const saveOrUpdateFirebaseUser=(result)=>{
             createdAt: Date.now(),
             emailVerified:user.emailVerified,
             phoneNumber:user.phoneNumber,
+            uid:uid,
         };
         if(additionalUserInfo.profile){
             dbUser.firstName = additionalUserInfo.profile.given_name,
             dbUser.lastName = additionalUserInfo.profile.family_name
         };
-       
+        
+        cache.store(uid,cacheKey,dbUser);
         db.ref(usersRef+"/"+uid)
         .set(dbUser).then(()=>{
             console.log("Created the  user in firebase database");
@@ -30,32 +35,84 @@ export const saveOrUpdateFirebaseUser=(result)=>{
     else{
         db.ref(usersRef+"/"+uid)
         .update({
-            lastLoginAt:Date.now()
+            lastLoginAt:Date.now(),
+        }).then(()=>{
+             console.log("Update user's last login timestamp in firebase database");
         });
         
     }
     return;
 }
 
-export const retrieveUserProfile=(firebaseUser,callBack)=>{
-   const ref =  db.ref(usersRef+"/"+firebaseUser.uid);
-    ref.on('value', (snapshot) =>{
-        console.debug("user profile is updated:",firebaseUser.uid);
-       
-        const userInDB = snapshot.val();
-        console.debug("new value",userInDB);
-        callBack(_.assign(firebaseUser,userInDB));
-    });
+export const retrieveUserProfile=async (uid,callBack,onError)=>{
+    //it is not really related to authentication status
+
+    //then retreive from db, save to cache
+
+   
+    //Retrieve from Cache first
+    let user = await cache.retrieve(uid,cacheKey);
+    
+    if(user){
+        console.debug("retrieve from cache",user);
+        callBack(user);
+    }  
+    try{
+        //then retreive from db, save to cache
+        const ref =  db.ref(usersRef+"/"+uid);
+        ref.on('value', (snapshot) =>{
+            const user = snapshot.val();
+            console.debug("retrieve from db",user);
+            if(user){
+                cache.store(uid,cacheKey,user);
+                callBack(user);
+            }   
+        });
+
+   } catch(error){
+        console.error("failure of retrieveUserProfile",error);
+        onError({
+            error:true,
+            errorCode: error.errorCode
+        });
+   }
+
 
 }
-export const updateUserProfile=(uid,updated)=>{
+export const updateUserProfile=async (uid,updated,callBack,onError)=>{
     console.log("try to update ",uid);
     console.log("updatedValue ",updated);
 
-    db.ref(usersRef+"/"+uid)
-        .update(updated);
+     //Retrieve from Cache first
+    let user = await cache.retrieve(uid,cacheKey);
+    if(user){
+        console.debug("retrieve from cache",user);
+    } else{
+        const ref =  db.ref(usersRef+"/"+uid);
+        user = await( await ref.once('value')).val();
+        console.debug("not found in cache, retrieve from db",user);
+    }
+
+    const updatedUser = _.assign(user,updated);
+    console.debug("updated to",updatedUser);
+    callBack(updatedUser);
+
+    try{
+        await cache.store(uid,cacheKey,updatedUser);
+        await db.ref(usersRef+"/"+uid)
+            .update(updated);
+        console.debug("upload to cache and db successfully to");
+    } catch(error){
+         console.error("failure of updateUserProfile",error);
+        onError({
+            error:true,
+            errorCode:error.errorCode
+        })
+    }
     return;
-}
+}  
+
+   
 
 
 // Object {

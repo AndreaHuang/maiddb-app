@@ -23,7 +23,7 @@ import MaidProfileHeaderSection from '../maid/MaidProfileHeaderSection';
 
 
 const MaidProfileViewScreen = ({route}) => {
-    console.log("MaidProfileViewScreen is loading",route);
+    // console.log("MaidProfileViewScreen is loading",route);
     const { t } = useTranslation();
     const profile = route.params.data;
     if(!profile) {

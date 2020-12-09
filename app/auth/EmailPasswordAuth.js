@@ -1,5 +1,5 @@
 import {auth} from "../services/firebase";
-import {saveOrUpdateFirebaseUser} from "../database/user"
+import {createOrUpdateFirebaseUser} from "../database/user"
 
 const buildAppUser =({additionalUserInfo,user})=>{
  
@@ -12,12 +12,12 @@ const buildAppUser =({additionalUserInfo,user})=>{
   }
 
 }
-const register = async (email,password,displayName)=>{
+const register = async (email,password)=>{
 
     try{
      const response = await auth().createUserWithEmailAndPassword(email, password);
      console.log("createUserWithEmailAndPassword response",response);
-     saveOrUpdateFirebaseUser(response);
+     createOrUpdateFirebaseUser(response);
      return {
        user:buildAppUser(response)
      }
@@ -35,7 +35,7 @@ const login = async (email,password)=>{
     try{
      const response = await auth().signInWithEmailAndPassword(email, password);
      console.log("signInWithEmailAndPassword response",response);
-     saveOrUpdateFirebaseUser(response);
+     createOrUpdateFirebaseUser(response);
      return {
        user:buildAppUser(response)
      }
