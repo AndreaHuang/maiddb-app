@@ -112,7 +112,7 @@ const DrawerContent = (props) => {
                 <Drawer.Item
                             icon={()=>( <Icon
                         iconColor={colors.primary}
-                        name='account-details'
+                        name='formate-list-checkbox'
                         size={iconSize}
                     />)} 
                     label={t("menu.profile")}
@@ -121,6 +121,7 @@ const DrawerContent = (props) => {
             </Drawer.Section>
             :null}
         </DrawerContentScrollView>
+         {user.role === 'admin'?
          <Drawer.Section style={styles.bottomDrawerSection}>
             <Drawer.Item  icon={()=>( <Icon
                 iconColor={colors.error}
@@ -130,7 +131,7 @@ const DrawerContent = (props) => {
             label={t("menu.admin")}
             onPress={navigateToAdminScreen}
             />
-        </Drawer.Section>
+        </Drawer.Section>:null}
 
          <Drawer.Section style={styles.bottomDrawerSection}>
             <Drawer.Item  icon={()=>( <Icon

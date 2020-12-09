@@ -20,7 +20,7 @@ const KEY_ALL='All'; //status other than pending, for other action
 const ManageMaidListScreen = (props) => {
     const {t} = useTranslation();
     console.debug("MaidDetailsScreen route",props.route);
-    const [index,setIndex] = useState(0);
+    const [index,setIndex] = useState(2);
     const [routes] = useState([
         {key:KEY_TOAPPROVE,title:t("toApprove")},
         {key:KEY_TORATE,title:t("toRate")},
@@ -38,13 +38,14 @@ const ManageMaidListScreen = (props) => {
     }
 
 
-    return ( <TabView
+    return ( 
+    <TabView
     navigationState={{index,routes}}
     renderScene={renderScene}
     onIndexChange={setIndex}
-    initialLayout={initialLayout}
-        
-    /> );
+    initialLayout={initialLayout}     
+    />
+   );
 }
 
 const styles = StyleSheet.create({

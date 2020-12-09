@@ -12,7 +12,8 @@ export default{
             resetPassword:"ResetPassword",
         },
         admin:{
-            manageMaidList:"ManageMaidList"
+            manageMaidList:"ManageMaidList",
+            manageMaid:"manageMaid"
         },
         common:{
             inbox:"inbox",

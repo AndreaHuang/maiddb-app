@@ -34,9 +34,11 @@ const MaidCard = ({onPress,onToggleFavorite,isFavorite,data,small=false,rating})
                               <AppText style={[defaultStyles.smallTitle,styles.rating]}>{rating}</AppText> 
                             </View>
                             :null}
+                            {onToggleFavorite?
                              <View style={styles.actionContainer}>
                                 <ActionIcon iconName={isFavorite ?"heart" :"heart-outline"} onPress={onToggleFavorite} />
                              </View>
+                            :null}
                         </View>
                         <View style={styles.detailsContainer}>
                             <View>
@@ -53,10 +55,10 @@ const MaidCard = ({onPress,onToggleFavorite,isFavorite,data,small=false,rating})
                             </View>
                             <View style={styles.textContainer}>
                                 <AppText numberOfLines={1} style={styles.title}>
-                                    {basicInfo.name}
+                                    {basicInfo.name || maid_uid}
                                 </AppText>
                                  <AppText numberOfLines={3} style={styles.subTitle}>
-                                    @ {t(basicInfo.currentLocation)}
+                                     {t(basicInfo.currentLocation)}
                                 </AppText>
                                  <AppText numberOfLines={3} style={styles.subTitle}>
                                     {t(basicInfo.currentStatus)} 
