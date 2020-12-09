@@ -1,7 +1,7 @@
 import React, { useContext, useEffect,useState } from 'react';
 import {StyleSheet,Text,Alert} from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { TabView, SceneMap } from 'react-native-tab-view';
+import { TabView, SceneMap ,TabBar} from 'react-native-tab-view';
 
 import constants from '../../config/constants';
 import i18n from '../../config/i18n';
@@ -9,6 +9,7 @@ import defaultStyles from '../../config/styles';
 import AllMaidListScreen from "./AllMaidListScreen";
 import ToApproveMaidListScreen from "./ToApproveMaidListScreen";
 import ToRateMaidListScreen from "./ToRateMaidListScreen";
+import AppText from "../../components/AppText";
 
 
 const initialLayout = { width: defaultStyles.dimension.width};
@@ -36,10 +37,24 @@ const ManageMaidListScreen = (props) => {
             return <AllMaidListScreen {...props}/>;
         };
     }
+    const renderTabBar = props => (
+        <TabBar
+            {...props}
+            indicatorStyle={{ backgroundColor: defaultStyles.colors.primary }}
+            style={{ backgroundColor: defaultStyles.colors.white}}
+            getLabelText={({ route }) => t(route.title)}
+            renderLabel={({ route, focused, color }) => (
+                <AppText style={[defaultStyles.smallTitle,focused?{color:defaultStyles.colors.primary}:null]}>
+                {t(route.title)}
+                </AppText>
+    )}
+    />
+    );
 
 
     return ( 
     <TabView
+    renderTabBar={renderTabBar}
     navigationState={{index,routes}}
     renderScene={renderScene}
     onIndexChange={setIndex}

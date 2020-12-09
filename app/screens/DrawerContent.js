@@ -120,7 +120,7 @@ const DrawerContent = (props) => {
                 />
             </Drawer.Section>
             :null}
-        </DrawerContentScrollView>
+
          {user.role === 'admin'?
          <Drawer.Section style={styles.bottomDrawerSection}>
             <Drawer.Item  icon={()=>( <Icon
@@ -143,6 +143,7 @@ const DrawerContent = (props) => {
             onPress={navigateToSettingsScreen}
             />
         </Drawer.Section>
+        </DrawerContentScrollView>
         <Drawer.Section style={styles.bottomDrawerSection}>
             <Drawer.Item  icon={()=>( <Icon
                 iconColor={colors.danger}

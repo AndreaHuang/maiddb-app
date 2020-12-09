@@ -64,7 +64,7 @@ export const AdminRightHeader = ({navigation,route})=>{
                  {/* </>
                  :null} */}
                
-                 <ActionIcon  style={styles.icon} iconName="spellcheck" size={iconSize} onPress={()=>rateProfile(navigation,maid_uid)}/>
+                 <ActionIcon  style={styles.icon} iconName="star-half" size={iconSize} onPress={()=>rateProfile(navigation,maid_uid)}/>
                  <ActionIcon  style={styles.icon} iconName="cloud-upload-outline" size={iconSize} onPress={()=>onlineProfile(navigation,maid_uid)}/> 
                  <ActionIcon  style={styles.icon} iconName="cloud-off-outline" size={iconSize} onPress={()=>offlineProfile(navigation,maid_uid)}/> 
                  

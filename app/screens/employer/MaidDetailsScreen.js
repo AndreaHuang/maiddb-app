@@ -1,9 +1,12 @@
 import React,{useState} from 'react';
 import { View, StyleSheet } from 'react-native';
-import { TabView } from 'react-native-tab-view';
+import { TabView,TabBar } from 'react-native-tab-view';
 import MaidProfileViewScreen from "./MaidProfileViewScreen";
 import MaidRatingScreen from "./MaidRatingScreen";
+import { useTranslation } from 'react-i18next';
+import AppText from "../../components/AppText";
 
+import i18n from '../../config/i18n';
 import defaultStyles from "../../config/styles";
 
 const initialLayout = { width: defaultStyles.dimension.width };
@@ -11,6 +14,7 @@ const KEY_PROFILE='profile';
 const KEY_RATING='rating';
 
 const MaidDetailsScreen = (props) => {
+    const {t} = useTranslation();
     // console.debug("MaidDetailsScreen route",props.route);
     const [index,setIndex] = useState(0);
     const [routes] =useState([
@@ -25,7 +29,21 @@ const MaidDetailsScreen = (props) => {
             return <MaidRatingScreen {...props}/>
         }
         };
+    const renderTabBar = props => (
+        <TabBar
+            {...props}
+            indicatorStyle={{ backgroundColor: defaultStyles.colors.primary }}
+            style={{ backgroundColor: defaultStyles.colors.white}}
+            getLabelText={({ route }) => t(route.title)}
+            renderLabel={({ route, focused, color }) => (
+                <AppText style={[defaultStyles.smallTitle,focused?{color:defaultStyles.colors.primary}:null]}>
+                {t(route.title)}
+                </AppText>
+    )}
+    />
+    );
     return ( <TabView
+    renderTabBar={renderTabBar}
     navigationState={{index,routes}}
     renderScene={renderScene}
     onIndexChange={setIndex}
