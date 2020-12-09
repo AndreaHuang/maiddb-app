@@ -1,16 +1,11 @@
 import React,{useContext} from "react";
 
-// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { SimpleLineIcons } from '@expo/vector-icons'; 
 
-import AuthContext from "../auth/AuthContext";
 
 import color from "../config/color";
 import MaidListScreen from "../screens/employer/MaidListScreen";
 import MaidDetailsScreen from "../screens/employer/MaidDetailsScreen";
-import MaidRatingScreen from "../screens/employer/MaidRatingScreen";
 import FavoriteMaidList from "../screens/employer/FavoriteMaidList";
 import ScreenHeader from "../screens/ScreenHeader";
 
@@ -21,27 +16,6 @@ import {ChatIcon} from "../screens/ScreenHeader";
 import AppText from "../components/AppText";
 import { useTranslation } from "react-i18next";
 
-
-const width = defaultStyles.dimension.width;
-const MaidDetailsTopTab = createMaterialTopTabNavigator();
-const MaidDetailsNavigator=({route})=>{
-    return(
-        <MaidDetailsTopTab.Navigator initialRouteName={constants.route.employer.maidProfileDetails}
-               tabBarOptions={{
-                    activeTintColor: '#e91e63',
-                    labelStyle: { fontSize: 12 },
-                    style: { backgroundColor: 'powderblue' },
-                }}
-               >
-            <MaidDetailsTopTab.Screen name={constants.route.employer.maidProfileDetails} component={MaidDetailsScreen} 
-                    options={{tabBarLabel:"Details"}}/> 
-            
-            <MaidDetailsTopTab.Screen name={constants.route.employer.maidRating} component={MaidRatingScreen}
-                    options={{tabBarLabel:"Rating"}}/>   
-        </MaidDetailsTopTab.Navigator>
-
-    );
-}
 
 const Stack = createStackNavigator();
 const EmployerNavigator=({navigation,screen})=>{
@@ -63,9 +37,10 @@ const EmployerNavigator=({navigation,screen})=>{
                 <Stack.Screen name={constants.route.employer.maidList}  
                     component={MaidListScreen} 
                     options={{headerTitle:<ScreenHeader/>}}/>
-                <Stack.Screen name={constants.route.employer.maidProfileDetails}
-                    component={MaidDetailsScreen} 
-                    options={({route})=>({headerTitle:route.params.data.basicInfo.name})}/> 
+                <Stack.Screen name={constants.route.employer.maidDetails} 
+                component={MaidDetailsScreen} 
+                 options={({route})=>({headerTitle:route.params.data.basicInfo.name})}
+                />
                 <Stack.Screen name={constants.route.employer.favoriteMaidList} 
                     component={FavoriteMaidList} 
                     options={{

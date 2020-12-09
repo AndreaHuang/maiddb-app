@@ -68,9 +68,7 @@ const MaidListScreen = ({navigation}) => {
       toggleFavorite(uid,maid_uid,setFavoriteList);
     }
     const handleOpenMaidProfile = (maidProfile) =>{
-      console.log("maidProfile",maidProfile);
-        navigation.navigate(constants.route.employer.maidProfileDetails,
-          // {screen:constants.route.employer.maidProfileDetails,
+      navigation.navigate(constants.route.employer.maidDetails,
           {data:maidProfile}
           );
     };
@@ -86,11 +84,8 @@ const MaidListScreen = ({navigation}) => {
         <AppText style={styles.sectionHeader}>Top Maids</AppText>
         <ScrollView
             horizontal
-            // onContentSizeChange={() => scrollView.current.scrollToEnd()}
-            // ref={scrollView}
         >
            {data.map ((item,index)=>{
-            //  {onPress,onToggleFavorite,isFavorite,data,uid,small=false,rating=4.7}
                     return <MaidCard key={index} data={item} small isFavorite={_.includes(favoriteList,item.user_uid)} 
                     onToggleFavorite={()=>handleToggleFavorite(user.uid,item.user_uid)} 
                     onPress={()=>handleOpenMaidProfile(item)}
@@ -99,10 +94,7 @@ const MaidListScreen = ({navigation}) => {
         </ScrollView>
          <AppText style={styles.sectionHeader}>New Available</AppText>
         <ScrollView
-            horizontal
-            // onContentSizeChange={() => scrollView.current.scrollToEnd()}
-            // ref={scrollView}
-        >
+            horizontal>
            {data.map ((item,index)=>{
                     return <MaidCard key={index} data={item} small isFavorite={_.includes(favoriteList,item.user_uid)} 
                     onToggleFavorite={()=>handleToggleFavorite(user.uid,item.user_uid)} 
