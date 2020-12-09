@@ -4,11 +4,15 @@ export default{
             common:"Common",
             maid:"Maid",
             employer:"Employer",
+            admin:"Admin"
         },
         auth:{
             registration:"Registration",
             login:"Login",
             resetPassword:"ResetPassword",
+        },
+        admin:{
+            manageMaidList:"ManageMaidList"
         },
         common:{
             inbox:"inbox",

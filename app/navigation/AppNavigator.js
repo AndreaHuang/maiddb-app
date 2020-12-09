@@ -16,6 +16,8 @@ import DrawerContent from "../screens/DrawerContent";
 import AuthContext from '../auth/AuthContext';
 import MaidNavigator from './MaidNavigator';
 import EmployerNavigator from './EmployerNavigator';
+import AdminNavigator from './AdminNavigator';
+
 import SettingsScreen from '../screens/common/SettingsScreen';
 import {profileIsNotCompleted} from "../schemas/user";
 
@@ -32,11 +34,14 @@ const AppNavigator = () => {
         :null}    
            {/* <Drawer.Screen name={constants.route.profile.maidProfile} component={ProfileNavigator} /> */}
         {/* <Drawer.Screen name={constants.route.stack.inbox} component={InboxScreen} /> */}
-        
+        { user.role === "admin" ?
+        <Drawer.Screen name={constants.route.stack.admin} component={AdminNavigator} /> :null}
+
         { profileNotCompleted ||  user.role === "maid" ?
         <Drawer.Screen name={constants.route.stack.maid} component={MaidNavigator} />  : null}
         { profileNotCompleted ||  user.role === "employer" ?
         <Drawer.Screen name={constants.route.stack.employer} component={EmployerNavigator} /> :null}
+       
 
         <Drawer.Screen name={constants.route.common.accountInfo} component={AccountScreen}  />
         <Drawer.Screen name={constants.route.common.settings} component={SettingsScreen}  />

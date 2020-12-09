@@ -1,30 +1,27 @@
 import React,{useState} from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
-import { TabView, SceneMap } from 'react-native-tab-view';
+import { View, StyleSheet } from 'react-native';
+import { TabView } from 'react-native-tab-view';
 import MaidProfileViewScreen from "./MaidProfileViewScreen";
 import MaidRatingScreen from "./MaidRatingScreen";
 
 import defaultStyles from "../../config/styles";
 
 const initialLayout = { width: defaultStyles.dimension.width };
+const KEY_PROFILE='profile';
+const KEY_RATING='rating';
 
 const MaidDetailsScreen = (props) => {
     console.debug("MaidDetailsScreen route",props.route);
-    const [index,setIndex] = React.useState(0);
-    const [routes] = React.useState([
-        {key:"profile",title:"Maid Profile"},
-        {key:"rating",title:"Rating by Maid DB"}
+    const [index,setIndex] = useState(0);
+    const [routes] =useState([
+        {key:KEY_PROFILE,title:"Maid Profile"},
+        {key:KEY_RATING,title:"Rating by Maid DB"}
     ]);
-    // const renderScene = SceneMap({
-    //     profile:<MaidProfileViewScreen {...props}/>,
-    //     rating:<MaidRatingScreen />
-
-    // })
     const renderScene = ({ route, jumpTo }) => {
         switch (route.key) {
-            case 'profile':
+            case KEY_PROFILE:
             return <MaidProfileViewScreen {...props}/>;
-            case 'rating':
+            case KEY_RATING:
             return <MaidRatingScreen {...props}/>
         }
         };

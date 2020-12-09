@@ -46,6 +46,7 @@
     "menu.favorite":"Favorite",
     "menu.updateMyAccount":"Update Information",
     "menu.maidList":"Mail List",
+    "menu.admin":"Administration",
     "label.pick.date":"Pick a date",
     "label.confirm.date":"Confirm",
     "label.cancel.date":"Cancel",

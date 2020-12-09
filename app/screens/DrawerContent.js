@@ -39,6 +39,13 @@ const DrawerContent = (props) => {
     const navigateToMaidList=()=>{
          navigation.navigate(constants.route.stack.employer,{screen:constants.route.employer.maidList});
     }
+    const navigateToAdminScreen=()=>{
+         navigation.navigate(constants.route.stack.admin);
+            // // {screen:constants.route.admin.manageMaidList});
+            // {screen:"manage"});
+    }
+
+    
     const navigateToAccountInfo=()=>{
         navigation.navigate(constants.route.common.accountInfo);
     }
@@ -114,6 +121,17 @@ const DrawerContent = (props) => {
             </Drawer.Section>
             :null}
         </DrawerContentScrollView>
+         <Drawer.Section style={styles.bottomDrawerSection}>
+            <Drawer.Item  icon={()=>( <Icon
+                iconColor={colors.error}
+                name='apple-keyboard-command'
+                size={iconSize}
+              />)} 
+            label={t("menu.admin")}
+            onPress={navigateToAdminScreen}
+            />
+        </Drawer.Section>
+
          <Drawer.Section style={styles.bottomDrawerSection}>
             <Drawer.Item  icon={()=>( <Icon
                 iconColor={colors.dark}
