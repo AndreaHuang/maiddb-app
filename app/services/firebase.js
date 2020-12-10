@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import firebaseConfig from '../services/firebaseConfig';
+import firebaseConfig from './firebaseConfig';
 
 /*Initialize the app*/
 const initialize=()=>{

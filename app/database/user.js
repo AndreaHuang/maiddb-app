@@ -95,7 +95,7 @@ export const updateUserProfile=async (uid,updated,callBack,onError)=>{
 
     const updatedUser = _.assign(user,updated);
     console.debug("updated to",updatedUser);
-    callBack(updatedUser);
+    if(callBack) {callBack(updatedUser)};
 
     try{
         await cache.store(uid,cacheKey,updatedUser);
@@ -104,10 +104,11 @@ export const updateUserProfile=async (uid,updated,callBack,onError)=>{
         console.debug("upload to cache and db successfully to");
     } catch(error){
          console.error("failure of updateUserProfile",error);
-        onError({
+         if(onError){
+             onError({
             error:true,
             errorCode:error.errorCode
-        })
+        })}
     }
     return;
 }  

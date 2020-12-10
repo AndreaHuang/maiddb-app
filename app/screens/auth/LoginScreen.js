@@ -26,6 +26,9 @@ import jwtDecode from "jwt-decode";
 import GoogleAppAuth from "../../auth/GoogleAppAuth";
 import EmailPasswordAuth from "../../auth/EmailPasswordAuth";
 
+// import {sendPushNotification} from "../../services/firebase-send-notfication";
+import {sendNotification} from "../../services/expo-send-notification"
+
 const googleLogo =require("../../assets/logo/Google.png");
 function LoginScreen({route,navigation}) {
     const { t } = useTranslation();
@@ -116,6 +119,13 @@ function LoginScreen({route,navigation}) {
       <View style={styles.linksContainer}>
           <AppLink title={t("button.signup")} style={{fontSize:18}} onPress={()=>navigation.navigate(constants.route.auth.registration)}/>
           <AppLink title={t("button.forgetPassword")}  onPress={()=>navigation.navigate(constants.route.auth.resetPassword)}/>
+
+       </View>
+      
+      <View style={styles.linksContainer}>
+          <AppLink title="Test Push Notification" style={{fontSize:18}} onPress={()=>
+    sendNotification("ExponentPushToken[8G9G4SMGWCuYGKwIvHiYj4]")}/>
+      
 
        </View>
       

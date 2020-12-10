@@ -15,16 +15,24 @@ import firebaseAuth from "./app/auth/FirebaseAuth";
 import {auth} from "./app/services/firebase";
 import {retrieveUserProfile} from "./app/database/user";
 import {AppLoading} from "expo";
+import {foregroundPushNotification,handlePushNotification,initializePushNotification} from "./app/services/expo-messaging";
 
 enableScreens();
+foregroundPushNotification();
+
+
 LogBox.ignoreLogs=['Warning'];
 
 export default function App() {
   const[user,setUser]=useState(null);
   const[isReady,setIsReady]=useState(false);
 
+  useEffect(()=>{
+    return handlePushNotification();
+  },[]);
 
   useEffect(()=>{
+   
     //  const unsubscribe = 
      auth().onAuthStateChanged((firebaseUser)=>{
         // unsubscribe();
@@ -36,7 +44,7 @@ export default function App() {
           retrieveUserProfile(firebaseUser.uid,setUser,(error)=>{
             Alert.alert("Fail to retrieve user information.",error.errorCode);
           });
-        
+          initializePushNotification(firebaseUser.uid);
         } else {
           setUser(null);
         }

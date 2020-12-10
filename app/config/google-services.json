@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "621363690446",
+    "firebase_url": "https://maiddb.firebaseio.com",
+    "project_id": "maiddb",
+    "storage_bucket": "maiddb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621363690446:android:b197a2ff04a8ea59cec99f",
+        "android_client_info": {
+          "package_name": "com.maiddb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "621363690446-fjlmi6sh8qhemobl96u6pkoii0j8ri8m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwYNEYzJ0QYeCYMNCQTxocX4CxtA_uqHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "621363690446-fjlmi6sh8qhemobl96u6pkoii0j8ri8m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "621363690446-1q9qjmmkqfei9eqnt510mpmha09u5pdb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.maiddb"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

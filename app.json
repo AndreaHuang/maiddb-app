@@ -34,10 +34,18 @@
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "googleServicesFile":"./app/config/google-services.json"
     },
     "web": {
-      "favicon": "./app/assets/favicon.png"
+      "favicon": "./app/assets/favicon.png",
+      "config":{
+        "firebase":{
+          "appId":"1:621363690446:web:b7f2227709f7be4bcec99f",
+          "apiKey":"AIzaSyCQqgTSGxnlZAzSFvg7J0XB91TJhsNpndk",
+          "measurementId":""
+        }
+      }
     }
   }
 }
