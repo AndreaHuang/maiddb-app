@@ -28,6 +28,7 @@ import EmailPasswordAuth from "../../auth/EmailPasswordAuth";
 
 // import {sendPushNotification} from "../../services/firebase-send-notfication";
 import {sendNotification} from "../../services/expo-send-notification"
+import {Email} from "../../components/Linking";
 
 const googleLogo =require("../../assets/logo/Google.png");
 function LoginScreen({route,navigation}) {
@@ -125,10 +126,7 @@ function LoginScreen({route,navigation}) {
       <View style={styles.linksContainer}>
           <AppLink title="Test Push Notification" style={{fontSize:18}} onPress={()=>
     sendNotification("ExponentPushToken[8G9G4SMGWCuYGKwIvHiYj4]")}/>
-      
-
        </View>
-      
     </Screen>
   );
 }
