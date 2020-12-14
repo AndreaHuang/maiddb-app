@@ -4,10 +4,11 @@ import { useTranslation } from "react-i18next";
 
 import constants from "../config/constants";
 import color from "../config/color";
+import defaultStyles from "../config/styles";
 import i18n from "../config/i18n";
 
 
-
+import {MaidScreenHeader} from "../screens/maid/MaidScreenHeader";
 import MaidProfileScreen from '../screens/maid/MaidProfileScreen';
 import MaidProfileBasicInfoEditScreen from "../screens/maid/MaidProfileBasicInfoEditScreen";
 import MaidProfileWorkHistoryEditScreen from "../screens/maid/MaidProfileWorkHistoryEditScreen";
@@ -23,20 +24,26 @@ const MaidNavigator=()=>{
     const {user} = useContext(AuthContext);
 
      return(
-        <Stack.Navigator initialRouteName={constants.route.maid.maidProfile} screenOptions={{
-                headerStyle: {
-                    backgroundColor: color.primary,
-                },
-                headerTintColor: color.white,
-                headerTitleStyle: {
-                    fontWeight: '400',
-                    fontSize:22
-                },
-                 headerBackTitleVisible:false
-            }}
-            >
+        <Stack.Navigator initialRouteName={constants.route.maid.maidProfile}
+                   screenOptions={{
+                          headerStyle:{
+                            backgroundColor:color.secondary,
+                          },
+                          headerTitleAlign:"left",
+                          headerBackTitleVisible:false,
+                          headerTintColor: color.danger,
+                          headerTitleStyle: {
+                                
+                                color:color.dark,
+                                fontWeight: '400',
+                                fontSize:defaultStyles.headerTitle.fontSize
+                          }
+                }}>
             <Stack.Screen name={constants.route.maid.maidProfile} component={MaidProfileScreen}
-                options={{ title: 'My Profile' }}/> 
+                options= {(props) => ({
+                        headerTitle: ()=><MaidScreenHeader {...props}/>,
+                    })} 
+            />
             <Stack.Screen name={constants.route.maid.editMaidProfileBasicInfo} component={MaidProfileBasicInfoEditScreen} 
                 options={{ headerShown: false }}/>
             <Stack.Screen name={constants.route.maid.editWorkHistory} component={MaidProfileWorkHistoryEditScreen} 

@@ -76,7 +76,7 @@ const MaidProfileScreen = ({navigation}) => {
     }
     return ( 
         <ScrollScreen>
-                <MaidProfileHeaderSection data={profile.basicInfo}/>
+                <MaidProfileHeaderSection data={profile}/>
                 <AppSection sectionTitle={t("image")} defaultCollapsed={false}  onEdit={()=>{navigateToEditProfile(constants.route.maid.editImage,profile.images)}} />
                 <CaroselWithModal data={profile.images}/>
                 <MaidProfileBasicInfoSection data={profile.basicInfo} defaultCollapsed={false}  onEdit={()=>navigateToEditProfile(constants.route.maid.editMaidProfileBasicInfo,profile.basicInfo)}/>

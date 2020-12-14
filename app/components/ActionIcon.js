@@ -3,7 +3,7 @@ import { TouchableOpacity, StyleSheet, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import color from "../config/color";
-function ActionIcon({ iconColor = color.primary, iconName, onPress, size = 24,style }) {
+function ActionIcon({ iconColor = color.primary, iconName, onPress, size = 24,style ,IconComponent}) {
   return (
     <TouchableOpacity style={styles.icon} onPress={onPress}>
       <View
@@ -16,7 +16,8 @@ function ActionIcon({ iconColor = color.primary, iconName, onPress, size = 24,st
           },
         ]}
       >
-        <MaterialCommunityIcons name={iconName} color={iconColor} size={size} />
+        {IconComponent ? IconComponent :
+        <MaterialCommunityIcons name={iconName} color={iconColor} size={size} />}
       </View>
     </TouchableOpacity>
   );

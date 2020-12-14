@@ -2,6 +2,7 @@ import {db,auth} from '../services/firebase';
 import maidProfileScheme from "../schemas/maidProfile";
 import cache from "../utiity/Cache";
 import constants from "../config/constants";
+import { initial } from 'lodash';
 
 const maidProfileRef = "/maidProfile";
 
@@ -14,15 +15,15 @@ const createProfile= async (currentUser)=>{
     }
     const uid=currentUser.uid;
 
-    console.log("createProfile",currentUser.uid);
+   
 
-    const init = Object.assign({
-        user_uid:uid,
-        createdAt:new Date(),
-        basicInfo:{
-            email:currentUser.email
-        }}
-        ,maidProfileScheme.initialScheme);
+    const init = Object.assign({},maidProfileScheme.initialScheme);
+    init.user_uid = uid;
+    init.createdAt = new Date();
+    init.basicInfo.email = currentUser.email;
+    init.basicInfo.name =  currentUser.displayName;
+    init.profileStatus= "DRAFT";
+    console.log("createProfile",init);
     try{
         const ref =  db.ref(maidProfileRef+"/"+uid);
         await ref.set(init);
@@ -62,6 +63,8 @@ const updateProfile = async(uid,segment,values)=>{
         const update={};
         update[segment]=values;
         update.lastUpdatedAt=new Date();
+        update.profileStatus="PENDING";
+        
         // console.debug("updateProfile",update);
         await db.ref(maidProfileRef+"/"+uid).update(update);
         

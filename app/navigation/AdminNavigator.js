@@ -24,6 +24,9 @@ const AdminNavigator=(props)=>{
     return(
         <Stack.Navigator initialRouteName={constants.route.admin.manageMaidList}
             screenOptions={{
+                          headerStyle:{
+                            backgroundColor:"cyan",
+                          },
                           headerTitleAlign:"left",
                           headerBackTitleVisible:false,
                           headerTintColor: color.secondary,

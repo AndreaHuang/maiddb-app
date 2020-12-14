@@ -2,10 +2,10 @@ import React from "react";
 import { Image,Text, StyleSheet, TouchableOpacity } from "react-native";
 import colors from "../config/color.js";
 import defaultStyles from "../config/styles";
-function AppButton({ color = "primary", onPress, title, image }) {
+function AppButton({ color = "primary", onPress, title, image,style }) {
   return (
     <TouchableOpacity
-      style={[styles.button, { backgroundColor: colors[color] }]}
+      style={[styles.button, { backgroundColor: colors[color] },style]}
       onPress={onPress}
     >
       {image && <Image style={styles.image} source={image} /> }

@@ -30,14 +30,14 @@ const _registerPushNotification=async (uid)=>{
   }
     /*Check existing permission*/
    const existingPermissions= await Permissions.getAsync(Permissions.NOTIFICATIONS);
-   console.debug("existingPermissions", existingPermissions);
+//    console.debug("existingPermissions", existingPermissions);
    if(existingPermissions.status=== GRANTED){
      storePushNotificationToken(uid);
      return; 
    }
    if(existingPermissions.status!== GRANTED){ /* not granted yet, ask for permission */
         const newPermissions  = await Permissions.askAsync(Permissions.NOTIFICATIONS);  //not prompt?
-        console.debug("Permissions.askAsync", newPermissions);
+     //    console.debug("Permissions.askAsync", newPermissions);
         if(newPermissions.status === GRANTED){
           storePushNotificationToken(uid);
         }

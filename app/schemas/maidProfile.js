@@ -14,7 +14,9 @@ const initialScheme={
             cantonese:0,
             english:0,
             mandarin:0,
-            currentLocation:""
+            currentLocation:"",
+            email:"",
+            whatsapp:""
         },
         family:{
             brothers:0,

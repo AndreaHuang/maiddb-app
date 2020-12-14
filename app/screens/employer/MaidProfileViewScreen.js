@@ -31,7 +31,7 @@ const MaidProfileViewScreen = ({route}) => {
     }
     return (     
         <ScrollScreen>
-                <MaidProfileHeaderSection data={profile.basicInfo}/>
+                
                 <AppSection sectionTitle={t("image")} defaultCollapsed={false}  />
                 <CaroselWithModal data={profile.images}/>
                 <MaidProfileBasicInfoSection data={profile.basicInfo} defaultCollapsed={false} />

@@ -1,8 +1,10 @@
 import React from "react";
-import {Alert} from "react-native";
+import {StyleSheet,Image,View} from "react-native";
 import * as Linking from "expo-linking";
 import ActionIcon from "./ActionIcon";
+import AppText from "./AppText";
 import colors from "../config/color";
+const whatsappLogo =require("../assets/logo/whatsapp.svg");
 
 export const Whatsapp=({number,message})=>{
     if(!number){
@@ -12,10 +14,19 @@ export const Whatsapp=({number,message})=>{
     if(message){
         url=url+"?text="+encodeURI(message);
     }
-    return <ActionIcon iconName="whatsapp" iconColor="green" onPress={()=>{
-        Alert.alert(number);
-         Linking.openURL(url);
-    }} />
+  
+// return <ActionIcon IconComponent = {<Image source={whatsappLogo}/> }
+//           onPress={()=>{
+//                             Linking.openURL(url);
+//                         }} />
+
+    return  ( <View style={styles.container}><ActionIcon iconName="whatsapp" 
+                        onPress={()=>{
+                            Linking.openURL(url);
+                        }} />
+                        <AppText style={styles.text}>{number}</AppText>
+                        </View>
+    )
 }
 
 export const Email=({email,subject,content})=>{
@@ -29,7 +40,17 @@ export const Email=({email,subject,content})=>{
     if(content){
         url=url+"?body="+encodeURI(body);
     }
-    return <ActionIcon iconName="email-outline" iconColor={colors.primary} onPress={()=>{
+     return <View style={styles.container}><ActionIcon iconName="email-outline" iconColor={colors.primary} onPress={()=>{
          Linking.openURL(url);
-    }} />
+    }} /><AppText style={styles.text}>{email}</AppText></View>
 }
+
+const styles=StyleSheet.create({
+    container:{
+        flexDirection:"row",
+        marginVertical:5
+    },
+    text:{
+        marginHorizontal:10
+    }
+})

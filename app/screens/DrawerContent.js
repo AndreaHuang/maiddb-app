@@ -112,7 +112,7 @@ const DrawerContent = (props) => {
                 <Drawer.Item
                             icon={()=>( <Icon
                         iconColor={colors.primary}
-                        name='formate-list-checkbox'
+                        name='format-list-checkbox'
                         size={iconSize}
                     />)} 
                     label={t("menu.profile")}

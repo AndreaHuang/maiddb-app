@@ -34,7 +34,7 @@ const login = async (email,password)=>{
 
     try{
      const response = await auth().signInWithEmailAndPassword(email, password);
-     console.log("signInWithEmailAndPassword response",response);
+    //  console.log("signInWithEmailAndPassword response",response);
      createOrUpdateFirebaseUser(response);
      return {
        user:buildAppUser(response)

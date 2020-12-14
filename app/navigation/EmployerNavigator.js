@@ -23,6 +23,9 @@ const EmployerNavigator=({navigation,screen})=>{
     return(
         <Stack.Navigator initialRouteName={constants.route.employer.maidList}
             screenOptions={{
+                        headerStyle:{
+                            backgroundColor:"pink",
+                          },
                           headerTitleAlign:"left",
                           headerBackTitleVisible:false,
                           headerTintColor: color.primary,

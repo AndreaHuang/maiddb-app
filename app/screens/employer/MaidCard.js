@@ -15,6 +15,7 @@ import {toggleFavorite} from "../../database/favoriteMaid";
 import {calculateAge} from "../../utiity/AgeCalculator";
 import AppRating from '../../components/AppRating';
 import { AppLabelValue } from '../../components/display';
+import { Whatsapp } from '../../components/Linking';
 
 
 const femaleIcon=require("../../assets/female.png");
