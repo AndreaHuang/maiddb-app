@@ -1,4 +1,3 @@
-import * as Permissions from 'expo-permissions'
 import * as Notifications from 'expo-notifications';
 import {updateUserProfile} from "../database/user";
 const GRANTED='granted';
@@ -6,7 +5,8 @@ const KEY_PUSHNOTIFICATION_TOKEN_EXPO="push_notification_token_expo";
 const KEY_PUSHNOTIFICATION_TOKEN_DEVICE="push_notification_token_device";
 
 const storePushNotificationToken=async(uid)=>{
-        const deviceToken= await Notifications.getDevicePushTokenAsync();
+     try{
+          const deviceToken= await Notifications.getDevicePushTokenAsync();
         const expoToken = await Notifications.getExpoPushTokenAsync();
 
         console.debug("Device Push Notification Token", deviceToken);
@@ -16,6 +16,10 @@ const storePushNotificationToken=async(uid)=>{
              KEY_PUSHNOTIFICATION_TOKEN_EXPO:expoToken,
              KEY_PUSHNOTIFICATION_TOKEN_DEVICE:deviceToken
         });
+     }catch(error){
+          console.debug("Hit error when get push token",error);
+     }
+       
 }
 
 const _registerPushNotification=async (uid)=>{
@@ -29,14 +33,14 @@ const _registerPushNotification=async (uid)=>{
     });
   }
     /*Check existing permission*/
-   const existingPermissions= await Permissions.getAsync(Permissions.NOTIFICATIONS);
+   const existingPermissions= await Notifications.getPermissionsAsync();
 //    console.debug("existingPermissions", existingPermissions);
    if(existingPermissions.status=== GRANTED){
      storePushNotificationToken(uid);
      return; 
    }
    if(existingPermissions.status!== GRANTED){ /* not granted yet, ask for permission */
-        const newPermissions  = await Permissions.askAsync(Permissions.NOTIFICATIONS);  //not prompt?
+        const newPermissions  = await Notifications.requestPermissionsAsync();
      //    console.debug("Permissions.askAsync", newPermissions);
         if(newPermissions.status === GRANTED){
           storePushNotificationToken(uid);
@@ -75,6 +79,7 @@ export const foregroundPushNotification =()=>{
 
 }
 export const initializePushNotification =async (uid)=>{
+     console.debug("initializePushNotification called");
      _registerPushNotification(uid);
 }
 

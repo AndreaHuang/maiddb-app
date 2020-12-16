@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         marginVertical:6,
     },
     ratingContainer:{
-        flex:2,
+        flex:1,
         flexDirection:"row",
         paddingRight:15,
         alignSelf:"center",

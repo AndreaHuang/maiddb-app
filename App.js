@@ -44,7 +44,8 @@ export default function App() {
           retrieveUserProfile(firebaseUser.uid,setUser,(error)=>{
             Alert.alert("Fail to retrieve user information.",error.errorCode);
           });
-          initializePushNotification(firebaseUser.uid);
+          //TODO: need to uncomment this later 
+          // initializePushNotification(firebaseUser.uid);
         } else {
           setUser(null);
         }

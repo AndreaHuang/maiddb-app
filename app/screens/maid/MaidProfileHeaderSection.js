@@ -6,6 +6,7 @@ import AppSection from "../../components/AppSection";
 import AppText from "../../components/AppText";
 import i18n from "../../config/i18n";
 import colors from "../../config/color";
+import defaultStyles from "../../config/styles";
 import AppLabelValue from '../../components/display/AppLabelValue';
 import AppRating from '../../components/AppRating';
 import AppLink from '../../components/AppLink';
@@ -26,7 +27,7 @@ const maleIcon=require("../../assets/male.png");
 
 
 const MaidProfileHeaderSection = ({data}) => {
-    console.log("MaidProfileHeaderSection data",data);
+    // console.log("MaidProfileHeaderSection data",data);
     const {t} = useTranslation();
     const {user} = useContext(AuthContext);
     const {basicInfo,user_uid:maid_uid}=data;
@@ -46,11 +47,11 @@ const MaidProfileHeaderSection = ({data}) => {
         if(isPremiumEmployer || isAdmin){
         return (
             <>
+             <AppText numberOfLines={3} style={[defaultStyles.smallText,styles.premiumMessage]} >You may contact the maid by whatsapp or email.</AppText>
              <View style={styles.contactContainer}>
-             <Whatsapp number={basicInfo.whatsapp} message={whatsapp_message}/>
-             <Email email={basicInfo.email} subject={email_subject} />
+                <Whatsapp number={basicInfo.whatsapp} message={whatsapp_message}/>
+                <Email email={basicInfo.email} subject={email_subject} />
             </View>
-             <AppText numberOfLines={3} style={styles.premiumMessage} >You may contact the maid through whatsapp or email.</AppText>
              </>
           )
         } else if(isEmployer && !isPremiumEmployer){
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
   },
 
   premiumMessage:{
-    marginHorizontal:15
+    marginHorizontal:35
   },
   image: {
     width: 50,

@@ -20,7 +20,7 @@ const KEY_ALL='All'; //status other than pending, for other action
 
 const ManageMaidListScreen = (props) => {
     const {t} = useTranslation();
-    console.debug("MaidDetailsScreen route",props.route);
+    // console.debug("MaidDetailsScreen route",props.route);
     const [index,setIndex] = useState(2);
     const [routes] = useState([
         {key:KEY_TOAPPROVE,title:t("toApprove")},

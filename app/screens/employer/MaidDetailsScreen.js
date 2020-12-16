@@ -17,7 +17,7 @@ const KEY_RATING='rating';
 const MaidDetailsScreen = (props) => {
     const profile = props.route.params.data;
     const {t} = useTranslation();
-    console.debug("MaidDetailsScreen route",props.route);
+    // console.debug("MaidDetailsScreen route",props.route);
     const [index,setIndex] = useState(0);
     const [routes] =useState([
         {key:KEY_PROFILE,title:"Maid Profile"},

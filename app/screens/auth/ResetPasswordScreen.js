@@ -77,7 +77,7 @@ const ResestPasswordScreen = ({navigation}) => {
 
   
         <AppErrorMessage error={t(errorCode)} visible={error} />
-        <AppSubmitButton title={t("button.submit")}></AppSubmitButton>
+        <AppSubmitButton title={t("button.submit")} />
         </>
         }
 

@@ -17,11 +17,10 @@ function Photo({
           width: size,
           height: size,
           borderRadius: size / 2,
-          marginHorizontal: size / 4,
         },
       ]}
     >
-      <MaterialCommunityIcons name={name} color={iconColor} size={size * 0.5} />
+      <MaterialCommunityIcons name={name} color={iconColor} size={size * 0.8} />
     </View>
   );
 }
