@@ -31,6 +31,7 @@
     "button.next":"NEXT",
     "button.back":"BACK",
     "button.cancel":"CANCEL",
+    "button.save":"SAVE",
     "button.forgetPassword":"Forget Password?",
     "button.signup":"Create Account",
     "button.sendEmailToResetPassword":"Forget Password?",
@@ -167,8 +168,29 @@
     "search.a.maid.candidate": "Search a Maid",
     "from":"From",
     "currently":"Current location ",
-    "favoritMaidList":"Favorite Maids"
-    
+    "favoritMaidList":"Favorite Maids",
+    "workPlan":"Plan to work for",
+    "2yrs":"2 Years",
+    "4yrs":"4 Years",
+    "6yrs":"6 Years",
+    "8yrs":"8 Years",
+    "preference_1":"Preference 1",
+    "preference_2":"Preference 2",
+    "preference_3":"Preference 3",
+    "preference_4":"Preference 4",
+    "summary":"Summary",
+    "interview":"Interview",
+    "priorExpereince":"Prior Experience",
+    "maidExpection":"Maid's Expection",
+    "languageSkill":"Language Skill",
+    "documentVerified":"Document Verified",
+    "comment":"Comment by Maid DB",
+    "video":"Interview Video",
+    "listening":"Listening",
+    "speaking":"Speaking",
+    "impression":"Impression",
+    "rating":"Overall Rating",
+    "workRecord":"Work Record"
 
 
 

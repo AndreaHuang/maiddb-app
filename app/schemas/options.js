@@ -11,5 +11,6 @@ export default {
     location:["id","hk","sg","tw","ph","th","other"],
     maidStatus:["finishContract","breakContract","new"],
     reasonOfLeaving:["finishContract","employerMigration","elderlyPassAway","selfResign","other"],
-    role:["employer","maid"]
+    role:["employer","maid"],
+    workPlan:["2yrs","4yrs","6yrs","8yrs"]
 }

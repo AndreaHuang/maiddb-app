@@ -78,15 +78,13 @@ const MaidRatingScreen = ({route}) => {
                      <AppSection sectionTitle={t("interview.video")} defaultCollapsed={false}  />
                     <AppSection sectionTitle={t("langugage.assessment")} defaultCollapsed={false} >
                         <View style={styles.sectionContainer}>
-                        {
-                            ratingResult.languageSkill.map(
-                              (item,index)=>{return( <View key={index}>
-                                 <AppRating label={t(item.language)+" - "+t("listening")} value = {item.listening} disabled={true}/>
-                                 <AppRating label={t(item.language)+" - "+t("speaking")} value = {item.speaking} disabled={true}/>
-                                
-                              </View>
-                            )})
-                        } 
+                         
+                            <AppRating label={t("english")+" - "+t("listening")} value = {ratingResult.languageSkill.english.listening} disabled={true}/>
+                            <AppRating label={t("english")+" - "+t("speaking")} value = {ratingResult.languageSkill.english.speaking} disabled={true}/>
+                            <AppRating label={t("cantonese")+" - "+t("listening")} value = {ratingResult.languageSkill.cantonese.listening} disabled={true}/>
+                            <AppRating label={t("cantonese")+" - "+t("speaking")} value = {ratingResult.languageSkill.cantonese.speaking} disabled={true}/>
+                            <AppRating label={t("mandarin")+" - "+t("listening")} value = {ratingResult.languageSkill.mandarin.listening} disabled={true}/>
+                            <AppRating label={t("mandarin")+" - "+t("speaking")} value = {ratingResult.languageSkill.mandarin.speaking} disabled={true}/>
                       </View>
                     </AppSection>
                     <AppSection sectionTitle={t("prior.experience")} defaultCollapsed={false}>
@@ -106,7 +104,7 @@ const MaidRatingScreen = ({route}) => {
                       {ratingResult.maidExpection.dutyPreference?
                         ratingResult.maidExpection.dutyPreference.map((item,index)=>{
                           return(
-                          <View style={styles.rowContainer}>
+                          <View style={styles.rowContainer} key={index}>
                             <AppBadge value={index+1}/>
                             <View >
                             <AppText style={[defaultStyles.text,styles.dutyText]}>{t(item)}</AppText> 

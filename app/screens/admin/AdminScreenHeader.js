@@ -7,6 +7,7 @@ import ActionIcon from "../../components/ActionIcon";
 import AppText from "../../components/AppText";
 import constants from "../../config/constants";
 import defaultStyles  from "../../config/styles";
+import maidProfile from "../../database/maidProfile";
 
 const iconSize = defaultStyles.bigIcon.size;
 // const iconColor =defaultStyles.colors.white;
@@ -19,25 +20,29 @@ const openDrawer=(navigation)=>{
   navigation.openDrawer();
     // navigation.navigate(constants.route.stack.account,{data:uid});
 }
-const toChatScreen=(navigation,uid)=>{
-   navigation.navigate(constants.route.common.inbox,{data:uid});
 
+const approveProfile=(navigation,maid_uid,admin_uid)=>{
+  maidProfile.manageProfile(maid_uid,admin_uid,constants.profileStatus.approved,(updatedProfile)=>{
+    console.log("approveProfile updatedProfile",updatedProfile)
+  });
+  navigation.goBack();
 }
-const approveProfile=(navigation,maid_uid)=>{
-  Alert.alert("Approve",maid_uid);
-}
-const rejectProfile=(navigation,maid_uid)=>{
-  Alert.alert("Reject",maid_uid);
+const rejectProfile=(navigation,maid_uid,admin_uid)=>{
+  maidProfile.manageProfile(maid_uid,admin_uid,constants.profileStatus.rejected,(updatedProfile)=>{
+    console.log("rejectProfile updatedProfile",updatedProfile)
+  });
+  navigation.goBack();
 }
 const rateProfile=(navigation,maid_uid)=>{
-  Alert.alert("Rate",maid_uid);
+  navigation.navigate(constants.route.admin.rateMaid,{maid_uid:maid_uid})
 }
-const offlineProfile=(navigation,maid_uid)=>{
-  Alert.alert("Take Offline",maid_uid);
+const offlineProfile=(navigation,maid_uid,admin_uid)=>{
+    maidProfile.manageProfile(maid_uid,admin_uid,constants.profileStatus.offline,(updatedProfile)=>{
+    console.log("offlineProfile updatedProfile",updatedProfile)
+  });
+  navigation.goBack();
 }
-const onlineProfile=(navigation,maid_uid)=>{
-  Alert.alert("Get online",maid_uid);
-}
+
 export const AdminScreenHeader = ({maid_uid,profileStatus}) => {
     const {user} = useContext(AuthContext);
     const navigation = useNavigation();
@@ -57,16 +62,11 @@ export const AdminRightHeader = ({navigation,route})=>{
     const profileStatus = route.params.data.profileStatus;
     return (
             <View style={styles.onlyRightIconContainer}>
-                 {/* {profileStatus === 'pending' ? 
-                 <> */}
-                 <ActionIcon  style={styles.icon} iconName="checkbox-marked-circle-outline" size={iconSize} onPress={()=>approveProfile(navigation,maid_uid)}/> 
-                 <ActionIcon  style={styles.icon} iconName="close-circle-outline" size={iconSize} onPress={()=>rejectProfile(navigation,maid_uid)}/>
-                 {/* </>
-                 :null} */}
-               
-                 <ActionIcon  style={styles.icon} iconName="star-half" size={iconSize} onPress={()=>rateProfile(navigation,maid_uid)}/>
-                 <ActionIcon  style={styles.icon} iconName="cloud-upload-outline" size={iconSize} onPress={()=>onlineProfile(navigation,maid_uid)}/> 
-                 <ActionIcon  style={styles.icon} iconName="cloud-off-outline" size={iconSize} onPress={()=>offlineProfile(navigation,maid_uid)}/> 
+                 <ActionIcon  style={styles.icon} iconName="checkbox-marked-circle-outline" size={iconSize} onPress={()=>approveProfile(navigation,maid_uid,user.uid)}/> 
+                 <ActionIcon  style={styles.icon} iconName="close-circle-outline" size={iconSize} onPress={()=>rejectProfile(navigation,maid_uid,user.uid)}/>
+                 <ActionIcon  style={styles.icon} iconName="cloud-off-outline" size={iconSize} onPress={()=>offlineProfile(navigation,maid_uid,user.uid)}/> 
+
+                  <ActionIcon  style={styles.icon} iconName="star-half" size={iconSize} onPress={()=>rateProfile(navigation,maid_uid)}/>
                  
             </View>
           );

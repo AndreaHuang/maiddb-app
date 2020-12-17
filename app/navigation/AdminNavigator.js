@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import color from "../config/color";
 import ManageMaidListScreen from "../screens/admin/ManageMaidListScreen";
 import MaidDetailsScreen from "../screens/employer/MaidDetailsScreen";
+import MaidRatingEditScreen from "../screens/admin/MaidRatingEditScreen";
 
 import {AdminScreenHeader,AdminRightHeader} from "../screens/admin/AdminScreenHeader";
 
@@ -44,6 +45,11 @@ const AdminNavigator=(props)=>{
                     options= {(props) => ({
                         headerRight: ()=><AdminRightHeader {...props}/>,
                         headerTitle: props.route.params.data.basicInfo.name})} 
+                />
+                <Stack.Screen name={constants.route.admin.rateMaid}  
+                    component={MaidRatingEditScreen}
+                    options= {(props) => ({
+                        headerTitle: t("title.rate.maid.screen")})} 
                 />
 
 

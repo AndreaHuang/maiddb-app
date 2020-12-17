@@ -13,7 +13,8 @@ export default{
         },
         admin:{
             manageMaidList:"ManageMaidList",
-            manageMaid:"manageMaid"
+            manageMaid:"manageMaid",
+            rateMaid:"rateMaid"
         },
         common:{
             inbox:"inbox",
@@ -41,6 +42,12 @@ export default{
         maidProfile:"maidProfile",
         favoriteMaidList:"favoriteMaidList",
         user:"user"
+    },
+    profileStatus:{
+        pending:"PENDING",
+        approved:"APPROVED",
+        rejected:"REJECTED",
+        offline:"OFFLINE",
     }
    
 

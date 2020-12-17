@@ -60,17 +60,63 @@ const retreiveOrCreateProfile=async ()=>{
 
 const updateProfile = async(uid,segment,values)=>{
     try{
-        const update={};
+       const update={};
         update[segment]=values;
         update.lastUpdatedAt=new Date();
         update.profileStatus="PENDING";
-        
         // console.debug("updateProfile",update);
         await db.ref(maidProfileRef+"/"+uid).update(update);
-        
         return {success:true}
     } catch(error){
         console.error("faile to update "+segment,error );
+        return {
+            error:true,
+            errorCode:"message.update.failed.maid.profile"
+        }
+    }
+}
+const manageProfile = async(uid,admin_uid,newStatus,callBack)=>{
+    try{
+        const ref = db.ref(maidProfileRef+"/"+uid);
+        const currentSnapshot = await(await ref.once('value')).val();
+        let proceed =false;
+        if ((!currentSnapshot.profileStatus ||
+            currentSnapshot.profileStatus === constants.profileStatus.pending || 
+            currentSnapshot.profileStatus === constants.profileStatus.rejected)
+             &&  newStatus === constants.profileStatus.approved){
+                proceed=true; 
+        }else if (
+            currentSnapshot.profileStatus === constants.profileStatus.approved
+             &&  newStatus === constants.profileStatus.offline){
+                proceed=true; 
+        } else if ((!currentSnapshot.profileStatus ||
+            currentSnapshot.profileStatus === constants.profileStatus.pending)
+             &&  newStatus === constants.profileStatus.rejected){
+                proceed=true; 
+        }
+        if(proceed){
+            const update={};
+            update.profileStatus=newStatus;
+            update.lastUpdateByAdminAt=new Date();
+            update.lastUpdateByAdmin=admin_uid;
+            // console.debug("updateProfile",update);
+            await ref.update(update);
+            const updatedSnapshot = await(await ref.once('value')).val();
+            if(callBack){
+                callBack(updatedSnapshot);
+            }else{
+                return updatedSnapshot;
+            }
+            
+        }else{
+            return {
+                error:true,
+                errorCode:"message.action.cancelled.validation.failure",
+            }
+        }
+       
+    } catch(error){
+        console.error("faile to manage profile ",error );
         return {
             error:true,
             errorCode:"message.update.failed.maid.profile"
@@ -189,6 +235,6 @@ export default {
     updateProfile,
     addOrUpdateWorkHistory,
     removeWorkHistory,
-    // updateBasicInfo
+    manageProfile,
     search,
 }

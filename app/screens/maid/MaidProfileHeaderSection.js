@@ -19,6 +19,7 @@ import { Whatsapp,Email } from '../../components/Linking';
 import AuthContext from '../../auth/AuthContext';
 import Icon from "../../components/Icon";
 import AppButton from '../../components/AppButton';
+import AppBadage from '../../components/AppBadge';
 
 const locale="zh_CN";
 const femaleIcon=require("../../assets/female.png");
@@ -30,7 +31,7 @@ const MaidProfileHeaderSection = ({data}) => {
     // console.log("MaidProfileHeaderSection data",data);
     const {t} = useTranslation();
     const {user} = useContext(AuthContext);
-    const {basicInfo,user_uid:maid_uid}=data;
+    const {basicInfo,user_uid:maid_uid,profileStatus}=data;
     
     const isEmployer=user.role==='employer';
     const isPremiumEmployer=user.role==='employer' && user.membership==='premium';
@@ -44,6 +45,7 @@ const MaidProfileHeaderSection = ({data}) => {
 
  
     const ContactSection = ()=>{
+      
         if(isPremiumEmployer || isAdmin){
         return (
             <>
@@ -101,6 +103,7 @@ const MaidProfileHeaderSection = ({data}) => {
                     : (basicInfo.gender ==='f' ? femaleIcon:maleIcon)} />
                 </View>
                 <View style={styles.detailsContainer}>
+                    
                     <AppText numberOfLines={3} style={styles.title}>
                         {basicInfo.name}
                     </AppText>
@@ -111,7 +114,9 @@ const MaidProfileHeaderSection = ({data}) => {
                         <AppText numberOfLines={3} style={styles.subTitle}>
                             {ageToDisplay}
                         </AppText>
-                    </View>
+                        
+                    </View>  
+                    {isAdmin? <AppButton title={profileStatus} style={{backgroundColor: defaultStyles.colors.warning}}/> :null}        
                 </View>
                 
 

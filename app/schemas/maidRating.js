@@ -10,7 +10,12 @@ export const initialScheme={
     documentVerified:false,
     maidExpection:{
         workPlan: 4,
-        dutyPreference:[]
+        dutyPreference:{
+            preference_1:"",
+            preference_2:"",
+            preference_3:"",
+            preference_4:""
+        }
     },
     interview:{
         video:"",
@@ -21,20 +26,19 @@ export const initialScheme={
         newborn:0,
         toddler:0,
     },
-    languageSkill:[
-        {   language:"english",
+    languageSkill:{
+        english:{
             speaking:0,
             listening:0
         },
-        {   language:"cantonese",
+        cantonese:{  
             speaking:0,
             listening:0
         },
-        {   language:"mandarin",
+        mandarin:{ 
             speaking:0,
             listening:0
         }
-        
-    ]
+    }
         
 }

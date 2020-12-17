@@ -18,7 +18,6 @@ import { AppFormField,
 import maidProfileScheme from "../../schemas/maidProfile";
 import maidProfileDB from "../../database/maidProfile";
 import options from "../../schemas/options";
-import AppDatePicker from "../../components/forms/AppFormDatePicker";
 
 
 const phoneRegex = RegExp(
