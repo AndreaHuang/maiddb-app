@@ -42,7 +42,8 @@ const styles=StyleSheet.create(
             flexDirection:"row"
         },
         itemContainer:{
-            marginLeft:20     
+            marginLeft:20,
+            marginVertical:5     
         },
         headerRow:{
             flexDirection:"row",

@@ -58,3 +58,23 @@ export const retreiveOrCreateRating=async (maid_uid)=>{
     }
 
 }
+export const updateRating = async (maid_uid,admin_uid,segment,values)=>{
+   try{
+        const ref = db.ref(maidProfileRef+"/"+maid_uid+"/"+maidRating);
+        const updated={};
+        updated.lastUpdateByAdminAt=new Date();
+        updated.lastUpdateByAdmin=admin_uid;
+        updated[segment] = values;
+        console.debug("updated",updated);
+        await ref.update(updated); 
+        return;
+    }catch(error){
+        console.error("Hit error when update rating",error);
+        return {
+            error:true,
+            errorCode:"fail.update.rating"
+        }
+
+    }
+
+}

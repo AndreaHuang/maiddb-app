@@ -49,7 +49,7 @@ const AdminNavigator=(props)=>{
                 <Stack.Screen name={constants.route.admin.rateMaid}  
                     component={MaidRatingEditScreen}
                     options= {(props) => ({
-                        headerTitle: t("title.rate.maid.screen")})} 
+                        headerTitle: t("screen.header.rate.maid") +"  - " +props.route.params.maid_name} )} 
                 />
 
 

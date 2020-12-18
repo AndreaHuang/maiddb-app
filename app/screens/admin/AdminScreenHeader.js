@@ -33,8 +33,8 @@ const rejectProfile=(navigation,maid_uid,admin_uid)=>{
   });
   navigation.goBack();
 }
-const rateProfile=(navigation,maid_uid)=>{
-  navigation.navigate(constants.route.admin.rateMaid,{maid_uid:maid_uid})
+const rateProfile=(navigation,maid_uid,maid_name)=>{
+  navigation.navigate(constants.route.admin.rateMaid,{maid_uid:maid_uid,maid_name:maid_name})
 }
 const offlineProfile=(navigation,maid_uid,admin_uid)=>{
     maidProfile.manageProfile(maid_uid,admin_uid,constants.profileStatus.offline,(updatedProfile)=>{
@@ -59,6 +59,7 @@ export const AdminScreenHeader = ({maid_uid,profileStatus}) => {
 export const AdminRightHeader = ({navigation,route})=>{
     const {user} = useContext(AuthContext);
     const maid_uid = route.params.data.user_uid;
+    const maid_name = route.params.data.basicInfo.name;
     const profileStatus = route.params.data.profileStatus;
     return (
             <View style={styles.onlyRightIconContainer}>
@@ -66,7 +67,7 @@ export const AdminRightHeader = ({navigation,route})=>{
                  <ActionIcon  style={styles.icon} iconName="close-circle-outline" size={iconSize} onPress={()=>rejectProfile(navigation,maid_uid,user.uid)}/>
                  <ActionIcon  style={styles.icon} iconName="cloud-off-outline" size={iconSize} onPress={()=>offlineProfile(navigation,maid_uid,user.uid)}/> 
 
-                  <ActionIcon  style={styles.icon} iconName="star-half" size={iconSize} onPress={()=>rateProfile(navigation,maid_uid)}/>
+                  <ActionIcon  style={styles.icon} iconName="star-half" size={iconSize} onPress={()=>rateProfile(navigation,maid_uid,maid_name)}/>
                  
             </View>
           );

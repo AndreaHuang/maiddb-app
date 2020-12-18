@@ -70,13 +70,13 @@ const MaidRatingScreen = ({route}) => {
                         <AppRating label ={t("workRecord")} value = {ratingResult.summary.workRecord} disabled={true}/>
                     </View>
 
-                    <AppSection sectionTitle={t("interview.comment")} defaultCollapsed={false} >
+                    <AppSection sectionTitle={t("comment")} defaultCollapsed={false} >
                         <View style={styles.interviewComment}>
                             <AppText style={defaultStyles.text}>{ratingResult.interview.comment}</AppText>
                         </View>
                     </AppSection>
-                     <AppSection sectionTitle={t("interview.video")} defaultCollapsed={false}  />
-                    <AppSection sectionTitle={t("langugage.assessment")} defaultCollapsed={false} >
+                     <AppSection sectionTitle={t("video")} defaultCollapsed={false}  />
+                    <AppSection sectionTitle={t("languageSkill")} defaultCollapsed={false} >
                         <View style={styles.sectionContainer}>
                          
                             <AppRating label={t("english")+" - "+t("listening")} value = {ratingResult.languageSkill.english.listening} disabled={true}/>
@@ -87,7 +87,7 @@ const MaidRatingScreen = ({route}) => {
                             <AppRating label={t("mandarin")+" - "+t("speaking")} value = {ratingResult.languageSkill.mandarin.speaking} disabled={true}/>
                       </View>
                     </AppSection>
-                    <AppSection sectionTitle={t("prior.experience")} defaultCollapsed={false}>
+                    <AppSection sectionTitle={t("priorExpereince")} defaultCollapsed={false}>
                         <View style={styles.sectionContainer}>
                         {options.maidDuties.map((item,index)=>{
                           return (<View key={index}>
@@ -97,34 +97,45 @@ const MaidRatingScreen = ({route}) => {
                         })}
                         </View>
                     </AppSection>
-                    <AppSection sectionTitle={t("expection")} defaultCollapsed={false} >
+                    <AppSection sectionTitle={t("maidExpection")} defaultCollapsed={false} >
                      <View style={styles.sectionContainer}>
                       <AppText>I expect to work for {ratingResult.maidExpection.workPlan} years.</AppText>
                       <AppText>My work preference are</AppText>
-                      {ratingResult.maidExpection.dutyPreference?
-                        ratingResult.maidExpection.dutyPreference.map((item,index)=>{
-                          return(
-                          <View style={styles.rowContainer} key={index}>
-                            <AppBadge value={index+1}/>
-                            <View >
-                            <AppText style={[defaultStyles.text,styles.dutyText]}>{t(item)}</AppText> 
-                            </View>
-                          </View>
-                          )
-                        }):null}
+                        <View style={styles.rowContainer}>
+                              <AppBadge value={1}/>
+                              <AppText style={[defaultStyles.text,styles.dutyText]}>
+                                {t(ratingResult.maidExpection.preference_1)}</AppText> 
+                        </View>
+                         <View style={styles.rowContainer}>
+                              <AppBadge value={2}/>
+                              <AppText style={[defaultStyles.text,styles.dutyText]}>
+                                {t(ratingResult.maidExpection.preference_2)}</AppText> 
+                        </View>
+                        <View style={styles.rowContainer}>
+                              <AppBadge value={3}/>
+                              <AppText style={[defaultStyles.text,styles.dutyText]}>
+                                {t(ratingResult.maidExpection.preference_3)}</AppText> 
+                        </View>
+                        <View style={styles.rowContainer}>
+                              <AppBadge value={4}/>
+                              <AppText style={[defaultStyles.text,styles.dutyText]}>
+                                {t(ratingResult.maidExpection.preference_4)}</AppText> 
+                        </View>
+
+                    
                       </View>
                     </AppSection>
-                    <AppSection sectionTitle={t("document.verification")} defaultCollapsed={false} >
+                    <AppSection sectionTitle={t("documentVerified")} defaultCollapsed={false} >
                       <View  style={styles.sectionContainer}>
                         <View style={styles.rowContainer}>
-                            {ratingResult.documentVerified?
+                            {ratingResult.interview.documentVerified?
                             <Photo name="check-bold" size={24} backgroundColor={defaultStyles.colors.primary}/>
                             :
                             <Photo name="close-outline" size={24} backgroundColor={defaultStyles.colors.medium}/>}
                             <AppText style={[defaultStyles.text,styles.dutyText]}>Passport</AppText>
                         </View>
                          <View style={styles.rowContainer}>
-                           {ratingResult.documentVerified?
+                           {ratingResult.interview.documentVerified?
                             <Photo name="check-bold" size={24} backgroundColor={defaultStyles.colors.primary}/>
                             :
                             <Photo name="close-outline" size={24} backgroundColor={defaultStyles.colors.medium}/>}

@@ -7,20 +7,19 @@ export const initialScheme={
         workRecord:4 //has 2 consective contract +, finish contract,break contract
         
     },
-    documentVerified:false,
     maidExpection:{
         workPlan: 4,
-        dutyPreference:{
-            preference_1:"",
-            preference_2:"",
-            preference_3:"",
-            preference_4:""
-        }
+        preference_1:"",
+        preference_2:"",
+        preference_3:"",
+        preference_4:""
+        
     },
     interview:{
         video:"",
         images:[],
-        comment:""
+        comment:"",
+        documentVerified:false
     },
     priorExperience:{
         newborn:0,

@@ -22,19 +22,30 @@ import {
 import ScrollScreen from "../../components/ScrollScreen";
 import AppText from "../../components/AppText";
 import ActivityIndicator from '../../components/ActivityIndicator';
-import { retreiveOrCreateRating } from '../../database/maidRating';
+import { retreiveOrCreateRating ,updateRating} from '../../database/maidRating';
 import ListItemSeperator from '../../components/lists/ListItemSeperator';
 import AppSection from '../../components/AppSection';
+import AuthContext from '../../auth/AuthContext';
 
 
+const segment={
+    summary:"summary",
+    interview:"interview",
+    priorExperience:"priorExperience",
+    maidExpection:"maidExpection",
+    languageSkill:"languageSkill"
+}
 
 
 const MaidRatingEditScreen = ({navigation,route}) => {
      //i18n
   const { t } = useTranslation();
+  const {user} = useContext(AuthContext);
   const [ratingResult,setRatingResult] = useState(null);
   const [error,setError] =useState(false);
   const [loading,setLoading] =useState(false);
+  const maid_uid = route.params.maid_uid;
+
   
   useEffect(()=>{
         console.debug("MaidRatingEditScreen useEffect called");
@@ -66,11 +77,37 @@ const MaidRatingEditScreen = ({navigation,route}) => {
    if(loading){
         return <ActivityIndicator visible={loading}/>;
     }
-  const handleSubmit=(values)=>{
+const handleSubmit=(values)=>{
       console.log(options.maidDuties);
       console.log("submit",values);
     //   Alert.alert(values);
   }
+  const handleSubmit_Summary=(values)=>{
+      console.log("handleSubmit_Summary",values);
+      updateRating (maid_uid,user.uid,segment.summary,values);
+      Alert.alert("Rating Summary is saved");
+  }
+  const handleSubmit_Language=(values)=>{
+      console.log("handleSubmit_Lanuage",values);
+      updateRating (maid_uid,user.uid,segment.languageSkill,values);
+      Alert.alert("Language Rating is saved");
+  }
+ const handleSubmit_MaidExpection=(values)=>{
+      console.log("handleSubmit_MaidExpection",values);
+      updateRating (maid_uid,user.uid,segment.maidExpection,values);
+      Alert.alert("Maid Expection is saved");
+  }
+  const handleSubmit_PriorExperience=(values)=>{
+      console.log("handleSubmit_PriorExperience",values);
+      updateRating (maid_uid,user.uid,segment.priorExperience,values);
+      Alert.alert("Rating of Prior Experience is saved");
+  }
+ const handleSubmit_Interview=(values)=>{
+      console.log("handleSubmit_Interview",values);
+      updateRating (maid_uid,user.uid,segment.interview,values);
+      Alert.alert("Interview data is saved");
+  }
+
   let initialValues = Object.assign({},maidProfileScheme.initialScheme.basicInfo);
   initialValues = Object.assign(initialValues,route.params.data);
 
@@ -80,10 +117,10 @@ const MaidRatingEditScreen = ({navigation,route}) => {
           
      
             <>
-            <AppSection sectionTitle={t("interview")}>
+            <AppSection sectionTitle={t("interview")} defaultCollapsed={false}>
             <AppForm 
-                initialValues={ratingResult.interview}
-                onSubmit={handleSubmit}>
+                initialValues={ratingResult[segment.interview]}
+                onSubmit={handleSubmit_Interview}>
                     <AppFormSwitch name="documentVerified" label={t("documentVerified")}/>
                     <AppFormField name="comment" label={t("comment")} />
                     <AppFormField name="video" label={t("video")} />
@@ -93,8 +130,8 @@ const MaidRatingEditScreen = ({navigation,route}) => {
             </AppSection>
             <AppSection sectionTitle={t("languageSkill")}>
              <AppForm 
-                initialValues={ratingResult.languageSkill}
-                onSubmit={handleSubmit}>
+                initialValues={ratingResult[segment.languageSkill]}
+                onSubmit={handleSubmit_Language}>
                   
                 <AppFormRating label={t("english")+" - "+t("listening")} name = "english.listening"/>
                 <AppFormRating label={t("english")+" - "+t("speaking")} name = "english.speaking" />
@@ -106,10 +143,10 @@ const MaidRatingEditScreen = ({navigation,route}) => {
                 <AppSubmitButton title={t("button.save")} />
             </AppForm>
             </AppSection>
-             <AppSection sectionTitle={t("priorExpereince")}>
+             <AppSection sectionTitle={t("priorExpereince")} defaultCollapsed={false}>
                 <AppForm 
-                    initialValues={ratingResult.priorExperience}
-                    onSubmit={handleSubmit}>
+                    initialValues={ratingResult[segment.priorExperience]}
+                    onSubmit={handleSubmit_PriorExperience}>
                        
                                 {
                                     options.maidDuties.map((item,index)=> {return   (<AppFormRating key={index} label={t(item)} name = {item} />)
@@ -119,10 +156,10 @@ const MaidRatingEditScreen = ({navigation,route}) => {
                     
                 </AppForm>
             </AppSection>
-             <AppSection sectionTitle={t("maidExpection")}>
+             <AppSection sectionTitle={t("maidExpection")} defaultCollapsed={false}>
                 <AppForm 
-                    initialValues={ratingResult.maidExpection}
-                    onSubmit={handleSubmit}>
+                    initialValues={ratingResult[segment.maidExpection]}
+                    onSubmit={handleSubmit_MaidExpection}>
                         <AppFormPicker name="workPlan" label={t("workPlan")} items={options.workPlan}/>
                         <AppFormPicker name="preference_1" label={t("preference_1")} items={options.maidDuties}/>
                         <AppFormPicker name="preference_2" label={t("preference_2")} items={options.maidDuties}/>
@@ -135,7 +172,7 @@ const MaidRatingEditScreen = ({navigation,route}) => {
             <AppSection sectionTitle={t("summary")}>
             <AppForm 
                 initialValues={ratingResult.summary}
-                onSubmit={handleSubmit}>
+                onSubmit={handleSubmit_Summary}>
                     <AppFormRating name="impression" label={t("impression")}  category="languageRating" count={5} />
                     <AppFormRating name="languageSkill" label={t("languageSkill")}  category="languageRating"  count={5} />
                     <AppFormRating name="priorExperience" label={t("priorExperience")} category="languageRating"   count={5} />
