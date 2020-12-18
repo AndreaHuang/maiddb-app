@@ -18,6 +18,8 @@ import { AppErrorMessage } from '../../components/forms';
 import AppRating from '../../components/AppRating';
 import AppBadge from "../../components/AppBadge";
 import Photo from "../../components/Photo";
+import AppYouTubePlayer from "../../components/AppYouTubePlayer";
+// import AppExpoAVPlayer from "../../components/AppExpoAVPlayer";
 import options from "../../schemas/options";
 
 const MaidRatingScreen = ({route}) => {
@@ -75,7 +77,9 @@ const MaidRatingScreen = ({route}) => {
                             <AppText style={defaultStyles.text}>{ratingResult.interview.comment}</AppText>
                         </View>
                     </AppSection>
-                     <AppSection sectionTitle={t("video")} defaultCollapsed={false}  />
+                     {/* <AppSection sectionTitle={t("video")} defaultCollapsed={false}  >
+                        <AppYouTubePlayer/>
+                       </AppSection> */}
                     <AppSection sectionTitle={t("languageSkill")} defaultCollapsed={false} >
                         <View style={styles.sectionContainer}>
                          

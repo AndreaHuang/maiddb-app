@@ -7,7 +7,7 @@ export default {
   text: {
     fontSize: 16,
     color: colors.dark,
-    fontFamily: Platform === "android" ? "Roboto" : "Avenir",
+    // fontFamily: Platform === "android" ? "Roboto" : "Avenir",
   },
   dimension: {
     width: Dimensions.get("window").width,
@@ -47,7 +47,7 @@ export default {
     color: colors.white,
     fontWeight:"400",
     fontSize:18,
-    fontFamily: Platform === "android" ? "Roboto" : "Avenir",
+    // fontFamily: Platform === "android" ? "Roboto" : "Avenir",
   },
   smallButtonText:{
     fontSize:16,
